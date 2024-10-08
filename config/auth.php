@@ -45,7 +45,6 @@ return [
             'provider' => 'users',
             'hash' => true,
         ],
-
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',

@@ -19,12 +19,28 @@
     </ul>
 
     <ul class="actions hidden md:flex md:flex-row">
-        <li class="px-4 py-2 {{ pathNameCheck(route('user.login')) }}">
-            <a href="{{ route('user.login') }}">Sign in</a>
-        </li>
-        <li class="px-4 py-2 {{ pathNameCheck(route('user.register')) }}">
-            <a href="{{ route('user.register') }}">Sign up</a>
-        </li>
+        @auth
+
+            <li class="px-4 py-2 bg-orange-600 text-white">
+                <a href="{{ route('user.dashboard') }}">Dashboard</a>
+            </li>
+
+            <li class="px-4 py-2 bg-orange-600 text-white">
+                <a href="{{ route('user.logout') }}">Sign Out</a>
+            </li>
+
+        @endauth
+        @guest
+
+            <li class="px-4 py-2 {{ pathNameCheck(route('user.login')) }}">
+                <a href="{{ route('user.login') }}">Sign in</a>
+            </li>
+            <li class="px-4 py-2 {{ pathNameCheck(route('user.register')) }}">
+                <a href="{{ route('user.register') }}">Sign up</a>
+            </li>
+
+        @endguest
+
     </ul>
 
     <div class="flex md:hidden p-2 bg-white bg-opacity-10 rounded-full hover:cursor-pointer"
