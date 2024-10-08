@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Users\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -32,5 +35,19 @@ class AuthController extends Controller
             'username' => ['required', 'string', 'unique:users,username'],
             'password' => ['required', 'string', 'confirmed']
         ]);
+
+        try {
+            DB::beginTransaction();
+            $user = User::create([
+                'email' => $request->email,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+            ]);
+            DB::commit();
+            return to_route("user.login")->with(['success' => 'Registration successfull, you can now login']);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return to_route("user.register")->with(['error' => $e->getMessage()]);
+        }
     }
 }
