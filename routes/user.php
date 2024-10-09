@@ -10,6 +10,6 @@ Route::namespace("Auth")->controller("AuthController")->group(function () {
     Route::get('/logout', 'logout')->name('logout');
 });
 
-Route::controller('UsersController')->group(function () {
+Route::middleware('auth')->controller('UsersController')->group(function () {
     Route::get('dashboard', 'index')->name('dashboard');
 });

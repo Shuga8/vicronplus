@@ -7,5 +7,12 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    public function index() {}
+    public function index()
+    {
+        $data = [
+            'title' => 'Dashboard',
+        ];
+
+        return view('users.dashboard')->with($data);
+    }
 }
