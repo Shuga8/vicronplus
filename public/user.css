@@ -17,16 +17,64 @@ body {
   background: #fff;
 }
 
+.toggle-menu {
+  visibility: hidden;
+}
+
 .aside {
   width: 300px;
   height: 100vh;
   position: fixed;
+  left: 0px;
   z-index: 24;
-  background: #1f2937;
+  background: #0a1b31;
 }
 
 .page-content {
   width: calc(100% - 300px);
   margin-left: 300px;
   min-height: 100vh;
+  background: #01132a;
+}
+.page-content .dashboard-widgets {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.page-content .dashboard-widgets .widget {
+  min-height: 150px;
+  flex-grow: 1;
+  flex-basis: 200;
+  background: rgba(255, 255, 255, 0.11);
+}
+.page-content .charts-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-basis: 200;
+}
+.page-content .charts-container > .history {
+  height: 350px;
+  flex-grow: 1;
+  flex-basis: 200;
+  background: rgba(255, 255, 255, 0.11);
+  border-radius: 5px;
+}
+
+@media (max-width: 1200px) {
+  .toggle-menu {
+    visibility: visible;
+  }
+  .aside {
+    left: -300px;
+  }
+  .aside.active {
+    left: 0;
+  }
+  .page-content {
+    width: 100%;
+    margin-left: 0px;
+  }
 }/*# sourceMappingURL=user.css.map */

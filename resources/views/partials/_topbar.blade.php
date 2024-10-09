@@ -1,5 +1,10 @@
 <header class="w-full py-3 px-2 border-b-2 border-gray-500 flex flex-row justify-between">
-    <div></div>
+    <div class="py-3 px-3 cursor-pointer toggle-menu" onclick="toggleAsideVisisbilty()">
+        <span class="material-symbols-outlined">
+            menu
+        </span>
+
+    </div>
 
     <div class="flex flex-row gap-x-4 place-items-center">
         <a href=""

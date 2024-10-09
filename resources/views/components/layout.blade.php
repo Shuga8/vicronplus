@@ -19,7 +19,7 @@
 
         @include('partials.sidebar')
 
-        <div class="page-content bg-slate-900 px-2 py-1">
+        <div class="page-content px-2 py-1">
 
             @include('partials._topbar')
 
@@ -28,6 +28,8 @@
         </div>
 
         <script src="{{ asset('js/layout.js') }}"></script>
+
+        @stack('scripts')
 
     </body>
 
