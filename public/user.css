@@ -31,6 +31,7 @@ body {
   transition: all 0.7 ease-in-out;
 }
 .aside .close-btn {
+  visibility: hidden;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -89,6 +90,9 @@ body {
   .aside.active {
     left: 0;
     transition: all 0.7 ease-in-out;
+  }
+  .aside .close-btn {
+    visibility: visible;
   }
   .page-content {
     width: 100%;

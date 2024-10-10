@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::namespace('Auth')->controller('AuthController')->group(function () {
-    Route::get('', 'login')->name('login');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/auth', 'auth')->name('auth');
 });
 
 Route::controller('AdminController')->group(function () {

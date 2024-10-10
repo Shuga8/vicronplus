@@ -32,7 +32,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::namespace($this->namespace)->group(function () {
-                Route::middleware(['admin'])
+                Route::middleware(['web'])
                     ->namespace('Admin')
                     ->prefix('admin')
                     ->name('admin.')
