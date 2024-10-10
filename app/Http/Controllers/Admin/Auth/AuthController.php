@@ -40,7 +40,7 @@ class AuthController extends Controller
     {
         Auth::guard('admin')->logout();
 
-        $request->session()->forget('admin'); // Remove admin-related session data
+        $request->session()->forget('admin');
         $request->session()->regenerateToken();
 
         return redirect('/admin/login')->with('message', "You have been logged out");

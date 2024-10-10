@@ -7,5 +7,12 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index(Request $request) {}
+    public function index(Request $request)
+    {
+        $data = [
+            'title' => 'Dashboard'
+        ];
+
+        return view('admin.dashboard')->with($data);
+    }
 }
