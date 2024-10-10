@@ -19,7 +19,8 @@
 
         @include('partials._admin-sidebar')
 
-        <div class="page-content px-2 py-1">
+        <div class="page-content pb-1">
+            @include('partials._admin-header')
 
             {{ $slot }}
 

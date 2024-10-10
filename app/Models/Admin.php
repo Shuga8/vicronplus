@@ -23,4 +23,14 @@ class Admin extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    public function scopeBanned($query)
+    {
+        return $query->where('status', 0);
+    }
 }
