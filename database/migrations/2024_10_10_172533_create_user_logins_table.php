@@ -13,15 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('active_investments', function (Blueprint $table) {
+        Schema::create('user_logins', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('plan_id');
-            $table->decimal('amount', 28, 8);
-            $table->boolean('status')->comment('0: running, 1: completed')->default(0);
+            $table->string('ip')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->string('country_code')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('browser')->nullable();
+            $table->string('os')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('plan_id')->references('id')->on('investments')->onDelete('cascade');
         });
     }
 
@@ -32,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('active_investments');
+        Schema::dropIfExists('user_logins');
     }
 };

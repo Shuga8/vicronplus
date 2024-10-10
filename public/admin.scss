@@ -29,7 +29,7 @@ body {
     left: 0px;
     z-index: 24;
     background: #011e52;
-    transition: all 0.7s ease-in-out;
+    transition: left 0.3s ease-in-out;
 
     .links {
         width: 100%;
@@ -85,6 +85,24 @@ header {
     margin-left: 270px;
     min-height: 100vh;
     background: #fff;
+
+    .content {
+        .widgets {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+
+            > .widget {
+                min-height: 120px;
+                min-width: 270px;
+                flex-grow: 1;
+                flex-shrink: 1;
+                flex-basis: 200;
+                box-shadow: 1px 1px 10px #ccc, -1px -1px 10px #ccc;
+                border-radius: 7px;
+            }
+        }
+    }
 }
 
 @media (max-width: 1200px) {
@@ -94,10 +112,10 @@ header {
 
     .aside {
         left: -270px;
-        transition: all 0.7s ease-in-out;
+        transition: all 0.3s ease-in-out;
         &.active {
             left: 0;
-            transition: all 0.7s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
 
         .close-btn {

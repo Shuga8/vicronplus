@@ -26,7 +26,7 @@
                         manage_accounts
                     </span> <span class="text-sm">Settings</span></a>
 
-                <a href="{{ route('user.logout') }}"
+                <a href="{{ route('admin.logout') }}"
                     class="py-3 px-3 w-full  flex flex-row gap-x-2 hover:bg-gray-200 hover:bg-opacity-10 text-blue-600 "><span
                         class="material-symbols-outlined text-sm">
                         logout
