@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->longText('address')->nullable();
             $table->longText('balance')->default('{"USD":0}');
+            $table->boolean('status')->comment('0: banned, 1: active')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

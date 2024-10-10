@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('investments', function (Blueprint $table) {
             $table->id();
+            $table->string('plan_name');
+            $table->decimal('minimum', 28, 8);
+            $table->decimal('maximum', 28, 8);
+            $table->decimal('percentage', 28, 9);
+            $table->string('duration');
             $table->timestamps();
         });
     }
