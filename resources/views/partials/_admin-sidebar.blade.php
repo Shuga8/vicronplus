@@ -1,4 +1,4 @@
-<aside class="aside py-9">
+<aside class="aside py-9 px-1">
 
     <div class="close-btn cursor-pointer">
         <span class="material-symbols-outlined text-base text-red-600 " onclick="toggleAsideVisisbilty()">
@@ -7,7 +7,7 @@
     </div>
 
 
-    <div class="links flex flex-col gap-y-1 px-5 w-full h-full">
+    <div class="links flex flex-col gap-y-1 px-4 w-full h-full">
 
         <a href="{{ route('admin.dashboard') }}"
             class="py-3 px-3 bg-white bg-opacity-10 w-full rounded-md flex flex-row gap-x-2"><span

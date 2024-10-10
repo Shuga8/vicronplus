@@ -30,6 +30,20 @@ body {
   background: #011e52;
   transition: all 0.7 ease-in-out;
 }
+.aside .links {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+.aside .links::-webkit-scrollbar {
+  height: 3px;
+  width: 3px;
+}
+.aside .links::-webkit-scrollbar-thumb {
+  background: #edaa9d;
+  color: #edaa9d;
+  height: 10px;
+}
 .aside .close-btn {
   visibility: hidden;
   position: absolute;
