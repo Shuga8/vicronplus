@@ -28,8 +28,7 @@
                         <form class="space-y-4 md:space-y-6" action="{{ route('admin.auth') }}" method="POST">
                             @csrf
                             <div>
-                                <label for="email" class="block mb-2 text-sm font-medium text-white">Your
-                                    email</label>
+                                <label for="email" class="block mb-2 text-sm font-medium text-white">Email</label>
                                 <input type="email" name="email" id="email"
                                     class=" border  rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                                     placeholder="name@company.com" required="">
