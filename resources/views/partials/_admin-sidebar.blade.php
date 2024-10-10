@@ -32,21 +32,41 @@
             </div>
 
             <div class="dropdown-links bg-blue-800 bg-opacity-80">
-                <a href="" class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10">
-                    <span class="material-symbols-outlined text-xs">
-                        radio_button_checked
-                    </span>
-                    </span> <span class="text-xs">Active Users</span></a>
-                <a href="" class="py-3 px-3 w-full  flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10">
-                    <span class="material-symbols-outlined text-xs">
-                        radio_button_checked
-                    </span>
-                    </span> <span class="text-xs">Banned Users</span></a>
-                <a href="" class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10">
-                    <span class="material-symbols-outlined text-xs">
-                        radio_button_checked
-                    </span>
-                    </span> <span class="text-xs">All Users</span></a>
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">Active Users</span>
+                    </p>
+
+                    <span class="px-1 bg-green-600 text-xs text-white rounded-lg">{{ $activeUsersCount }}</span>
+                </a>
+
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">Banned Users</span>
+                    </p>
+
+                    <span class="px-1 bg-red-600 text-xs text-white rounded-lg">{{ $bannedUsersCount }}</span>
+                </a>
+
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">All Users</span>
+                    </p>
+
+                    <span class="px-1 bg-cyan-500 text-xs text-white rounded-lg">{{ $allUsersCount }}</span>
+                </a>
             </div>
 
 
@@ -75,26 +95,54 @@
             </div>
 
             <div class="dropdown-links bg-blue-800 bg-opacity-80">
-                <a href="" class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10">
-                    <span class="material-symbols-outlined text-xs">
-                        radio_button_checked
-                    </span>
-                    </span> <span class="text-xs">Pending Deposits</span></a>
-                <a href="" class="py-3 px-3 w-full  flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10">
-                    <span class="material-symbols-outlined text-xs">
-                        radio_button_checked
-                    </span>
-                    </span> <span class="text-xs">Completed Deposits</span></a>
-                <a href="" class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10">
-                    <span class="material-symbols-outlined text-xs">
-                        radio_button_checked
-                    </span>
-                    </span> <span class="text-xs">Rejected Deposits</span></a>
-                <a href="" class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10">
-                    <span class="material-symbols-outlined text-xs">
-                        radio_button_checked
-                    </span>
-                    </span> <span class="text-xs">All Deposits</span></a>
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">Pending Deposits</span>
+                    </p>
+
+                    <span class="px-1 bg-orange-500 text-xs text-white rounded-lg">{{ $pendingDepositsCount }}</span>
+                </a>
+
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">Completed Deposits</span>
+                    </p>
+
+                    <span class="px-1 bg-green-500 text-xs text-white rounded-lg">{{ $approvedDepositsCount }}</span>
+                </a>
+
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">Rejected Deposits</span>
+                    </p>
+
+                    <span class="px-1 bg-red-600 text-xs text-white rounded-lg">{{ $rejectedDepositsCount }}</span>
+                </a>
+
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">All Deposits</span>
+                    </p>
+
+                    <span class="px-1 bg-cyan-500 text-xs text-white rounded-lg">{{ $allDepositsCount }}</span>
+                </a>
+
             </div>
 
 
@@ -116,26 +164,55 @@
             </div>
 
             <div class="dropdown-links bg-blue-800 bg-opacity-80">
-                <a href="" class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10">
-                    <span class="material-symbols-outlined text-xs">
-                        radio_button_checked
-                    </span>
-                    </span> <span class="text-xs">Pending Withdrawals</span></a>
-                <a href="" class="py-3 px-3 w-full  flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10">
-                    <span class="material-symbols-outlined text-xs">
-                        radio_button_checked
-                    </span>
-                    </span> <span class="text-xs">Completed Withdrawals</span></a>
-                <a href="" class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10">
-                    <span class="material-symbols-outlined text-xs">
-                        radio_button_checked
-                    </span>
-                    </span> <span class="text-xs">Rejected Withdrawals</span></a>
-                <a href="" class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10">
-                    <span class="material-symbols-outlined text-xs">
-                        radio_button_checked
-                    </span>
-                    </span> <span class="text-xs">All Withdrawals</span></a>
+
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">Pending Withdrawals</span>
+                    </p>
+
+                    <span class="px-1 bg-orange-500 text-xs text-white rounded-lg">{{ $pendingWithdrawalsCount }}</span>
+                </a>
+
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">Completed Withdrawals</span>
+                    </p>
+
+                    <span class="px-1 bg-green-500 text-xs text-white rounded-lg">{{ $approvedWithdrawalsCount }}</span>
+                </a>
+
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">Rejected Withdrawals</span>
+                    </p>
+
+                    <span class="px-1 bg-red-600 text-xs text-white rounded-lg">{{ $rejectedWithdrawalsCount }}</span>
+                </a>
+
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">All Withdrawals</span>
+                    </p>
+
+                    <span class="px-1 bg-cyan-500 text-xs text-white rounded-lg">{{ $allWIthdrawalsCount }}</span>
+                </a>
+
             </div>
 
 
