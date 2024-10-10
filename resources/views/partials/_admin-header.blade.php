@@ -19,18 +19,18 @@
                 </span>
             </div>
 
-            <div id="header-drop" class="hidden fixed top-16 right-2 w-40 rounded-md bg-slate-700">
+            <div id="header-drop" class="hidden fixed top-16 right-4 w-32 rounded-md bg-white shadow-2xl">
                 <a href=""
-                    class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10"><span
-                        class="material-symbols-outlined">
+                    class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-gray-200 hover:bg-opacity-10 text-blue-600 border-b border-slate-300"><span
+                        class="material-symbols-outlined text-sm">
                         manage_accounts
-                    </span> <span class="text-base">Settings</span></a>
+                    </span> <span class="text-sm">Settings</span></a>
 
                 <a href="{{ route('user.logout') }}"
-                    class="py-3 px-3 w-full r flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10"><span
-                        class="material-symbols-outlined">
+                    class="py-3 px-3 w-full  flex flex-row gap-x-2 hover:bg-gray-200 hover:bg-opacity-10 text-blue-600 "><span
+                        class="material-symbols-outlined text-sm">
                         logout
-                    </span> <span class="text-base">Logout</span></a>
+                    </span> <span class="text-sm">Logout</span></a>
             </div>
         </div>
     </div>

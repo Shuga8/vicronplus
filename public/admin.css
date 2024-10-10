@@ -28,7 +28,7 @@ body {
   left: 0px;
   z-index: 24;
   background: #011e52;
-  transition: all 0.7 ease-in-out;
+  transition: all 0.7s ease-in-out;
 }
 .aside .links {
   width: 100%;
@@ -77,4 +77,25 @@ header {
   margin-left: 270px;
   min-height: 100vh;
   background: #fff;
+}
+
+@media (max-width: 1200px) {
+  .toggle-menu {
+    visibility: visible;
+  }
+  .aside {
+    left: -270px;
+    transition: all 0.7s ease-in-out;
+  }
+  .aside.active {
+    left: 0;
+    transition: all 0.7s ease-in-out;
+  }
+  .aside .close-btn {
+    visibility: visible;
+  }
+  .page-content {
+    width: 100%;
+    margin-left: 0px;
+  }
 }/*# sourceMappingURL=admin.css.map */

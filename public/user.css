@@ -28,7 +28,7 @@ body {
   left: 0px;
   z-index: 24;
   background: #0a1b31;
-  transition: all 0.7 ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .aside .close-btn {
   visibility: hidden;
@@ -85,11 +85,11 @@ body {
   }
   .aside {
     left: -300px;
-    transition: all 0.7 ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
   .aside.active {
     left: 0;
-    transition: all 0.7 ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
   .aside .close-btn {
     visibility: visible;
