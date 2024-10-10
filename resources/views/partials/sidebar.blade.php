@@ -8,6 +8,12 @@
         </a>
     </div>
 
+    <div class="close-btn cursor-pointer">
+        <span class="material-symbols-outlined text-base text-red-600 " onclick="toggleAsideVisisbilty()">
+            cancel
+        </span>
+    </div>
+
 
     <div class="links flex flex-col gap-y-5 px-5 w-full h-full">
 
