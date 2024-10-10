@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\ActiveInvestment;
 use App\Models\Deposit;
 use App\Models\User;
 use App\Models\Withdraw;
@@ -34,7 +35,10 @@ class AppServiceProvider extends ServiceProvider
                 'pendingWithdrawalsCount' => Withdraw::pending()->count(),
                 'approvedWithdrawalsCount' => Withdraw::approved()->count(),
                 'rejectedWithdrawalsCount' => Withdraw::rejected()->count(),
-                'allWIthdrawalsCount' => Withdraw::count()
+                'allWIthdrawalsCount' => Withdraw::count(),
+                'runningInvestmentsCount' => ActiveInvestment::running()->count(),
+                'completedInvestmentsCount' => ActiveInvestment::completed()->count(),
+                'allInvestmentsCount' => ActiveInvestment::count()
             ]);
         });
     }

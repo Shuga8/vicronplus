@@ -79,9 +79,74 @@
             </span> <span class="text-sm">Manage Investment Plans</span>
         </a>
 
+        <a href=""
+            class="py-3 px-3 hover:bg-white hover:bg-opacity-10 w-full rounded-md flex flex-row gap-x-2"><span
+                class="material-symbols-outlined text-sm">
+                wallet
+            </span> <span class="text-sm">Manage Wallet</span>
+        </a>
+
         <div class="dropdown-list">
             <div class="dropdownBtn py-3 px-3 flex flex-row justify-between place-items-center text-white  hover:bg-white hover:bg-opacity-10 p-1 rounded-md cursor-pointer"
                 onclick="toggleDropDown(1)">
+                <p class="flex flex-row gap-x-2">
+                    <span class="material-symbols-outlined text-sm">
+                        finance_mode
+                    </span>
+                    <span class="text-sm">Investments</span>
+                </p>
+
+                <span class="material-symbols-outlined arrow-icon">
+                    keyboard_arrow_down
+                </span>
+            </div>
+
+            <div class="dropdown-links bg-blue-800 bg-opacity-80">
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">Running Investments</span>
+                    </p>
+
+                    <span class="px-1 bg-orange-500 text-xs text-white rounded-lg">{{ $runningInvestmentsCount }}</span>
+                </a>
+
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">Completed Investments</span>
+                    </p>
+
+                    <span
+                        class="px-1 bg-green-500 text-xs text-white rounded-lg">{{ $completedInvestmentsCount }}</span>
+                </a>
+
+                <a href=""
+                    class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
+                    <p class="flex flex-row gap-x-2">
+                        <span class="material-symbols-outlined text-xs">
+                            radio_button_checked
+                        </span>
+                        </span> <span class="text-xs">All Investments</span>
+                    </p>
+
+                    <span class="px-1 bg-green-500 text-xs text-white rounded-lg">{{ $allInvestmentsCount }}</span>
+                </a>
+
+            </div>
+
+
+        </div>
+
+        <div class="dropdown-list">
+            <div class="dropdownBtn py-3 px-3 flex flex-row justify-between place-items-center text-white  hover:bg-white hover:bg-opacity-10 p-1 rounded-md cursor-pointer"
+                onclick="toggleDropDown(2)">
                 <p class="flex flex-row gap-x-2">
                     <span class="material-symbols-outlined text-sm">
                         mintmark
@@ -150,7 +215,7 @@
 
         <div class="dropdown-list">
             <div class="dropdownBtn py-3 px-3 flex flex-row justify-between place-items-center text-white  hover:bg-white hover:bg-opacity-10 p-1 rounded-md cursor-pointer"
-                onclick="toggleDropDown(2)">
+                onclick="toggleDropDown(3)">
                 <p class="flex flex-row gap-x-2">
                     <span class="material-symbols-outlined text-sm">
                         send_money
@@ -174,7 +239,8 @@
                         </span> <span class="text-xs">Pending Withdrawals</span>
                     </p>
 
-                    <span class="px-1 bg-orange-500 text-xs text-white rounded-lg">{{ $pendingWithdrawalsCount }}</span>
+                    <span
+                        class="px-1 bg-orange-500 text-xs text-white rounded-lg">{{ $pendingWithdrawalsCount }}</span>
                 </a>
 
                 <a href=""
@@ -186,7 +252,8 @@
                         </span> <span class="text-xs">Completed Withdrawals</span>
                     </p>
 
-                    <span class="px-1 bg-green-500 text-xs text-white rounded-lg">{{ $approvedWithdrawalsCount }}</span>
+                    <span
+                        class="px-1 bg-green-500 text-xs text-white rounded-lg">{{ $approvedWithdrawalsCount }}</span>
                 </a>
 
                 <a href=""
@@ -217,15 +284,6 @@
 
 
         </div>
-
-
-
-        <a href=""
-            class="py-3 px-3 hover:bg-white hover:bg-opacity-10 w-full rounded-md flex flex-row gap-x-2"><span
-                class="material-symbols-outlined text-sm">
-                wallet
-            </span> <span class="text-sm">Manage Wallet</span>
-        </a>
 
         <a href=""
             class="py-3 px-3 hover:bg-white hover:bg-opacity-10 w-full rounded-md flex flex-row gap-x-2"><span
