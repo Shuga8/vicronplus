@@ -81,7 +81,7 @@ trait Searchable
             $date      = explode('-', request()->date);
             $startDate = Carbon::parse(trim($date[0]))->format('Y-m-d');
             $endDate = @$date[1] ? Carbon::parse(trim(@$date[1]))->format('Y-m-d') : $startDate;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             throw ValidationException::withMessages(['error' => 'Unauthorized action']);
         }
 

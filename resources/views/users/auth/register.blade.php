@@ -13,9 +13,18 @@
                 @csrf
 
                 <div class="my-2 px-3">
+                    <label for="fullname" class="text-lg">Fullname</label>
+                    <input type="text" name="fullname" placeholder="fullname"
+                        class="w-full px-2 py-2 text-sm my-3 outline-none focus:outline-none bg-white bg-opacity-10 rounded-2xl text-white">
+                    @error('fullname')
+                        <p class="mb-1 px-2 text-red-600 text-sm">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="my-2 px-3">
                     <label for="email" class="text-lg">Email</label>
                     <input type="email" name="email" placeholder="email@domain.com"
-                        class="w-full px-2 py-3 my-3 outline-none focus:outline-none bg-white bg-opacity-10 rounded-2xl text-white">
+                        class="w-full px-2 py-2 text-sm my-3 outline-none focus:outline-none bg-white bg-opacity-10 rounded-2xl text-white">
                     @error('email')
                         <p class="mb-1 px-2 text-red-600 text-sm">{{ $message }}</p>
                     @enderror
@@ -24,7 +33,7 @@
                 <div class="my-2 px-3">
                     <label for="username" class="text-lg">Username</label>
                     <input type="username" name="username" placeholder="username"
-                        class="w-full px-2 py-3 my-3 outline-none focus:outline-none bg-white bg-opacity-10 rounded-2xl text-white">
+                        class="w-full px-2 py-2 text-sm my-3 outline-none focus:outline-none bg-white bg-opacity-10 rounded-2xl text-white">
                     @error('username')
                         <p class="mb-1 px-2 text-red-600 text-sm">{{ $message }}</p>
                     @enderror
@@ -33,7 +42,7 @@
                 <div class="my-2 px-3">
                     <label for="password" class="text-lg">Password</label>
                     <input type="password" name="password" placeholder="********"
-                        class="w-full p-2 my-3 outline-none focus:outline-none bg-white bg-opacity-10 rounded-2xl text-white">
+                        class="w-full px-2 py-2 text-sm my-3 outline-none focus:outline-none bg-white bg-opacity-10 rounded-2xl text-white">
                     @error('password')
                         <p class="mb-1 px-2 text-red-600 text-sm">{{ $message }}</p>
                     @enderror

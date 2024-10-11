@@ -12,7 +12,7 @@ class ManageUsersController extends Controller
     {
         $data = [
             'title' => 'All Users',
-            'users' => User::paginate(getPagination())
+            'users' => User::searchable(['username', 'email'])->paginate(getPagination())
         ];
 
         return view('admin.users.all')->with($data);
@@ -23,17 +23,17 @@ class ManageUsersController extends Controller
 
         $data = [
             'title' => 'Banned Users',
-            'users' => User::banned()->paginate(getPagination())
+            'users' => User::banned()->searchable(['username', 'email'])->paginate(getPagination())
         ];
 
         return view('admin.users.banned')->with($data);
     }
 
-    public function active()
+    public function active(Request $request)
     {
         $data = [
             'title' => 'Active Users',
-            'users' => User::active()->paginate(getPagination())
+            'users' => User::active()->searchable(['username', 'email'])->paginate(getPagination())
         ];
 
         return view('admin.users.active')->with($data);

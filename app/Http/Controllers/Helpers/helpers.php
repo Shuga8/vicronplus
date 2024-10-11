@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use App\Lib\ClientInfo;
 
 function pathNameCheck($pathname)
@@ -71,4 +72,18 @@ function osBrowser()
 {
     $osBrowser = ClientInfo::osBrowser();
     return $osBrowser;
+}
+
+function diffForHumans($date)
+{
+    $lang = session()->get('lang');
+    Carbon::setlocale($lang);
+    return Carbon::parse($date)->diffForHumans();
+}
+
+function showDateTime($date, $format = 'Y-m-d h:i A')
+{
+    $lang = session()->get('lang');
+    Carbon::setlocale($lang);
+    return Carbon::parse($date)->translatedFormat($format);
 }

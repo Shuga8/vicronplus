@@ -2,7 +2,7 @@
 
     <div class="dashboard-widgets py-10 px-4 gap-x-8 gap-y-7">
         <div class="widget flex flex-row gap-x-5 place-items-center justify-between px-4 rounded-md">
-            <div class="icon w-12 h-12 bg-green-600 flex justify-center place-items-center rounded-full">
+            <div class="icon w-20 h-3/5 bg-green-600 flex justify-center place-items-center rounded-md">
                 <span class="material-symbols-outlined">
                     attach_money
                 </span>
@@ -56,7 +56,7 @@
         <div class="history block py-4 px-5">
             <h5 class="text-lg px-2">Transaction History</h5>
 
-            <div class="relative overflow-x-auto py-4 px-3">
+            {{-- <div class="relative overflow-x-auto py-4 px-3">
                 <table class="w-full transaction-table">
                     <thead>
                         <tr>
@@ -132,13 +132,13 @@
                     </tbody>
 
                 </table>
-            </div>
+            </div> --}}
 
         </div>
         <div class="history py-4 px-5">
             <h5 class="text-lg">Deposit History</h5>
 
-            <div class="relative overflow-x-auto py-4 px-3">
+            {{-- <div class="relative overflow-x-auto py-4 px-3">
                 <table class="w-full">
                     <thead>
                         <tr>
@@ -200,7 +200,7 @@
 
                     </tbody>
                 </table>
-            </div>
+            </div> --}}
         </div>
 
     </div>

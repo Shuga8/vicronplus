@@ -42,6 +42,7 @@ class AuthController extends Controller
     public function registerUser(Request $request)
     {
         $validate = $request->validate([
+            'fullname' => ['required', 'string'],
             'email' => ['required', 'email', 'unique:users,email'],
             'username' => ['required', 'string', 'unique:users,username'],
             'password' => ['required', 'string', 'confirmed']
@@ -50,6 +51,7 @@ class AuthController extends Controller
         try {
             DB::beginTransaction();
             $user = User::create([
+                'fullname' => $request->fullname,
                 'email' => $request->email,
                 'username' => $request->username,
                 'password' => Hash::make($request->password),
@@ -78,7 +80,7 @@ class AuthController extends Controller
 
             $this->create_auth_log($user);
 
-            return to_route('home')->with(['success' => 'log in successfull']);
+            return to_route('user.dashboard')->with(['success' => 'log in successfull']);
         } else {
             return to_route('user.login')->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
         }

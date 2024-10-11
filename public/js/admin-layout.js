@@ -6,7 +6,7 @@ const sideBarAnchors = document.querySelectorAll(".sidebar-anchor");
 const sideBarDropDowns = document.querySelectorAll(".dropdown-list");
 let pathName = window.location.pathname;
 const globalUrl = "http://127.0.0.1:8000";
-const basePath = `${globalUrl}`; // add a trailing slash to ensure a proper match
+const basePath = `${globalUrl}`;
 const relativePath = pathName.replace(new RegExp(`^${basePath}`), "");
 
 function toggleDropDown(index) {
