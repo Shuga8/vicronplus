@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ActiveInvestment;
 use App\Models\Deposit;
 use App\Models\User;
+use App\Models\UserLogin;
 use App\Models\Withdraw;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,8 @@ class AdminController extends Controller
         $allInvestments = ActiveInvestment::count();
         $allDeposits = Deposit::count();
         $allWithdrawals = Withdraw::count();
+        $logins = UserLogin::paginate(getPagination());
+
 
         $data = [
             'title' => 'Dashboard',
@@ -31,7 +34,8 @@ class AdminController extends Controller
             'completedInvestments' => $completedInvestments,
             'allInvestments' => $allInvestments,
             'allDeposits' => $allDeposits,
-            'allWithdrawals' => $allWithdrawals
+            'allWithdrawals' => $allWithdrawals,
+            'logins' => $logins
         ];
 
         return view('admin.dashboard')->with($data);

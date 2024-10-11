@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Withdraw::class, 'user_id', 'id');
     }
+
+    public function logins(): HasMany
+    {
+        return $this->hasMany(UserLogin::class, 'user_id', 'id');
+    }
 }

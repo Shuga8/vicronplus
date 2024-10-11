@@ -67,6 +67,11 @@ body {
 .aside .dropdown-links .arrow-icon {
   transition: all 0.3s ease-in-out;
 }
+.aside .upgrade-span {
+  animation: blink-red;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
 
 header {
   background: #011e52;
@@ -111,5 +116,13 @@ header {
   .page-content {
     width: 100%;
     margin-left: 0px;
+  }
+}
+@keyframes blink-red {
+  from {
+    background: #e02424;
+  }
+  to {
+    background: #f63939;
   }
 }/*# sourceMappingURL=admin.css.map */

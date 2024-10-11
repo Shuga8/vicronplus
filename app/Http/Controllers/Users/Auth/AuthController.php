@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\UserLogin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Hash;
@@ -73,6 +74,10 @@ class AuthController extends Controller
         if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             $request->session()->regenerate();
 
+            $user = User::where('id', auth()->user()->id)->first();
+
+            $this->create_auth_log($user);
+
             return to_route('home')->with(['success' => 'log in successfull']);
         } else {
             return to_route('user.login')->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
@@ -88,5 +93,38 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->intended(route('user.login'))->with(['success' => "You have been logged out"]);
+    }
+
+    public function create_auth_log($user)
+    {
+
+        $ip = getRealIP();
+
+        $exist  = UserLogin::where('ip', $ip)->first();
+
+        $login = new UserLogin();
+
+        if ($exist) {
+            $login->longitude = $exist->longitude;
+            $login->latitude = $exist->latitude;
+            $login->city = $exist->city;
+            $login->country = $exist->country;
+            $login->country_code = $exist->country_code;
+        } else {
+            $info = json_decode(json_encode(getIpInfo()), true);
+            $login->longitude  = @implode(',', $info['long']);
+            $login->latitude  = @implode(',', $info['lat']);
+            $login->city  = @implode(',', $info['city']);
+            $login->country_code = @implode(',', $info['code']);
+            $login->country  = @implode(',', $info['country']);
+        }
+
+        $clientAgent = osBrowser();
+        $login->user_id = $user->id;
+        $login->ip = $ip;
+        $login->browser = @$clientAgent['browser'];
+        $login->os = @$clientAgent['os_platform'];
+
+        $login->save();
     }
 }

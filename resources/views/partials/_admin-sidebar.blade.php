@@ -298,7 +298,7 @@
                     notifications
                 </span> <span class="text-sm">Notifications</span>
             </span>
-            <span class="p-1 bg-purple-600 text-xs rounded-sm">upgrade</span>
+            <span class="p-1 bg-red-600 text-xs rounded-sm upgrade-span">upgrade</span>
         </a>
 
         <a
@@ -307,7 +307,7 @@
                     mail_lock
                 </span> <span class="text-sm">Mail</span>
             </span>
-            <span class="p-1 bg-purple-600 text-xs rounded-sm">upgrade</span>
+            <span class="p-1 bg-red-600 text-xs rounded-sm upgrade-span">upgrade</span>
         </a>
 
         <a
@@ -316,7 +316,7 @@
                     manufacturing
                 </span> <span class="text-sm">Site Settings</span>
             </span>
-            <span class="p-1 bg-purple-600 text-xs rounded-sm">upgrade</span>
+            <span class="p-1 bg-red-600 text-xs rounded-sm upgrade-span">upgrade</span>
         </a>
 
 

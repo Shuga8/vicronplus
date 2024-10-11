@@ -187,6 +187,57 @@
 
 
         </div>
+
+        <div class="logins-list-container py-6">
+            <h4 class="text-lg md:px-0 px-2 font-bold capitalize text-gray-800 ">Users Logins</h4>
+
+            <div class="logins-list overflow-x-auto w-full px-0 md:px-3 py-3">
+
+                <table class="w-full shadow-xl">
+                    <thead>
+                        <tr class="border-b border-gray-900">
+                            <th class="text-gray-600 py-2 px-1 text-center">S/N</th>
+                            <th class="text-gray-600 py-2 px-1 text-center">User</th>
+                            <th class="text-gray-600 py-2 px-1 text-center">IP</th>
+                            <th class="text-gray-600 py-2 px-1 text-center">Long</th>
+                            <th class="text-gray-600 py-2 px-1 text-center">Lat</th>
+                            <th class="text-gray-600 py-2 px-1 text-center">Browser</th>
+                            <th class="text-gray-600 py-2 px-1 text-center">OS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @unless ($logins->count() == 0)
+                            @php
+                                $counter = 1;
+                            @endphp
+                            @foreach ($logins as $login)
+                                <tr>
+                                    <td class="text-gray-700 p-2 text-center">{{ $counter++ }}</td>
+                                    <td class="text-gray-700 p-2 text-center">{{ $login->user->username }}</td>
+                                    <td class="text-blue-700 p-2 text-center italic">{{ $login->ip }}</td>
+                                    <td class="text-gray-700 p-2 text-center">{{ $login->long }}</td>
+                                    <td class="text-gray-700 p-2 text-center">{{ $login->lat }}</td>
+                                    <td class="text-gray-700 p-2 text-center">{{ $login->browser }}</td>
+                                    <td class="text-gray-700 p-2 text-center">{{ $login->os }}</td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="7" class="text-red-700">No data available</td>
+                            </tr>
+                        @endunless
+                    </tbody>
+                </table>
+
+
+                @if ($logins->hasPages())
+                    <div class="pagination-links">
+                        {{ $logins->links() }}
+                    </div>
+                @endif
+            </div>
+
+        </div>
     </div>
 
 </x-admin-layout>
