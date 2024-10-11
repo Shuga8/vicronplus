@@ -8,6 +8,14 @@ Route::namespace('Auth')->controller('AuthController')->group(function () {
     Route::get('/logout', 'logout')->name('logout')->middleware('admin');
 });
 
-Route::middleware('admin')->controller('AdminController')->group(function () {
-    Route::get('dashboard', 'index')->name('dashboard');
+Route::middleware('admin')->group(function () {
+    Route::controller('AdminController')->group(function () {
+        Route::get('dashboard', 'index')->name('dashboard');
+    });
+
+    Route::prefix('users')->name('users.')->controller('ManageUsersController')->group(function () {
+        Route::get('/', 'index')->name('all');
+        Route::get('/banned', 'banned')->name('banned');
+        Route::get('/active', 'active')->name('active');
+    });
 });

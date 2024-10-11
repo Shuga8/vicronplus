@@ -10,13 +10,13 @@
     <div class="links flex flex-col gap-y-1 px-4 w-full h-full">
 
         <a href="{{ route('admin.dashboard') }}"
-            class="py-3 px-3 bg-white bg-opacity-10 w-full rounded-md flex flex-row gap-x-2"><span
+            class="sidebar-anchor py-3 px-3 hover:bg-white hover:bg-opacity-10  w-full rounded-md flex flex-row gap-x-2"><span
                 class="material-symbols-outlined text-sm">
                 dashboard
             </span> <span class="text-sm">Dashboard</span>
         </a>
 
-        <div class="dropdown-list">
+        <div class="dropdown-list" data-url="/admin/users">
             <div class="dropdownBtn py-3 px-3 flex flex-row justify-between place-items-center text-white  hover:bg-white hover:bg-opacity-10 p-1 rounded-md cursor-pointer"
                 onclick="toggleDropDown(0)">
                 <p class="flex flex-row gap-x-2">
@@ -32,7 +32,7 @@
             </div>
 
             <div class="dropdown-links bg-blue-800 bg-opacity-80">
-                <a href=""
+                <a href="{{ route('admin.users.active') }}"
                     class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
                     <p class="flex flex-row gap-x-2">
                         <span class="material-symbols-outlined text-xs">
@@ -44,7 +44,7 @@
                     <span class="px-1 bg-green-600 text-xs text-white rounded-lg">{{ $activeUsersCount }}</span>
                 </a>
 
-                <a href=""
+                <a href="{{ route('admin.users.banned') }}"
                     class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
                     <p class="flex flex-row gap-x-2">
                         <span class="material-symbols-outlined text-xs">
@@ -56,7 +56,7 @@
                     <span class="px-1 bg-red-600 text-xs text-white rounded-lg">{{ $bannedUsersCount }}</span>
                 </a>
 
-                <a href=""
+                <a href="{{ route('admin.users.all') }}"
                     class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
                     <p class="flex flex-row gap-x-2">
                         <span class="material-symbols-outlined text-xs">
@@ -73,20 +73,20 @@
         </div>
 
         <a href=""
-            class="py-3 px-3 hover:bg-white hover:bg-opacity-10 w-full rounded-md flex flex-row gap-x-2"><span
+            class="sidebar-anchor py-3 px-3 hover:bg-white hover:bg-opacity-10 w-full rounded-md flex flex-row gap-x-2"><span
                 class="material-symbols-outlined text-sm">
                 finance
             </span> <span class="text-sm">Manage Investment Plans</span>
         </a>
 
         <a href=""
-            class="py-3 px-3 hover:bg-white hover:bg-opacity-10 w-full rounded-md flex flex-row gap-x-2"><span
+            class="sidebar-anchor py-3 px-3 hover:bg-white hover:bg-opacity-10 w-full rounded-md flex flex-row gap-x-2"><span
                 class="material-symbols-outlined text-sm">
                 wallet
             </span> <span class="text-sm">Manage Wallet</span>
         </a>
 
-        <div class="dropdown-list">
+        <div class="dropdown-list" data-url="/admin/investments">
             <div class="dropdownBtn py-3 px-3 flex flex-row justify-between place-items-center text-white  hover:bg-white hover:bg-opacity-10 p-1 rounded-md cursor-pointer"
                 onclick="toggleDropDown(1)">
                 <p class="flex flex-row gap-x-2">
@@ -144,7 +144,7 @@
 
         </div>
 
-        <div class="dropdown-list">
+        <div class="dropdown-list" data-url="/admin/deposits">
             <div class="dropdownBtn py-3 px-3 flex flex-row justify-between place-items-center text-white  hover:bg-white hover:bg-opacity-10 p-1 rounded-md cursor-pointer"
                 onclick="toggleDropDown(2)">
                 <p class="flex flex-row gap-x-2">
@@ -213,7 +213,7 @@
 
         </div>
 
-        <div class="dropdown-list">
+        <div class="dropdown-list" data-url="/admin/withdrawals">
             <div class="dropdownBtn py-3 px-3 flex flex-row justify-between place-items-center text-white  hover:bg-white hover:bg-opacity-10 p-1 rounded-md cursor-pointer"
                 onclick="toggleDropDown(3)">
                 <p class="flex flex-row gap-x-2">
@@ -286,7 +286,7 @@
         </div>
 
         <a href=""
-            class="py-3 px-3 hover:bg-white hover:bg-opacity-10 w-full rounded-md flex flex-row gap-x-2"><span
+            class="sidebar-anchor py-3 px-3 hover:bg-white hover:bg-opacity-10 w-full rounded-md flex flex-row gap-x-2"><span
                 class="material-symbols-outlined text-sm">
                 engineering
             </span> <span class="text-sm">Settings</span>

@@ -23,7 +23,7 @@
                     <p class="text-xs text-gray-600">Total Users</p>
                 </div>
 
-                <a href=""
+                <a href="{{ route('admin.users.all') }}"
                     class="absolute top-2 right-2 py-px px-3 rounded-xl border-blue-500 border text-blue-700 lowercase hover:bg-blue-600 hover:text-white text-xs">
                     View
                 </a>
@@ -46,7 +46,7 @@
                     <p class="text-xs text-gray-600">Active Users</p>
                 </div>
 
-                <a href=""
+                <a href="{{ route('admin.users.active') }}"
                     class="absolute top-2 right-2 py-px px-3 rounded-xl border-green-500 border text-green-700 lowercase hover:bg-green-600 hover:text-white text-xs">
                     View
                 </a>
@@ -68,7 +68,7 @@
                     <p class="text-xs text-gray-600">Banned Users</p>
                 </div>
 
-                <a href=""
+                <a href="{{ route('admin.users.banned') }}"
                     class="absolute top-2 right-2 py-px px-3 rounded-xl border-red-500 border text-red-700 lowercase hover:bg-red-600 hover:text-white text-xs">
                     View
                 </a>
@@ -191,7 +191,7 @@
         <div class="logins-list-container py-6">
             <h4 class="text-lg md:px-0 px-2 font-bold capitalize text-gray-800 ">Users Logins</h4>
 
-            <div class="logins-list overflow-x-auto w-full px-0 md:px-3 py-3">
+            <div class="logins-list overflow-x-auto w-full px-2 md:px-3 py-3">
 
                 <table class="w-full shadow-xl">
                     <thead>
@@ -199,6 +199,8 @@
                             <th class="text-gray-600 py-2 px-1 text-center">S/N</th>
                             <th class="text-gray-600 py-2 px-1 text-center">User</th>
                             <th class="text-gray-600 py-2 px-1 text-center">IP</th>
+                            <th class="text-gray-600 py-2 px-1 text-center">City</th>
+                            <th class="text-gray-600 py-2 px-1 text-center">Country</th>
                             <th class="text-gray-600 py-2 px-1 text-center">Long</th>
                             <th class="text-gray-600 py-2 px-1 text-center">Lat</th>
                             <th class="text-gray-600 py-2 px-1 text-center">Browser</th>
@@ -212,13 +214,15 @@
                             @endphp
                             @foreach ($logins as $login)
                                 <tr>
-                                    <td class="text-gray-700 p-2 text-center">{{ $counter++ }}</td>
-                                    <td class="text-gray-700 p-2 text-center">{{ $login->user->username }}</td>
-                                    <td class="text-blue-700 p-2 text-center italic">{{ $login->ip }}</td>
-                                    <td class="text-gray-700 p-2 text-center">{{ $login->long }}</td>
-                                    <td class="text-gray-700 p-2 text-center">{{ $login->lat }}</td>
-                                    <td class="text-gray-700 p-2 text-center">{{ $login->browser }}</td>
-                                    <td class="text-gray-700 p-2 text-center">{{ $login->os }}</td>
+                                    <td class="text-gray-700 px-2 py-4 text-center">{{ $counter++ }}</td>
+                                    <td class="text-gray-700 px-2 py-4 text-center">{{ $login->user->username }}</td>
+                                    <td class="text-blue-700 px-2 py-4 text-center italic">{{ $login->ip }}</td>
+                                    <td class="text-orange-700 px-2 py-4 text-center italic">{{ $login->city }}</td>
+                                    <td class="text-green-700 px-2 py-4 text-center italic">{{ $login->country }}</td>
+                                    <td class="text-gray-700 px-2 py-4 text-center">{{ $login->long }}</td>
+                                    <td class="text-gray-700 px-2 py-4 text-center">{{ $login->lat }}</td>
+                                    <td class="text-gray-700 px-2 py-4 text-center">{{ $login->browser }}</td>
+                                    <td class="text-gray-700 px-2 py-4 text-center">{{ $login->os }}</td>
                                 </tr>
                             @endforeach
                         @else
