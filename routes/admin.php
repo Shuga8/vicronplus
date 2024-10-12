@@ -17,5 +17,6 @@ Route::middleware('admin')->group(function () {
         Route::get('/', 'index')->name('all');
         Route::get('/banned', 'banned')->name('banned');
         Route::get('/active', 'active')->name('active');
+        Route::get('/details/{id}', 'details')->name('details');
     });
 });

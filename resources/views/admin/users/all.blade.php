@@ -49,7 +49,7 @@
                                     {{ showDateTime($user->created_at) }} <br> {{ diffForHumans($user->created_at) }}
                                 </td>
                                 <td class="px-6 py-4 text-right">
-                                    <a href="#"
+                                    <a href="{{ route('admin.users.details', $user->id) }}"
                                         class="font-normal float-right text-blue-600 p-1 border-blue-600 border rounded-md hover:bg-blue-600 hover:text-white flex flex-row gap-x-1 w-max"><span
                                             class="material-symbols-outlined text-sm">
                                             visibility

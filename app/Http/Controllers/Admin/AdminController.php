@@ -22,7 +22,7 @@ class AdminController extends Controller
         $allInvestments = ActiveInvestment::count();
         $allDeposits = Deposit::count();
         $allWithdrawals = Withdraw::count();
-        $logins = UserLogin::with('user')->paginate(getPagination());
+        $logins = UserLogin::with('user')->latest()->paginate(getPagination());
 
 
         $data = [

@@ -193,28 +193,50 @@
 
             <div class="logins-list overflow-x-auto w-full px-2 md:px-3 py-3">
 
-                <table class="w-full shadow-xl">
-                    <thead>
-                        <tr class="border-b border-gray-900">
-                            <th class="text-gray-600 py-2 px-1 text-center">S/N</th>
-                            <th class="text-gray-600 py-2 px-1 text-center">User</th>
-                            <th class="text-gray-600 py-2 px-1 text-center">IP</th>
-                            <th class="text-gray-600 py-2 px-1 text-center">City</th>
-                            <th class="text-gray-600 py-2 px-1 text-center">Country</th>
-                            <th class="text-gray-600 py-2 px-1 text-center">Long</th>
-                            <th class="text-gray-600 py-2 px-1 text-center">Lat</th>
-                            <th class="text-gray-600 py-2 px-1 text-center">Browser</th>
-                            <th class="text-gray-600 py-2 px-1 text-center">OS</th>
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                    <thead class="text-xs text-gray-50 uppercase bg-blue-800 ">
+                        <tr>
+                            <th scope="col" class="px-6 py-4">
+                                S/N
+                            </th>
+                            <th scope="col" class="px-6 py-4">
+                                User
+                            </th>
+                            <th scope="col" class="px-6 py-4">
+                                IP
+                            </th>
+                            <th scope="col" class="px-6 py-4">
+                                City
+                            </th>
+                            <th scope="col" class="px-6 py-4">
+                                Country
+                            </th>
+                            <th scope="col" class="px-6 py-4">
+                                Long
+                            </th>
+                            <th scope="col" class="px-6 py-4">
+                                Lat
+                            </th>
+                            <th scope="col" class="px-6 py-4">
+                                Browser
+                            </th>
+                            <th scope="col" class="px-6 py-4">
+                                OS
+                            </th>
+                            <th scope="col" class="px-6 py-4">
+                                <span class="sr-only">Action</span>
+                            </th>
                         </tr>
                     </thead>
+
                     <tbody>
                         @unless ($logins->count() == 0)
                             @php
                                 $counter = 1;
                             @endphp
                             @foreach ($logins as $login)
-                                <tr>
-                                    <td class="text-gray-700 px-2 py-4 text-center">{{ $counter++ }}</td>
+                                <tr class="bg-white border-b  hover:bg-gray-50 ">
+                                    <td scope="row" class="text-gray-700 px-2 py-4 text-center">{{ $counter++ }}</td>
                                     <td class="text-gray-700 px-2 py-4 text-center">{{ $login->user->username }}</td>
                                     <td class="text-blue-700 px-2 py-4 text-center italic">{{ $login->ip }}</td>
                                     <td class="text-orange-700 px-2 py-4 text-center italic">{{ $login->city }}</td>
@@ -223,11 +245,15 @@
                                     <td class="text-gray-700 px-2 py-4 text-center">{{ $login->lat }}</td>
                                     <td class="text-gray-700 px-2 py-4 text-center">{{ $login->browser }}</td>
                                     <td class="text-gray-700 px-2 py-4 text-center">{{ $login->os }}</td>
+                                    <td class="px-6 py-4 text-gray-700 text-center text-xs">
+                                        {{ showDateTime($login->created_at) }} <br>
+                                        {{ diffForHumans($login->created_at) }}
+                                    </td>
                                 </tr>
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="7" class="text-red-700">No data available</td>
+                                <td colspan="8" class="text-red-700">No data available</td>
                             </tr>
                         @endunless
                     </tbody>
