@@ -19,7 +19,9 @@ return new class extends Migration
             $table->decimal('minimum', 28, 8);
             $table->decimal('maximum', 28, 8);
             $table->decimal('percentage', 28, 9);
+            $table->string('capital_return');
             $table->string('duration');
+            $table->string('unit');
             $table->timestamps();
         });
     }

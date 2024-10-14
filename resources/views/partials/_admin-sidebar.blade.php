@@ -72,7 +72,7 @@
 
         </div>
 
-        <a href=""
+        <a href="{{ route('admin.investment.all') }}"
             class="sidebar-anchor py-3 px-3 hover:bg-white hover:bg-opacity-10 w-full rounded-md flex flex-row gap-x-2"><span
                 class="material-symbols-outlined text-sm">
                 finance

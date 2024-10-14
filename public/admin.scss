@@ -108,6 +108,49 @@ header {
                 border-radius: 7px;
             }
         }
+
+        .modal-container {
+            width: 100dvw;
+            height: 100dvh;
+            background: rgba($color: #000000, $alpha: 0.7);
+            position: fixed;
+            z-index: 31;
+            top: 0;
+            left: 0;
+            backdrop-filter: blur(3px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 14px;
+            overflow-y: hidden;
+
+            &.active-modal {
+                display: flex;
+            }
+
+            form {
+                position: relative;
+                min-width: 280px;
+                width: 500px;
+                height: auto;
+                background: #fff;
+                border-radius: 7px;
+                padding: 24px 28px;
+                box-shadow: 1px 1px 7px #fff;
+
+                &.slide-up {
+                    opacity: 0;
+                    animation: slide-up;
+                    animation-duration: 1.5s;
+                }
+
+                &.slide-down {
+                    opacity: 1;
+                    animation: slide-down;
+                    animation-duration: 1.5s;
+                }
+            }
+        }
     }
 }
 
@@ -141,5 +184,27 @@ header {
     }
     to {
         background: #f63939;
+    }
+}
+
+@keyframes slide-down {
+    from {
+        margin-top: -500px;
+        opacity: 0;
+    }
+    to {
+        margin-top: 0px;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        margin-top: 0px;
+        opacity: 1;
+    }
+    to {
+        margin-top: -500px;
+        opacity: 0;
     }
 }

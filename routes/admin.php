@@ -19,4 +19,8 @@ Route::middleware('admin')->group(function () {
         Route::get('/active', 'active')->name('active');
         Route::get('/details/{id}', 'details')->name('details');
     });
+
+    Route::prefix("investment-plans")->name('investment.')->controller('InvestmentController')->group(function () {
+        Route::get("/", 'index')->name("all");
+    });
 });
