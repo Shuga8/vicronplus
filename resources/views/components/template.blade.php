@@ -1,0 +1,2 @@
+@props(['view'])
+@include($view)

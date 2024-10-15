@@ -25,4 +25,8 @@ Route::middleware('admin')->group(function () {
         Route::post("/store/{id}", 'store')->name("store");
         Route::get("/delete/{id}", 'delete')->name("delete");
     });
+
+    Route::prefix('wallets')->name('wallet.')->controller('WalletController')->group(function () {
+        Route::get('/', 'index')->name('all');
+    });
 });
