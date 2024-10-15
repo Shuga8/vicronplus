@@ -22,5 +22,7 @@ Route::middleware('admin')->group(function () {
 
     Route::prefix("investment-plans")->name('investment.')->controller('InvestmentController')->group(function () {
         Route::get("/", 'index')->name("all");
+        Route::post("/store/{id}", 'store')->name("store");
+        Route::get("/delete/{id}", 'delete')->name("delete");
     });
 });

@@ -1,7 +1,7 @@
 <div class="w-full py-4 px-2 flex justify-end">
     <button
         class="px-3 py-2 bg-transparent border rounded-md border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white flex flex-row gap-x-1 place-items-center text-sm"
-        onclick="showNewForm">
+        onclick="showNewForm()">
         <span class="material-symbols-outlined">
             add_chart
         </span>
@@ -11,10 +11,11 @@
     </button>
 </div>
 
-<div class="modal-container active-modal">
-    <form action="" class="slide-down" class="plan_form" autocomplete="off">
+<div class="modal-container">
+    <form action="{{ route('admin.investment.store', 0) }}" class="plan_form" autocomplete="off" method="POST">
 
-        <span class="absolute top-0 right-0 p-2 cursor-pointer material-symbols-outlined close-modal-btn text-red-700">
+        <span class="absolute top-0 right-0 p-2 cursor-pointer material-symbols-outlined close-modal-btn text-red-700"
+            onclick="closeModal()">
             cancel
         </span>
 
@@ -26,7 +27,7 @@
                     name</span><span class="text-red-600">*</span></label>
             <input type="text" name="plan_name" id="plan_name"
                 class="w-full outline-none focus:outline-none border border-gray-600 rounded-sm px-3 py-2 text-gray-600 mt-2"
-                autocomplete="plan_name" placeholder="name for plan">
+                autocomplete="plan_name" placeholder="name for plan" value={{ old('plan_name') }}>
         </div>
 
         <div class="py-2">
@@ -34,7 +35,7 @@
                     class="font-semibold">Minimum</span><span class="text-red-600">*</span></label>
             <input type="number" name="minimum" id="minimum"
                 class="w-full outline-none focus:outline-none border border-gray-600 rounded-sm px-3 py-2 text-gray-600 mt-2"
-                placeholder="min usd" autocomplete="minimum">
+                placeholder="min usd" autocomplete="minimum" value="{{ old('minimum') }}">
         </div>
 
         <div class="py-2">
@@ -42,7 +43,7 @@
                     class="font-semibold">Maximum</span><span class="text-red-600">*</span></label>
             <input type="number" name="maximum" id="maximum"
                 class="w-full outline-none focus:outline-none border border-gray-600 rounded-sm px-3 py-2 text-gray-600 mt-2"
-                placeholder="max usd" autocomplete="maximum">
+                placeholder="max usd" autocomplete="maximum" value="{{ old('maximum') }}">
         </div>
 
         <div class="py-2">
@@ -50,7 +51,7 @@
                     class="font-semibold">Interest Percentage</span><span class="text-red-600">*</span></label>
             <input type="number" name="percentage" id="percentage"
                 class="w-full outline-none focus:outline-none border border-gray-600 rounded-sm px-3 py-2 text-gray-600 mt-2"
-                placeholder="%" autocomplete="percentage">
+                placeholder="%" autocomplete="percentage" value="{{ old('plan_name') }}">
         </div>
 
         <div class="py-2">
@@ -69,7 +70,7 @@
                     class="font-semibold">Duration</span><span class="text-red-600">*</span></label>
             <input type="number" name="duration" id="duration"
                 class="w-full outline-none focus:outline-none border border-gray-600 rounded-sm px-3 py-2 text-gray-600 mt-2"
-                placeholder="duration" autocomplete="duration">
+                placeholder="duration" autocomplete="duration" value="{{ old('plan_name') }}">
         </div>
 
         <div class="py-2">
@@ -77,6 +78,7 @@
                     class="font-semibold">Unit</span><span class="text-red-600">*</span></label>
             <select name="unit" id="unit"
                 class="w-full outline-none focus:outline-none border border-gray-600 rounded-sm px-3 py-2 text-gray-600 mt-2">
+                <option value disabled selected>select unit (hour, day, month, year)</option>
                 <option value="hour">Hour</option>
                 <option value="day">Day</option>
                 <option value="month">Month</option>
@@ -91,5 +93,53 @@
 </div>
 
 @push('scripts')
-    <script></script>
+    <script>
+        const modal = document.querySelector(".modal-container");
+        const modalForm = modal.querySelector("form");
+
+        function showNewForm(data = null) {
+            if (data == null) {
+                modal.querySelector(".modal-title").textContent = `New Investment Plan`;
+                modalForm.classList.remove("slide-up");
+                modal.classList.add("active-modal");
+                modalForm.classList.add("slide-down");
+            } else {
+
+
+                modal.querySelector(".modal-title").textContent = `Edit ${data.plan_name} Plan`
+                modalForm.classList.remove("slide-up");
+                modal.classList.add("active-modal");
+                modalForm.classList.add("slide-down");
+                modalForm.querySelector("input[name='plan_name']").value = data.plan_name
+                modalForm.querySelector("input[name='minimum']").value = data.minimum
+                modalForm.querySelector("input[name='maximum']").value = data.maximum
+                modalForm.querySelector("input[name='percentage']").value = data.percentage
+                modalForm.querySelector("input[name='duration']").value = data.duration
+                modalForm.querySelector("select[name='capital_return']").value = data.capital_return;
+                modalForm.querySelector("select[name='unit']").value = data.unit;
+                let action = `{{ route('admin.investment.store', ':id') }}`;
+                action = action.replace(":id", data.id);
+                modalForm.setAttribute("action", action);
+
+            }
+        }
+
+        function closeModal() {
+            modalForm.classList.remove("slide-down");
+            modalForm.classList.add("slide-up");
+            setTimeout(() => {
+                modalForm.querySelector("input[name='plan_name']").value = ""
+                modalForm.querySelector("input[name='minimum']").value = ""
+                modalForm.querySelector("input[name='maximum']").value = ""
+                modalForm.querySelector("input[name='percentage']").value = ""
+                modalForm.querySelector("input[name='duration']").value = ""
+                modalForm.querySelector("select[name='capital_return']").value = ""
+                modalForm.querySelector("select[name='unit']").value = ""
+                let action = `{{ route('admin.investment.store', ':id') }}`;
+                action = action.replace(":id", 0);
+                modalForm.setAttribute("action", action);
+                modal.classList.remove("active-modal");
+            }, 1000);
+        }
+    </script>
 @endpush

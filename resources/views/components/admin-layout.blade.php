@@ -22,6 +22,8 @@
         <div class="page-content pb-1">
             @include('partials._admin-header')
 
+            <x-alerts />
+
             {{ $slot }}
 
         </div>

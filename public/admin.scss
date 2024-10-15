@@ -16,6 +16,7 @@ html {
 
 body {
     background: #fff;
+    overflow-x: hidden;
 }
 
 .toggle-menu {
@@ -132,11 +133,25 @@ header {
                 position: relative;
                 min-width: 280px;
                 width: 500px;
-                height: auto;
+                height: 90%;
                 background: #fff;
                 border-radius: 7px;
                 padding: 24px 28px;
                 box-shadow: 1px 1px 7px #fff;
+                overflow-y: scroll;
+
+                &::-webkit-scrollbar {
+                    height: 3px;
+                    width: 3px;
+                    position: absolute;
+                    right: 10px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: #032d81;
+                    color: #032d81;
+                    height: 10px;
+                }
 
                 &.slide-up {
                     opacity: 0;
