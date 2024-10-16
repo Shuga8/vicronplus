@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('network');
             $table->longText('address');
-            $table->string('logo');
+            $table->string('logo')->nullable();
             $table->timestamps();
         });
     }
