@@ -31,7 +31,8 @@
                         @foreach ($wallets as $wallet)
                             <tr class="bg-white border-b  hover:bg-gray-50 ">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap uppercase">
-                                    {{ $wallet->logo }}
+
+                                    <img src="/storage/{{ $wallet->logo }}" class="w-20 h-20 rounded-full" alt="">
                                 </th>
                                 <td class="px-6 py-4 amount-usd">
                                     {{ $wallet->network }}

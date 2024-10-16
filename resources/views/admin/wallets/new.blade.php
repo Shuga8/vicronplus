@@ -12,7 +12,8 @@
 </div>
 
 <div class="modal-container">
-    <form action="{{ route('admin.wallet.store', 0) }}" class="invest_form" autocomplete="off" method="POST">
+    <form action="{{ route('admin.wallet.store', 0) }}" class="wallet_form" autocomplete="off" method="POST"
+        enctype="multipart/form-data">
 
         <span class="absolute top-0 right-0 p-2 cursor-pointer material-symbols-outlined close-modal-btn text-red-700"
             onclick="closeModal()">
@@ -27,7 +28,8 @@
                     class="font-semibold">Network</span><span class="text-red-600">*</span></label>
             <input type="text" name="network" id="network"
                 class="w-full outline-none focus:outline-none border border-gray-600 rounded-sm px-3 py-2 text-gray-600 mt-2"
-                autocomplete="network" placeholder="network e.g (BTC, USDT, BNB, ....)" value={{ old('network') }}>
+                autocomplete="network" placeholder="network e.g (BTC, USDT, BNB, ....)" value="{{ old('network') }}"
+                required>
         </div>
 
         <div class="py-2">
@@ -35,7 +37,7 @@
                     address</span><span class="text-red-600">*</span></label>
             <input type="text" name="address" id="address"
                 class="w-full outline-none focus:outline-none border border-gray-600 rounded-sm px-3 py-2 text-gray-600 mt-2"
-                placeholder="wallet address..." autocomplete="address" value="{{ old('address') }}">
+                placeholder="wallet address..." autocomplete="address" value="{{ old('address') }}" required>
         </div>
 
         <div class="py-2">
