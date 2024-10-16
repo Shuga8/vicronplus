@@ -33,6 +33,8 @@ class WalletController extends Controller
             return back()->with(['error' => $validator->errors()->first()]);
         }
 
+        $path = null;
+
 
         if ($id == 0) {
 
@@ -46,7 +48,10 @@ class WalletController extends Controller
                 $wallet = new Wallet();
                 $wallet->network = $request->network;
                 $wallet->address = $request->address;
-                $wallet->logo = $path ?? NULL;
+
+                if ($path !== null) {
+                    $wallet->logo = $path;
+                }
 
                 $wallet->save();
 
@@ -55,7 +60,7 @@ class WalletController extends Controller
                 return redirect(route('admin.wallet.all'))->with(['success' => ucwords($request->network) . " address added successfully"]);
             } catch (\Exception $e) {
                 DB::rollBack();
-                if ($path) {
+                if ($path !== null) {
                     Storage::delete($path);
                 }
                 return redirect(route('admin.wallet.all'))->with(['error' => $e->getMessage()]);
@@ -63,6 +68,8 @@ class WalletController extends Controller
         } else {
 
             $wallet = Wallet::findOrFail($id);
+
+
 
             if ($request->hasFile('logo')) {
                 if (!is_null($wallet->logo)) {
@@ -72,23 +79,21 @@ class WalletController extends Controller
                 $path = Storage::putFile('network', $request->file('logo'));
             }
 
-            dd(($request->hasFile('logo')));
-
             try {
                 DB::beginTransaction();
 
                 $wallet->network = $request->network;
                 $wallet->address = $request->address;
-                if ($request->hasFile('logo')) {
-                    $wallet->logo = $path ?? NULL;
+                if ($path !== null) {
+                    $wallet->logo = $path;
                 }
+                $wallet->save();
 
                 DB::commit();
-
                 return redirect(route('admin.wallet.all'))->with(['success' => ucwords($request->network) . " address updated successfully"]);
             } catch (\Exception $e) {
                 DB::rollBack();
-                if ($path) {
+                if ($path !== null) {
                     Storage::delete($path);
                 }
                 return redirect(route('admin.wallet.all'))->with(['error' => $e->getMessage()]);

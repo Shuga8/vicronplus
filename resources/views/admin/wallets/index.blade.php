@@ -73,9 +73,8 @@
                 @if ($wallets->hasPages())
                     <tfoot>
                         <tr>
-                            <td colspan="4" class="text-center">{{ $wallet->links() }}</td>
+                            <td colspan="4" class="text-center py-1 px-2">{{ $wallets->links() }}</td>
                         </tr>
-
                     </tfoot>
                 @endif
             </table>
