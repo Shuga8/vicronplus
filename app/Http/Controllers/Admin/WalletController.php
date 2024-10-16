@@ -72,12 +72,16 @@ class WalletController extends Controller
                 $path = Storage::putFile('network', $request->file('logo'));
             }
 
+            dd(($request->hasFile('logo')));
+
             try {
                 DB::beginTransaction();
 
                 $wallet->network = $request->network;
                 $wallet->address = $request->address;
-                $wallet->logo = $path ?? NULL;
+                if ($request->hasFile('logo')) {
+                    $wallet->logo = $path ?? NULL;
+                }
 
                 DB::commit();
 

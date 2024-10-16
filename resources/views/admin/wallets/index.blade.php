@@ -32,7 +32,8 @@
                             <tr class="bg-white border-b  hover:bg-gray-50 ">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap uppercase">
 
-                                    <img src="/storage/{{ $wallet->logo }}" class="w-20 h-20 rounded-full" alt="">
+                                    <img src="/storage/{{ $wallet->logo }}" class="w-10 h-10 object-fill rounded-full"
+                                        alt="">
                                 </th>
                                 <td class="px-6 py-4 amount-usd">
                                     {{ $wallet->network }}
@@ -41,7 +42,7 @@
                                     {{ $wallet->address }}
                                 </td>
 
-                                <td class="px-6 py-4 flex flex-row gap-x-2 justify-end text-[10px]">
+                                <td class="px-6 py-4 flex flex-row gap-x-2 justify-end text-[10px] place-items-center">
                                     <button
                                         class="text-white bg-green-500 py-1 px-2 rounded-sm flex flex-row place-items-center"
                                         onclick="showNewForm({{ json_encode($wallet) }})">
