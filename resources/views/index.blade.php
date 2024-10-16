@@ -135,6 +135,10 @@
         </div>
     </section>
 
+    <section class="investment-plans">
+        <h3 class="text-center font-bold text-xl uppercase">Investment Plans</h3>
+    </section>
+
 
 
 </x-page-layout>

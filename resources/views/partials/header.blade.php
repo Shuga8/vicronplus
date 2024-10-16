@@ -19,8 +19,7 @@
     </ul>
 
     <ul class="actions hidden md:flex md:flex-row">
-        @auth
-
+        @auth('web')
             <li class="px-4 py-2 bg-orange-600 text-white">
                 <a href="{{ route('user.dashboard') }}">Dashboard</a>
             </li>
@@ -28,7 +27,6 @@
             <li class="px-4 py-2 bg-orange-600 text-white">
                 <a href="{{ route('user.logout') }}">Sign Out</a>
             </li>
-
         @endauth
         @guest
 
@@ -72,12 +70,21 @@
                 <a href="">Contact</a>
             </li>
 
-            <li class="px-4 py-3 text-center">
-                <a href="">Sign in</a>
-            </li>
-            <li class="px-4 py-3 text-center">
-                <a href="">Sign up</a>
-            </li>
+            @guest
+                <li class="px-4 py-3 text-center">
+                    <a href="">Sign in</a>
+                </li>
+                <li class="px-4 py-3 text-center">
+                    <a href="">Sign up</a>
+                </li>
+            @endguest
+
+            @auth('web')
+                <li class="px-4 py-3 text-center bg-blue-600 text-white rounded-xl">
+                    <a href="{{ route('user.dashboard') }}">Dashboard</a>
+                </li>
+            @endauth
+
         </ul>
     </div>
 
