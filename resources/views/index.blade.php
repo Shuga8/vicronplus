@@ -135,8 +135,66 @@
         </div>
     </section>
 
-    <section class="investment-plans">
-        <h3 class="text-center font-bold text-xl uppercase">Investment Plans</h3>
+    <section class="investment-plans py-10">
+        <h3 class="text-center font-bold text-3xl uppercase mb-12">See Our Investment Plans</h3>
+
+        <div class="plans w-full">
+
+            @foreach ($plans as $plan)
+                <div class="card">
+                    <div class="card__border"></div>
+                    <div class="card_title__container">
+                        <span
+                            class="card_title text-2xl font-bold uppercase text-cyan-400">{{ $plan->plan_name }}</span>
+                        {{-- <p class="card_paragraph">Best way to be success in your life.</p> --}}
+                    </div>
+                    <hr class="line" />
+                    <ul class="card__list">
+                        <li class="card__list_item mb-2">
+                            <span class="check">
+                                <span class="material-symbols-outlined text-xs text-black font-bold chev_svg">
+                                    chevron_right
+                                </span>
+                            </span>
+                            <span class="list_text text-sm">Minimum Deposit {{ $plan->minimum }} USD</span>
+                        </li>
+                        <li class="card__list_item mb-2">
+                            <span class="check">
+                                <span class="material-symbols-outlined text-xs text-black font-bold chev_svg">
+                                    chevron_right
+                                </span>
+                            </span>
+                            <span class="list_text text-sm">Maximum Deposit {{ $plan->maximum }} USD</span>
+                        </li>
+                        <li class="card__list_item mb-2">
+                            <span class="check">
+                                <span class="material-symbols-outlined text-xs text-black font-bold chev_svg">
+                                    chevron_right
+                                </span>
+                            </span>
+                            <span class="list_text text-sm capitalize flex flex-row gap-x-2 place-items-center"><span>Capital
+                                    Return</span>
+                                <span
+                                    class="py-1 px-2 text-white rounded-lg {{ $plan->capital_return == 'on' ? 'bg-green-500' : 'bg-red-500' }}">{{ $plan->capital_return }}</span></span>
+                        </li>
+                        <li class="card__list_item mb-2">
+                            <span class="check">
+                                <span class="material-symbols-outlined text-xs text-black font-bold chev_svg">
+                                    chevron_right
+                                </span>
+                            </span>
+                            <span class="list_text text-sm capitalize">
+                                {{ $plan->percentage }}% payback after {{ $plan->duration }} <span
+                                    class="uppercase">{{ $plan->unit }}s</span>
+                            </span>
+                        </li>
+
+                    </ul>
+                    <button class="button">Buy Now</button>
+                </div>
+            @endforeach
+
+        </div>
     </section>
 
 
