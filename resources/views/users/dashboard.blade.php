@@ -8,7 +8,7 @@
                 </span>
             </div>
             <div class="content flex flex-col gap-y-7 justify-left py-3">
-                <p class="text-lg font-semibold float-right">Available Balance</p>
+                <p class="text-base font-semibold float-right">Available Balance</p>
 
                 <p class="text-2xl font-light float-right flex justify-end  mt-7 amount-usd">
                     {{ (float) $user->balance['USD'] }}
@@ -19,13 +19,13 @@
         </div>
 
         <div class="widget flex flex-row gap-x-5 place-items-center justify-between px-4 rounded-md">
-            <div class="icon w-12 h-12 bg-blue-600 flex justify-center place-items-center rounded-full">
+            <div class="icon w-20 h-3/5 bg-blue-600 flex justify-center place-items-center rounded-md">
                 <span class="material-symbols-outlined ">
                     currency_exchange
                 </span>
             </div>
             <div class="content flex flex-col gap-y-7 justify-left py-3">
-                <p class="text-lg font-semibold float-right">Total Invested Amount</p>
+                <p class="text-base font-semibold float-right">Total Invested Amount</p>
                 <p class="text-2xl font-light float-right flex justify-end  mt-7 amount-usd">
                     {{ (float) $user->balance['USD'] }}
                 </p>
@@ -34,13 +34,13 @@
 
 
         <div class="widget flex flex-row gap-x-5 place-items-center justify-between px-4 rounded-md">
-            <div class="icon w-12 h-12 bg-purple-600 flex justify-center place-items-center rounded-full">
+            <div class="icon w-20 h-3/5 bg-purple-600 flex justify-center place-items-center rounded-md">
                 <span class="material-symbols-outlined">
                     finance_mode
                 </span>
             </div>
             <div class="content flex flex-col gap-y-7 justify-left py-3">
-                <p class="text-lg font-semibold float-right">Total Amount Withdrawn</p>
+                <p class="text-base font-semibold float-right">Total Amount Withdrawn</p>
                 <p class="text-2xl font-light float-right flex justify-end  mt-7 amount-usd">
                     {{ (float) $user->balance['USD'] }}
                 </p>
