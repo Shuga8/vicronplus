@@ -16,8 +16,11 @@ html {
 
 body {
     background: #141414;
-    padding: 0px 15px;
     overflow-x: hidden;
+
+    .content-body {
+        padding: 0px 15px;
+    }
 }
 
 .navbar {
@@ -316,6 +319,10 @@ body {
             animation: gradient-animation_2 2s linear infinite;
         }
     }
+}
+
+footer {
+    background: #070010;
 }
 
 @media (max-width: 768px) {

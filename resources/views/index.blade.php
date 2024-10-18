@@ -6,7 +6,7 @@
             <h2 class="uppercase text-4xl text-center text-cyan-700 font-bold mb-4">{{ config('app.name') }}</h2>
 
             <p class="text-base text-white md:text-gray-400 leading-9 text-center md:text-left">Unlock Your Financial
-                Freedom Invest in your
+                Freedom by Investing in your
                 financial freedom
                 here with
                 us at Vicronplus. Take control
@@ -37,7 +37,7 @@
 
     <section class="investment-processes  px-2 py-8">
 
-        <h3 class="text-gray-200 text-lg text-center uppercase font-bold">Investment Process</h3>
+        <h3 class="text-gray-200 text-2xl text-center uppercase font-bold">Investment Process</h3>
 
         <div class="processes w-full">
 
@@ -92,8 +92,8 @@
 
     </section>
 
-    <section class="about-investment py-10">
-        <h3 class="text-center font-bold text-xl uppercase">About Vicron Investment</h3>
+    <section class="about-investment py-10 ">
+        <h3 class="text-center font-bold text-2xl uppercase">About Vicron Investment</h3>
 
         <div class="block md:flex md:gap-x-7 md:gap-y-3 md:justify-between py-6">
             <div class="bg-white bg-opacity-10 rounded-lg flex-grow basis-60 py-4 px-5 leading-8 block">
