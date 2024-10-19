@@ -27,9 +27,6 @@
 
                     @unless ($investments->isEmpty())
                         @foreach ($investments as $investment)
-                            @php
-
-                            @endphp
                             <tr class="bg-white border-b  hover:bg-gray-50 ">
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -41,8 +38,9 @@
                                 <td class="px-6 py-4 capitalize">
                                     {{ $investment->plan->duration }} {{ $investment->plan->unit }}s
                                 </td>
-                                <td class="px-6 py-4">
-
+                                <td class="px-6 py-4 ">
+                                    <span
+                                        class="text-white px-[5px] py-[6px] rounded-sm {{ $investment->status == true ? 'bg-green-600' : 'bg-orange-600' }}">{{ $investment->status == true ? 'completed' : 'running' }}</span>
                                 </td>
                             </tr>
                         @endforeach
