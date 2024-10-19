@@ -6,6 +6,8 @@
 
         {{-- <hr class="border border-gray-200 w-full mx-auto" /> --}}
 
+        <x-template view="admin.users.addSubBalance" />
+
         <div
             class="details-widgets grid grid-cols-1 min-[600px]:grid-cols-2 min-[1120px]:grid-cols-4 py-7 px-3 gap-x-3 gap-y-4">
             <div
@@ -94,13 +96,15 @@
 
         <div class="flex w-full py-[5px] px-3 gap-x-2 gap-y-3 flex-wrap">
             <button
-                class="bg-green-600 hover:bg-green-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[8px] rounded-md grow shrink">
+                class="bg-green-600 hover:bg-green-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[8px] rounded-md grow shrink"
+                onclick="showFormModal({{ json_encode($user) }}, 'add')">
                 <i class="fa-solid fa-circle-plus"></i>
                 <span>Balance</span>
             </button>
 
             <button
-                class="bg-red-600 hover:bg-red-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[8px] rounded-md grow shrink">
+                class="bg-red-600 hover:bg-red-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[8px] rounded-md grow shrink"
+                onclick="showFormModal({{ json_encode($user) }}, 'sub')">
                 <i class="fa-solid fa-circle-minus"></i>
                 <span>Balance</span>
             </button>
@@ -148,6 +152,7 @@
                     {{ diffForHumans($user->created_at) }}</dd>
             </div>
         </div>
+
 
     </div>
 

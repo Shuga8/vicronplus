@@ -88,15 +88,15 @@ class ManageUsersController extends Controller
 
             if ($request->type == "add") {
                 $balance['USD'] += $request->amount;
-                $message = "$request->amount added to balance sucessfully";
+                $message = "$$request->amount added to balance sucessfully";
                 $transation->type = 1;
             } else {
                 $balance['USD'] -= $request->amount;
                 if ($balance['USD'] < 0) {
                     $balance['USD'] = 0;
-                    $message = "$request->amount deducted from balance sucessfully";
                 }
                 $transation->type = 0;
+                $message = "$$request->amount deducted from balance sucessfully";
             }
 
 
