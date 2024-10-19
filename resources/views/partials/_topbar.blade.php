@@ -1,6 +1,6 @@
 <header class="w-full py-3 px-2 bg-[#011E52] flex flex-row justify-between">
     <div class="py-3 px-3 cursor-pointer toggle-menu" onclick="toggleAsideVisisbilty()">
-        <span class="material-symbols-outlined text-blue-600">
+        <span class="material-symbols-outlined text-white">
             menu
         </span>
 
@@ -8,7 +8,7 @@
 
     <div class="flex flex-row gap-x-4 place-items-center">
         <a href="{{ route('user.investment.new') }}"
-            class="py-2.5 px-3 border-x border-y border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white rounded-md flex flex-row gap-x-1 place-items-center"><span
+            class="py-2.5 px-3 border-x border-y border-gray-50 text-white hover:bg-[#011E52] hover:text-white rounded-md flex flex-row gap-x-1 place-items-center"><span
                 class="material-symbols-outlined text-xs ">
                 currency_exchange
             </span><span class="text-sm uppercase font-semibold">Invest</span></a>
@@ -24,7 +24,7 @@
             </div>
 
             <div id="header-drop"
-                class="hidden fixed top-[70px] right-2 w-40 rounded-md bg-white shadow-slate-600  shadow-lg">
+                class="hidden fixed z-10 top-[70px] right-2 w-40 rounded-md bg-white shadow-slate-600  shadow-lg">
                 <a href=""
                     class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 text-primary-600"><span
                         class="material-symbols-outlined text-sm">

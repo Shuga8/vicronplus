@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users;
 
 use App\Models\ActiveInvestment;
+use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Investment;
 use Illuminate\Http\Request;
@@ -47,9 +48,13 @@ class InvestmentController extends Controller
             return back()->with(['error' => "Amount does not reach the plan's minimum  amount requirements"]);
         }
 
-        if ($request->amount < $maximum) {
+        if ($request->amount > $maximum) {
             return back()->with(['error' => "Amount is more than plan's maximum amount requirement"]);
         }
+
+        $balance['USD'] -= $request->amount;
+
+        $user->balance = json_encode($balance);
 
         try {
             DB::beginTransaction();
@@ -59,6 +64,16 @@ class InvestmentController extends Controller
             $active->plan_id = $plan->id;
             $active->amount = $request->amount;
             $active->save();
+
+            $transaction = new Transaction();
+
+            $transaction->user_id = $user->id;
+            $transaction->amount = $request->amount;
+            $transaction->type = 0;
+
+            $transaction->save();
+
+            $user->save();
 
             DB::commit();
 

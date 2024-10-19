@@ -1,6 +1,6 @@
 <x-page-layout :title="$title">
 
-    <div class="login-container">
+    <div class="login-container h-fit pb-4">
         <div class="menu-img-container hidden md:block">
             <img src="{{ asset('megamenu-img.png') }}" alt="megamenu" loading="lazy">
         </div>

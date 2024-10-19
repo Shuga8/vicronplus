@@ -1,208 +1,210 @@
 <x-layout :title="$title">
 
-    <div class="dashboard-widgets py-10 px-4 gap-x-8 gap-y-7">
-        <div class="widget flex flex-row gap-x-5 place-items-center justify-between px-4 rounded-md">
-            <div class="icon w-20 h-3/5 bg-green-600 flex justify-center place-items-center rounded-md">
-                <span class="material-symbols-outlined">
-                    attach_money
-                </span>
-            </div>
-            <div class="content flex flex-col gap-y-7 justify-left py-3">
-                <p class="text-base font-semibold float-right text-green-600">Available Balance</p>
+    <div
+        class="details-widgets jus grid grid-cols-1 min-[600px]:grid-cols-2 min-[1120px]:grid-cols-4 py-7 px-3 gap-x-3 gap-y-4">
 
-                <p class="text-2xl font-light float-right flex justify-end  mt-7 amount-usd text-green-600">
-                    {{ (float) $user->balance['USD'] }}
-                </p>
+        <div
+            class="relative widget h-[100px] bg-gradient-to-br flex flex-row gap-x-5 items-center from-[#61325c] to-[#43173f] shadow-slate-400 shadow-lg px-2 py-1 rounded-sm">
+
+            <div class="icon w-16 h-4/5 bg-white bg-opacity-10 flex flex-row justify-center items-center rounded-md">
+                <i class="fa-solid fa-money-bill-transfer text-2xl text-white"></i>
             </div>
 
+            <div class="widget-content">
+                <p class="text-white text-xl amount-usd">{{ $user->balance['USD'] }}</p>
+
+                <p class="text-white text-[11px]">Balance</p>
+            </div>
 
         </div>
 
-        <div class="widget flex flex-row gap-x-5 place-items-center justify-between px-4 rounded-md">
-            <div class="icon w-20 h-3/5 bg-blue-600 flex justify-center place-items-center rounded-md">
-                <span class="material-symbols-outlined ">
-                    currency_exchange
-                </span>
+        <div
+            class="relative widget h-[100px] bg-gradient-to-br flex flex-row gap-x-5 items-center from-[#342EAD] to-[#1e1b4d] shadow-slate-400 shadow-lg px-2 py-1 rounded-sm">
+
+            <div class="icon w-16 h-4/5 bg-white bg-opacity-10 flex flex-row justify-center items-center rounded-md">
+                <i class="fa-solid fa-hand-holding-dollar text-2xl text-white"></i>
             </div>
-            <div class="content flex flex-col gap-y-7 justify-left py-3">
-                <p class="text-base font-semibold float-right text-primary-600">Total Invested Amount</p>
-                <p class="text-2xl font-light float-right flex justify-end  mt-7 amount-usd text-primary-600">
-                    {{ (float) $user->balance['USD'] }}
-                </p>
+
+            <div class="widget-content">
+                <p class="text-white text-xl amount-usd">{{ $totalInvestment }}</p>
+
+                <p class="text-white text-[11px]">Total Amount Invested</p>
             </div>
+
+            <a href=""
+                class="absolute top-1/2 right-px translate-y-[-50%] bg-white bg-opacity-5 text-white px-2 py-px text-[10px] hover:bg-opacity-30">
+                View all
+            </a>
+
         </div>
 
+        <div
+            class="relative widget h-[100px] bg-gradient-to-br flex flex-row gap-x-5 items-center from-[#427e79] to-[#205c57] shadow-slate-400 shadow-lg px-2 py-1 rounded-sm">
 
-        <div class="widget flex flex-row gap-x-5 place-items-center justify-between px-4 rounded-md">
-            <div class="icon w-20 h-3/5 bg-purple-600 flex justify-center place-items-center rounded-md">
-                <span class="material-symbols-outlined">
-                    finance_mode
-                </span>
+            <div class="icon w-16 h-4/5 bg-white bg-opacity-10 flex flex-row justify-center items-center rounded-md">
+                <i class="fa-solid fa-money-bill-trend-up text-2xl text-white"></i>
             </div>
-            <div class="content flex flex-col gap-y-7 justify-left py-3">
-                <p class="text-base font-semibold float-right text-indigo-600">Total Amount Withdrawn</p>
-                <p class="text-2xl font-light float-right flex justify-end  mt-7 amount-usd text-indigo-600">
-                    {{ (float) $user->balance['USD'] }}
-                </p>
+
+            <div class="widget-content">
+                <p class="text-white text-xl amount-usd">{{ $totalWithdrawn }}</p>
+
+                <p class="text-white text-[11px]">Total Amount WIthdrawn</p>
             </div>
+
+            <a href=""
+                class="absolute top-1/2 right-px translate-y-[-50%] bg-white bg-opacity-5 text-white px-2 py-px text-[10px] hover:bg-opacity-30">
+                View all
+            </a>
+
         </div>
 
+        <div
+            class="relative widget h-[100px] bg-gradient-to-br flex flex-row gap-x-5 items-center from-[#454282] to-[#211f54] shadow-slate-400 shadow-lg px-2 py-1 rounded-sm">
 
+            <div class="icon w-16 h-4/5 bg-white bg-opacity-10 flex flex-row justify-center items-center rounded-md">
+                <i class="fa-solid fa-money-bill text-2xl text-white"></i>
+            </div>
+
+            <div class="widget-content">
+                <p class="text-white text-xl amount-usd">{{ $totalDeposit }}</p>
+
+                <p class="text-white text-[11px]">Total Amount Deposited</p>
+            </div>
+
+            <a href=""
+                class="absolute top-1/2 right-px translate-y-[-50%] bg-white bg-opacity-5 text-white px-2 py-px text-[10px] hover:bg-opacity-30">
+                View all
+            </a>
+
+        </div>
 
 
     </div>
 
-    <div class="charts-container flex-wrap pb-10 px-4 gap-x-8 gap-y-7">
-        <div class="history block py-4 px-5">
-            <h5 class="text-lg px-2">Transaction History</h5>
+    <div class="history-container pb-10 px-4 gap-x-8 gap-y-7">
+        <div class="history py-4 px-5 custom-shadow-sm ">
+            <h5 class="text-xs px-2 text-gray-600 uppercase font-semibold mb-3">Deposit History</h5>
 
-            {{-- <div class="relative overflow-x-auto py-4 px-3">
-                <table class="w-full transaction-table">
-                    <thead>
-                        <tr>
-                            <th class="invisible">Date</th>
-                            <th class="invisible">Details</th>
-                            <th class="invisible">Remainder</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b-8 border-gray-600 border-opacity-0">
-                            <td class="px-2">
-                                <div class="flex flex-col  gap-y-1 border-r-2 border-blue-600 py-2 px-2">
-                                    <span class="text-sm">30</span>
-                                    <span class="text-blue-600 text-base">Oct</span>
-                                </div>
-                            </td>
+            @unless ($deposits->count() == 0)
+                @foreach ($deposits as $deposit)
+                    @php
+                        $status = '';
 
-                            <td class="px-2">
-                                <div class="flex flex-col  gap-y-1  py-2 px-2 border-r-2 border-red-600 ">
-                                    <span class="text-sm">24Hrs</span>
-                                    <span class="text-red-600 text-base amount-usd">100</span>
-                                </div>
-                            </td>
+                        if ($deposit->status == 'pending') {
+                            $status = 'bg-yellow-400';
+                        } elseif ($deposit->status == 'approved') {
+                            $status = 'bg-green-600';
+                        } else {
+                            $status = 'bg-red-600';
+                        }
 
-                            <td class="px-2">
-                                <span class="text-white text-base bg-red-600 p-1  rounded-md">Minus</span>
-                            </td>
+                    @endphp
+                    <div
+                        class="py-[17px] px-3 flex flex-row justify-between gap-x-2 place-items-center items-centerc w-full">
 
-                        </tr>
+                        <div class="text-blue-600">
+                            {{ diffForHumans($deposit->created_at) }}
+                        </div>
 
-                        <tr class="border-b-8 border-gray-600 border-opacity-0">
-                            <td class="px-2">
-                                <div class="flex flex-col  gap-y-1 border-r-2 border-blue-600 py-2 px-2">
-                                    <span class="text-sm">30</span>
-                                    <span class="text-blue-600 text-base">Oct</span>
-                                </div>
-                            </td>
+                        <div class="amount-usd text-[16px] text-slate-900">
+                            {{ $deposit->amount }}
+                        </div>
 
-                            <td class="px-2">
-                                <div class="flex flex-col  gap-y-1  py-2 px-2 border-r-2 border-green-600 ">
-                                    <span class="text-sm">24Hrs</span>
-                                    <span class="text-green-600 text-base amount-usd">100</span>
-                                </div>
-                            </td>
+                        <div
+                            class="px-3 text-[10px] py-px rounded-md {{ $status }} text-white flex place-items-center">
+                            {{ $deposit->status }}
+                        </div>
 
-                            <td class="px-2">
-                                <span class="text-white text-base bg-green-600 p-1  rounded-md">Plus</span>
-                            </td>
+                    </div>
+                @endforeach
+            @else
+                <div class="w-full h-full flex justify-center items-center text-red-600">
+                    No deposit has been made!
+                </div>
+            @endunless
 
-                        </tr>
 
-                        <tr class="border-b-8 border-gray-600 border-opacity-0">
-                            <td class="px-2">
-                                <div class="flex flex-col  gap-y-1 border-r-2 border-blue-600 py-2 px-2">
-                                    <span class="text-sm">30</span>
-                                    <span class="text-blue-600 text-base">Oct</span>
-                                </div>
-                            </td>
 
-                            <td class="px-2">
-                                <div class="flex flex-col  gap-y-1  py-2 px-2 border-r-2 border-red-600 ">
-                                    <span class="text-sm">24Hrs</span>
-                                    <span class="text-red-600 text-base amount-usd">100</span>
-                                </div>
-                            </td>
-
-                            <td class="px-2">
-                                <span class="text-white text-base bg-red-600 p-1  rounded-md">Minus</span>
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-            </div> --}}
 
         </div>
-        <div class="history py-4 px-5">
-            <h5 class="text-lg">Deposit History</h5>
+        <div class="history py-4 px-5 custom-shadow-sm">
+            <h5 class="text-xs px-2 text-gray-600 uppercase font-semibold mb-3">Withdraw History</h5>
 
-            {{-- <div class="relative overflow-x-auto py-4 px-3">
-                <table class="w-full">
-                    <thead>
-                        <tr>
-                            <th class="invisible">Date</th>
-                            <th class="invisible">Amount</th>
-                        </tr>
-                    </thead>
+            @unless ($withdrawals->count() == 0)
+                @foreach ($withdrawals as $withdrawal)
+                    @php
+                        $status = '';
 
-                    <tbody>
-                        <tr class="border-b-8 border-gray-600 border-opacity-0">
-                            <td class="px-2">
-                                <div class="flex flex-col  gap-y-1 border-r-2 border-blue-600 py-2 px-2 justify-center">
-                                    <span class="text-sm text-center">10</span>
-                                    <span class="text-blue-600 text-base text-center">Oct</span>
-                                </div>
-                            </td>
+                        if ($withdrawal->status == 'pending') {
+                            $status = 'bg-yellow-400';
+                        } elseif ($withdrawal->status == 'approved') {
+                            $status = 'bg-green-600';
+                        } else {
+                            $status = 'bg-red-600';
+                        }
 
-                            <td class="px-2">
-                                <div class="flex flex-col  gap-y-1  py-2 px-2 justify-center">
-                                    <span class="text-green-600 text-base amount-usd text-center">600</span>
-                                </div>
-                            </td>
+                    @endphp
+                    <div
+                        class="py-[17px] px-3 flex flex-row justify-between gap-x-2 place-items-center items-centerc w-full">
 
-                        </tr>
+                        <div class="text-blue-600">
+                            {{ diffForHumans($withdrawal->created_at) }}
+                        </div>
 
-                        <tr class="border-b-8 border-gray-600 border-opacity-0">
-                            <td class="px-2">
-                                <div class="flex flex-col  gap-y-1 border-r-2 border-blue-600 py-2 px-2 justify-center">
-                                    <span class="text-sm text-center">10</span>
-                                    <span class="text-blue-600 text-base text-center">Oct</span>
-                                </div>
-                            </td>
+                        <div class="amount-usd text-[16px] text-slate-900">
+                            {{ $withdrawal->amount }}
+                        </div>
 
-                            <td class="px-2">
-                                <div class="flex flex-col  gap-y-1  py-2 px-2 justify-center">
-                                    <span class="text-green-600 text-base amount-usd text-center">600</span>
-                                </div>
-                            </td>
+                        <div
+                            class="px-3 text-[10px] py-px rounded-md {{ $status }} text-white flex place-items-center">
+                            {{ $withdrawal->status }}
+                        </div>
 
-                        </tr>
+                    </div>
+                @endforeach
+            @else
+                <div class="w-full h-full flex justify-center items-center text-red-600">
+                    No withdrawal has been placed!
+                </div>
+            @endunless
 
-
-                        <tr class="border-b-8 border-gray-600 border-opacity-0">
-                            <td class="px-2">
-                                <div class="flex flex-col  gap-y-1 border-r-2 border-blue-600 py-2 px-2 justify-center">
-                                    <span class="text-sm text-center">10</span>
-                                    <span class="text-blue-600 text-base text-center">Oct</span>
-                                </div>
-                            </td>
-
-                            <td class="px-2">
-                                <div class="flex flex-col  gap-y-1  py-2 px-2 justify-center">
-                                    <span class="text-green-600 text-base amount-usd text-center">600</span>
-                                </div>
-                            </td>
-
-                        </tr>
-
-
-                    </tbody>
-                </table>
-            </div> --}}
         </div>
 
+    </div>
+
+    <div class="px-4 pb-3">
+        <div class="w-full h-[250px] rounded-md custom-shadow-sm py-4 px-5">
+            <h5 class="text-xs px-2 text-gray-600 uppercase font-semibold mb-3">Transaction History</h5>
+
+            @unless ($transactions->count() == 0)
+                @foreach ($transactions as $transaction)
+                    @php
+
+                    @endphp
+                    <div
+                        class="py-[17px] px-3 flex flex-row justify-between gap-x-2 place-items-center items-center w-full">
+
+                        <div class="text-blue-600">
+                            {{ diffForHumans($transaction->created_at) }}
+                        </div>
+
+                        <div class="amount-usd text-[16px] text-slate-900">
+                            {{ $transaction->amount }}
+                        </div>
+
+                        <div
+                            class="px-3 text-[10px] py-px rounded-md {{ $transaction->type === 1 ? 'bg-green-600' : 'bg-red-600' }} text-black flex place-items-center">
+                            {{ $transaction->type === 1 ? 'addition' : 'subtraction' }}
+                        </div>
+
+                    </div>
+                @endforeach
+            @else
+                <div class="w-full h-full flex justify-center items-center text-red-600">
+                    No Transaction has been placed!
+                </div>
+            @endunless
+        </div>
     </div>
 
     @push('scripts')

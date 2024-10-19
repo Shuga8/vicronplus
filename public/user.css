@@ -59,23 +59,23 @@ body {
   justify-content: center;
 }
 .page-content .dashboard-widgets .widget {
-  min-height: 150px;
+  height: 100px;
   flex-grow: 1;
-  flex-basis: 200;
+  flex-shrink: 1;
   background: rgba(255, 255, 255, 0.11);
   box-shadow: 4px 2px 4px #ccc, 0px -3px 6px #ccc;
+  padding: 10px 12px;
 }
-.page-content .charts-container {
+.page-content .history-container {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  flex-basis: 200;
 }
-.page-content .charts-container > .history {
-  height: 350px;
+.page-content .history-container > .history {
+  height: 250px;
+  min-width: 270px;
   flex-grow: 1;
-  flex-basis: 200;
   background: rgba(255, 255, 255, 0.11);
   border-radius: 5px;
 }
@@ -106,7 +106,7 @@ body {
   background: #fff;
   border-radius: 7px;
   padding: 24px 28px;
-  box-shadow: 1px 1px 7px #fff;
+  box-shadow: 1px 1px 2px #fff;
   overflow-y: scroll;
 }
 .page-content .modal-container form::-webkit-scrollbar {
@@ -129,6 +129,9 @@ body {
   opacity: 1;
   animation: slide-down;
   animation-duration: 1.5s;
+}
+.page-content .custom-shadow-sm {
+  box-shadow: 2px 2px 6px #ddd, -2px -2px 4px #ddd;
 }
 
 @media (max-width: 1200px) {
