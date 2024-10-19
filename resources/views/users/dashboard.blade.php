@@ -8,9 +8,9 @@
                 </span>
             </div>
             <div class="content flex flex-col gap-y-7 justify-left py-3">
-                <p class="text-base font-semibold float-right">Available Balance</p>
+                <p class="text-base font-semibold float-right text-green-600">Available Balance</p>
 
-                <p class="text-2xl font-light float-right flex justify-end  mt-7 amount-usd">
+                <p class="text-2xl font-light float-right flex justify-end  mt-7 amount-usd text-green-600">
                     {{ (float) $user->balance['USD'] }}
                 </p>
             </div>
@@ -25,8 +25,8 @@
                 </span>
             </div>
             <div class="content flex flex-col gap-y-7 justify-left py-3">
-                <p class="text-base font-semibold float-right">Total Invested Amount</p>
-                <p class="text-2xl font-light float-right flex justify-end  mt-7 amount-usd">
+                <p class="text-base font-semibold float-right text-primary-600">Total Invested Amount</p>
+                <p class="text-2xl font-light float-right flex justify-end  mt-7 amount-usd text-primary-600">
                     {{ (float) $user->balance['USD'] }}
                 </p>
             </div>
@@ -40,8 +40,8 @@
                 </span>
             </div>
             <div class="content flex flex-col gap-y-7 justify-left py-3">
-                <p class="text-base font-semibold float-right">Total Amount Withdrawn</p>
-                <p class="text-2xl font-light float-right flex justify-end  mt-7 amount-usd">
+                <p class="text-base font-semibold float-right text-indigo-600">Total Amount Withdrawn</p>
+                <p class="text-2xl font-light float-right flex justify-end  mt-7 amount-usd text-indigo-600">
                     {{ (float) $user->balance['USD'] }}
                 </p>
             </div>

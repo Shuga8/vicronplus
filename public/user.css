@@ -22,12 +22,12 @@ body {
 }
 
 .aside {
-  width: 300px;
+  width: 270px;
   height: 100vh;
   position: fixed;
   left: 0px;
   z-index: 24;
-  background: #0a1b31;
+  background: #011e52;
   transition: all 0.3s ease-in-out;
 }
 .aside .close-btn {
@@ -47,10 +47,10 @@ body {
 }
 
 .page-content {
-  width: calc(100% - 300px);
-  margin-left: 300px;
+  width: calc(100% - 270px);
+  margin-left: 270px;
   min-height: 100vh;
-  background: #01132a;
+  background: #ffffff;
 }
 .page-content .dashboard-widgets {
   width: 100%;
@@ -63,6 +63,7 @@ body {
   flex-grow: 1;
   flex-basis: 200;
   background: rgba(255, 255, 255, 0.11);
+  box-shadow: 4px 2px 4px #ccc, 0px -3px 6px #ccc;
 }
 .page-content .charts-container {
   width: 100%;
@@ -78,13 +79,64 @@ body {
   background: rgba(255, 255, 255, 0.11);
   border-radius: 5px;
 }
+.page-content .modal-container {
+  width: 100dvw;
+  height: 100dvh;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  z-index: 31;
+  top: 0;
+  left: 0;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 14px;
+  overflow-y: hidden;
+}
+.page-content .modal-container.active-modal {
+  display: flex;
+}
+.page-content .modal-container form {
+  position: relative;
+  min-width: 280px;
+  width: 500px;
+  max-height: 90%;
+  background: #fff;
+  border-radius: 7px;
+  padding: 24px 28px;
+  box-shadow: 1px 1px 7px #fff;
+  overflow-y: scroll;
+}
+.page-content .modal-container form::-webkit-scrollbar {
+  height: 3px;
+  width: 3px;
+  position: absolute;
+  right: 10px;
+}
+.page-content .modal-container form::-webkit-scrollbar-thumb {
+  background: #032d81;
+  color: #032d81;
+  height: 10px;
+}
+.page-content .modal-container form.slide-up {
+  opacity: 0;
+  animation: slide-up;
+  animation-duration: 1.5s;
+}
+.page-content .modal-container form.slide-down {
+  opacity: 1;
+  animation: slide-down;
+  animation-duration: 1.5s;
+}
 
 @media (max-width: 1200px) {
   .toggle-menu {
     visibility: visible;
   }
   .aside {
-    left: -300px;
+    left: -270px;
     transition: all 0.3s ease-in-out;
   }
   .aside.active {
@@ -97,5 +149,25 @@ body {
   .page-content {
     width: 100%;
     margin-left: 0px;
+  }
+}
+@keyframes slide-down {
+  from {
+    margin-top: -500px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0px;
+    opacity: 1;
+  }
+}
+@keyframes slide-up {
+  from {
+    margin-top: 0px;
+    opacity: 1;
+  }
+  to {
+    margin-top: -500px;
+    opacity: 0;
   }
 }/*# sourceMappingURL=user.css.map */

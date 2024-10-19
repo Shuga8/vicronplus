@@ -4,7 +4,7 @@
         <a href="{{ route('user.dashboard') }}"
             class="flex justify-center items-center place-content-center place-items-center">
             <img src="{{ asset('android-chrome-192x192.png') }}" alt="VicronPlus" loading="lazy" class="w-14 h-14"><span
-                class="text-2xl font-bold mt-8 -ml-4 uppercase text-gray-400 italic">icron</span>
+                class="text-2xl font-bold mt-8 -ml-4 uppercase text-gray-50 italic">icron</span>
         </a>
     </div>
 
@@ -23,11 +23,17 @@
                 dashboard
             </span> <span class="text-sm">Dashboard</span></a>
 
-        <a href=""
+        <a href="{{ route('user.investment.new') }}"
             class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10"><span
                 class="material-symbols-outlined text-sm">
                 currency_exchange
             </span> <span class="text-sm">Invest</span></a>
+
+        <a href=""
+            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10"><span
+                class="material-symbols-outlined text-sm">
+                description
+            </span> <span class="text-sm">Investment Logs</span></a>
 
         <a href=""
             class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10"><span
@@ -70,9 +76,6 @@
                 class="material-symbols-outlined text-sm">
                 logout
             </span> <span class="text-sm">Logout</span></a>
-
-
-
 
 
     </div>

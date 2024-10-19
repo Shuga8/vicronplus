@@ -10,6 +10,13 @@ Route::namespace("Auth")->controller("AuthController")->group(function () {
     Route::get('/logout', 'logout')->name('logout');
 });
 
-Route::middleware('auth')->controller('UsersController')->group(function () {
-    Route::get('dashboard', 'index')->name('dashboard');
+Route::middleware('auth')->group(function () {
+    Route::controller('UsersController')->group(function () {
+        Route::get('dashboard', 'index')->name('dashboard');
+    });
+
+    Route::prefix('investment')->name('investment.')->controller('InvestmentController')->group(function () {
+        Route::get('new', 'new')->name('new');
+        Route::post('store', 'store')->name('store');
+    });
 });
