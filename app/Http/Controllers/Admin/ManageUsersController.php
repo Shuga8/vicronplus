@@ -56,7 +56,7 @@ class ManageUsersController extends Controller
             'totalWithdraws' => Withdraw::where('user_id', $id)->count(),
             'totalDeposits' => Deposit::where('user_id', $id)->count(),
             'totalInvestments' => ActiveInvestment::where('user_id', $id)->count(),
-            'transactions'
+            'totalTransactions' => Transaction::where('user_id', $id)->count()
         ];
 
         return view('admin.users.details')->with($data);
