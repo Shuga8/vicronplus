@@ -105,18 +105,48 @@
                 <span>Balance</span>
             </button>
 
-            <a href="{{ route('admin.users.loginAsUser', $user->id) }}"
+            <a href="{{ route('admin.users.loginAsUser', $user->id) }}" target="_blank" referrerpolicy="no-referrer"
                 class="bg-indigo-600 hover:bg-indigo-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[8px] rounded-md grow shrink">
                 <i class="fa-solid fa-circle-right"></i>
                 <span>Login as user</span>
             </a>
 
+            @if ($user->status === 0)
+                <a href="{{ route('admin.users.banUnbanUser', [1, $user->id]) }}" referrerpolicy="no-referrer"
+                    class="bg-green-600 hover:bg-green-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[8px] rounded-md grow shrink">
+                    <i class="fa-solid fa-user-check"></i>
+                    <span>Unban</span>
+                </a>
+            @else
+                <a href="{{ route('admin.users.banUnbanUser', [0, $user->id]) }}" referrerpolicy="no-referrer"
+                    class="bg-yellow-600 hover:bg-yellow-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[8px] rounded-md grow shrink">
+                    <i class="fa-solid fa-user-slash"></i>
+                    <span>Ban</span>
+                </a>
+            @endif
+
+
         </div>
 
         <div class="w-full py-4 px-3 shadow-slate-400 shadow-xl mt-10">
-            <h4 class="text-teal-800 mb-2">Information of {{ $user->username }}</h4>
-
+            <h4 class="text-teal-800 mb-2 text-lg">Information of {{ $user->username }}</h4>
             <hr class="border border-gray-200 w-full mx-auto" />
+
+            <div class="px-3 flex flex-row gap-x-3 py-3">
+                <span class="text-gray-800 font-semibold">Username:</span>
+                <span class="text-gray-500 ">{{ $user->username }}</dd>
+            </div>
+
+            <div class="px-3 flex flex-row gap-x-3 py-3">
+                <span class="text-gray-800 font-semibold">Email:</span>
+                <span class="text-gray-500 ">{{ $user->email }}</dd>
+            </div>
+
+            <div class="px-3 flex flex-row gap-x-3 py-5 place-items-center">
+                <span class="text-gray-800 font-semibold">Joined at:</span>
+                <span class="text-primary-600 text-[11px]">{{ showDateTime($user->created_at) }},
+                    {{ diffForHumans($user->created_at) }}</dd>
+            </div>
         </div>
 
     </div>

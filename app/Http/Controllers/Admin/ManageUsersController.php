@@ -114,11 +114,12 @@ class ManageUsersController extends Controller
     public function loginAsUser(int $id)
     {
         Auth::loginUsingId($id);
-        return redirect(route('user.dashboard'))->with(['success', 'login successfull']);
+        return redirect(route('user.dashboard'))->with(['success' => 'login successfull']);
     }
 
     public function banUnbanUser(int $type,  int $id)
     {
+
         try {
             DB::beginTransaction();
 
@@ -126,11 +127,13 @@ class ManageUsersController extends Controller
 
             $user->status = $type;
 
+            // dd($user->status == false);
+
             $user->save();
 
-            if ($user->type === 0) {
+            if ($user->status == false) {
                 $message = "User banned successfully";
-            } else {
+            } else if ($user->status == true) {
                 $message = "User unbanned successfully";
             }
 
