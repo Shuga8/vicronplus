@@ -83,7 +83,7 @@
 
     <div class="history-container pb-10 px-4 gap-x-8 gap-y-7">
         <div class="history py-4 px-5 custom-shadow-sm ">
-            <h5 class="text-xs px-2 text-gray-600 uppercase font-semibold mb-3">Deposit History</h5>
+            <h5 class="text-xs px-2 text-gray-600 uppercase font-semibold mb-3">Last 3 Deposits</h5>
 
             @unless ($deposits->count() == 0)
                 @foreach ($deposits as $deposit)
@@ -128,7 +128,7 @@
 
         </div>
         <div class="history py-4 px-5 custom-shadow-sm">
-            <h5 class="text-xs px-2 text-gray-600 uppercase font-semibold mb-3">Withdraw History</h5>
+            <h5 class="text-xs px-2 text-gray-600 uppercase font-semibold mb-3">Last 3 WIthdrawals</h5>
 
             @unless ($withdrawals->count() == 0)
                 @foreach ($withdrawals as $withdrawal)
@@ -174,7 +174,7 @@
 
     <div class="px-4 pb-3">
         <div class="w-full h-[250px] rounded-md custom-shadow-sm py-4 px-5">
-            <h5 class="text-xs px-2 text-gray-600 uppercase font-semibold mb-3">Transaction History</h5>
+            <h5 class="text-xs px-2 text-gray-600 uppercase font-semibold mb-3">Last 3 Transactions</h5>
 
             @unless ($transactions->count() == 0)
                 @foreach ($transactions as $transaction)
@@ -193,8 +193,8 @@
                         </div>
 
                         <div
-                            class="px-3 text-[10px] py-px rounded-md {{ $transaction->type === 1 ? 'bg-green-600' : 'bg-red-600' }} text-black flex place-items-center">
-                            {{ $transaction->type === 1 ? 'addition' : 'subtraction' }}
+                            class="px-3 text-[10px] py-px rounded-md {{ $transaction->type === '1' ? 'bg-green-600' : 'bg-red-600' }} text-white flex place-items-center">
+                            {{ $transaction->type === '1' ? 'addition' : 'subtraction' }}
                         </div>
 
                     </div>
