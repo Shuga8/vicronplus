@@ -21,11 +21,15 @@
 
         @include('partials.sidebar')
 
-        <div class="page-content px-2 py-1">
+        <div class="page-content ">
 
             @include('partials._topbar')
 
-            {{ $slot }}
+            <div class="px-2 py-1">
+
+                {{ $slot }}
+
+            </div>
 
         </div>
 

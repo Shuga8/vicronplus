@@ -18,6 +18,9 @@ Route::middleware('admin')->group(function () {
         Route::get('/banned', 'banned')->name('banned');
         Route::get('/active', 'active')->name('active');
         Route::get('/details/{id}', 'details')->name('details');
+        Route::get('login/{id}', 'loginAsUser')->name('loginAsUser');
+        Route::get('changeStatus/{type}/{id}', 'banUnbanUser')->name('banUnbanUser');
+        Route::post('add-sub-balance', 'addSubBalance')->name('addSubBalance');
     });
 
     Route::prefix("investment-plans")->name('investment.')->controller('InvestmentController')->group(function () {
