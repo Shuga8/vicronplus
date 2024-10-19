@@ -42,7 +42,7 @@
         </form>
     </div>
 
-    <h2 class="text-white text-xl capitalize font-semibold mt-3">Choose a plan</h2>
+    <h2 class="text-slate-800 text-xl capitalize font-semibold mt-3">Choose a plan</h2>
 
     <div class="plans flex gap-x-4 gap-y-6 py-4 px-3 flex-wrap">
 

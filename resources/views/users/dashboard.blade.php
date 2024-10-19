@@ -178,9 +178,6 @@
 
             @unless ($transactions->count() == 0)
                 @foreach ($transactions as $transaction)
-                    @php
-
-                    @endphp
                     <div
                         class="py-[17px] px-3 flex flex-row justify-between gap-x-2 place-items-center items-center w-full">
 

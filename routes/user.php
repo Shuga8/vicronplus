@@ -17,6 +17,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('investment')->name('investment.')->controller('InvestmentController')->group(function () {
         Route::get('new', 'new')->name('new');
+        Route::get('log', 'log')->name('log');
         Route::post('store', 'store')->name('store');
     });
 });

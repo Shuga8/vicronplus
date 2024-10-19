@@ -83,4 +83,14 @@ class InvestmentController extends Controller
             return back()->with(['error' => $e->getMessage()]);
         }
     }
+
+    public function log()
+    {
+        $data = [
+            'title' => 'Investment Logs',
+            'investments' => ActiveInvestment::where('user_id', auth()->user()->id)->with(['plan', 'user'])->paginate(getPagination())
+        ];
+
+        return view('users.investment.log')->with($data);
+    }
 }

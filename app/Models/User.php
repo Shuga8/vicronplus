@@ -69,4 +69,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserLogin::class, 'user_id', 'id');
     }
+
+    public function activeInvestments(): HasMany
+    {
+        return $this->hasMany(ActiveInvestment::class, 'user_id', 'id');
+    }
 }
