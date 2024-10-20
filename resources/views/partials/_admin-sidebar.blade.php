@@ -102,7 +102,7 @@
             </div>
 
             <div class="dropdown-links bg-blue-800 bg-opacity-80">
-                <a href=""
+                <a href="{{ route('admin.users.investments', 0) }}"
                     class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
                     <p class="flex flex-row gap-x-2">
                         <span class="material-symbols-outlined text-xs">
@@ -111,10 +111,11 @@
                         </span> <span class="text-xs">Running Investments</span>
                     </p>
 
-                    <span class="px-1 bg-orange-500 text-xs text-white rounded-lg">{{ $runningInvestmentsCount }}</span>
+                    <span
+                        class="px-1 bg-orange-500 text-xs text-white rounded-lg">{{ $runningInvestmentsCount }}</span>
                 </a>
 
-                <a href=""
+                <a href="{{ route('admin.users.investments', 1) }}"
                     class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
                     <p class="flex flex-row gap-x-2">
                         <span class="material-symbols-outlined text-xs">
@@ -127,7 +128,7 @@
                         class="px-1 bg-green-500 text-xs text-white rounded-lg">{{ $completedInvestmentsCount }}</span>
                 </a>
 
-                <a href=""
+                <a href="{{ route('admin.users.investments', 'all') }}"
                     class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
                     <p class="flex flex-row gap-x-2">
                         <span class="material-symbols-outlined text-xs">

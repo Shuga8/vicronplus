@@ -145,4 +145,39 @@ class ManageUsersController extends Controller
             return back()->with(['error' => $e->getMessage()]);
         }
     }
+
+    public function investments($type = 'all')
+    {
+        if ($type !== "all") {
+            if ($type == 1) {
+                $title = 'All Completed Investments';
+            } else if ($type == 0) {
+                $title = 'All Running Investments';
+            }
+
+            // Searching for investments based on status and user fields
+            $investments = ActiveInvestment::where('active_investments.status', $type) // Specify the table name
+                ->with(['user', 'plan'])
+                ->join('users', 'active_investments.user_id', '=', 'users.id') // Join with users table
+                ->searchable(['users.username', 'users.email']) // Adjusted to search through user relation
+                ->select('active_investments.*') // Select only the columns from active_investments
+                ->paginate(getPagination());
+        } else {
+            // Searching for all active investments
+            $investments = ActiveInvestment::join('users', 'active_investments.user_id', '=', 'users.id') // Join with users table
+                ->searchable(['users.username', 'users.email']) // Adjusted to search through user relation
+                ->with(['user', 'plan'])
+                ->select('active_investments.*') // Select only the columns from active_investments
+                ->paginate(getPagination());
+
+            $title = 'All Active Investments';
+        }
+
+        $data = [
+            'title' => $title,
+            'investments' => $investments
+        ];
+
+        return view('admin.users.investments')->with($data);
+    }
 }

@@ -13,14 +13,21 @@ Route::middleware('admin')->group(function () {
         Route::get('dashboard', 'index')->name('dashboard');
     });
 
-    Route::prefix('users')->name('users.')->controller('ManageUsersController')->group(function () {
-        Route::get('/', 'index')->name('all');
-        Route::get('/banned', 'banned')->name('banned');
-        Route::get('/active', 'active')->name('active');
-        Route::get('/details/{id}', 'details')->name('details');
-        Route::get('login/{id}', 'loginAsUser')->name('loginAsUser');
-        Route::get('changeStatus/{type}/{id}', 'banUnbanUser')->name('banUnbanUser');
-        Route::post('add-sub-balance', 'addSubBalance')->name('addSubBalance');
+    Route::name('users.')->controller('ManageUsersController')->group(function () {
+
+        Route::prefix('users')->group(function () {
+            Route::get('/', 'index')->name('all');
+            Route::get('/banned', 'banned')->name('banned');
+            Route::get('/active', 'active')->name('active');
+            Route::get('/details/{id}', 'details')->name('details');
+            Route::get('login/{id}', 'loginAsUser')->name('loginAsUser');
+            Route::get('changeStatus/{type}/{id}', 'banUnbanUser')->name('banUnbanUser');
+            Route::post('add-sub-balance', 'addSubBalance')->name('addSubBalance');
+        });
+
+        Route::prefix('investments')->group(function () {
+            Route::get('/type/{type}', 'investments')->name('investments');
+        });
     });
 
     Route::prefix("investment-plans")->name('investment.')->controller('InvestmentController')->group(function () {

@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ActiveInvestment extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     public function scopeRunning($query)
     {
