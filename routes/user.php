@@ -13,6 +13,7 @@ Route::namespace("Auth")->controller("AuthController")->group(function () {
 Route::middleware('auth')->group(function () {
     Route::controller('UsersController')->group(function () {
         Route::get('dashboard', 'index')->name('dashboard');
+        Route::get('transactions', 'transactions')->name('transactions');
     });
 
     Route::prefix('investment')->name('investment.')->controller('InvestmentController')->group(function () {

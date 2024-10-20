@@ -30,4 +30,16 @@ class UsersController extends Controller
 
         return view('users.dashboard')->with($data);
     }
+
+    public function transactions()
+    {
+        $data = [
+            'title' => 'Transactions History',
+            'transactions' => Transaction::where('user_id', auth()->user()->id)->paginate(getPagination()),
+        ];
+
+
+
+        return view('users.transactions-log')->with($data);
+    }
 }
