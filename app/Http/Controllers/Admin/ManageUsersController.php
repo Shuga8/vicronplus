@@ -180,4 +180,44 @@ class ManageUsersController extends Controller
 
         return view('admin.users.investments')->with($data);
     }
+
+    public function updateInvestment($investment_id, $user_id)
+    {
+        $investment = ActiveInvestment::where('id', $investment_id)->with(['plan', 'user'])->first();
+        $user = User::where('id', $user_id)->first();
+
+        try {
+            DB::beginTransaction();
+
+            $percentage = $investment->plan->percentage;
+            $amount = $investment->amount;
+
+            $amount += ($percentage / 100) * $amount;
+
+            $balance = json_decode($user->balance, true);
+
+            $balance['USD'] += $amount;
+
+            $user->balance = json_encode($balance);
+
+            $investment->status = 1;
+
+            $transaction = new Transaction();
+
+            $transaction->user_id = $user->id;
+            $transaction->type = 1;
+            $transaction->amount = $amount;
+
+            $transaction->save();
+            $investment->save();
+            $user->save();
+
+            DB::commit();
+
+            return back()->with(['success' => 'Investment Completed Successfully']);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with(['error' => $e->getMessage()]);
+        }
+    }
 }

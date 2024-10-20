@@ -51,7 +51,8 @@
                                     {{ $investment->plan->duration }} {{ $investment->plan->unit }}s
                                 </td>
                                 <td class="px-6 py-4 text-right">
-
+                                    <a href="{{ route('admin.users.investments.update', [$investment->id, $investment->user->id]) }}"
+                                        class="text-white px-4 py-1.5 rounded-md bg-orange-500 hover:bg-orange-400 text-[11px]">End</a>
                                 </td>
                             </tr>
                         @endforeach
