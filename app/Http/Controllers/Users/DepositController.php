@@ -63,4 +63,15 @@ class DepositController extends Controller
             return back()->with(['error' => $e->getMessage()]);
         }
     }
+
+    public function log()
+    {
+
+        $data = [
+            'title' => 'Deposit Logs',
+            'deposits' => Deposit::where('user_id', auth()->user()->id)->paginate(getPagination())
+        ];
+
+        return view('users.deposit.log')->with($data);
+    }
 }
