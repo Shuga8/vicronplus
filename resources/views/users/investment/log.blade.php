@@ -40,7 +40,7 @@
                                 </td>
                                 <td class="px-6 py-4 ">
                                     <span
-                                        class="text-white px-[5px] py-[6px] rounded-sm {{ $investment->status == true ? 'bg-green-600' : 'bg-orange-600' }}">{{ $investment->status == true ? 'completed' : 'running' }}</span>
+                                        class="text-white px-[5px] py-[6px] rounded-sm {{ $investment->status == true ? 'bg-green-600' : 'bg-orange-500' }}">{{ $investment->status == true ? 'completed' : 'running' }}</span>
                                 </td>
                             </tr>
                         @endforeach

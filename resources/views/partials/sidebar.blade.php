@@ -35,7 +35,7 @@
                 description
             </span> <span class="text-sm">Investment Logs</span></a>
 
-        <a href=""
+        <a href="{{ route('user.deposit.new') }}"
             class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor"><span
                 class="material-symbols-outlined text-sm">
                 account_balance_wallet

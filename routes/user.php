@@ -20,4 +20,10 @@ Route::middleware('auth')->group(function () {
         Route::get('log', 'log')->name('log');
         Route::post('store', 'store')->name('store');
     });
+
+    Route::prefix('deposits')->name('deposit.')->controller('DepositController')->group(function () {
+        Route::get('new', 'index')->name('new');
+        Route::get('log', 'log')->name('log');
+        Route::post('store', 'store')->name('store');
+    });
 });
