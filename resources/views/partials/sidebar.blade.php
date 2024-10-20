@@ -47,7 +47,7 @@
                 description
             </span> <span class="text-sm">Deposit Logs</span></a>
 
-        <a href=""
+        <a href="{{ route('user.withdraw.new') }}"
             class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor"><span
                 class="material-symbols-outlined text-sm">
                 send_money

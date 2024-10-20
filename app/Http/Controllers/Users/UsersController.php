@@ -21,8 +21,8 @@ class UsersController extends Controller
             'title' => 'Dashboard',
             'user' => $user,
             'totalInvestment' => ActiveInvestment::where('user_id', $user->id)->sum('amount'),
-            'totalWithdrawn' => Withdraw::where('user_id', $user->id)->sum('amount'),
-            'totalDeposit' => Deposit::where('user_id', $user->id)->sum('amount'),
+            'totalWithdrawn' => Withdraw::where('user_id', $user->id)->approved()->sum('amount'),
+            'totalDeposit' => Deposit::where('user_id', $user->id)->approved()->sum('amount'),
             'withdrawals' => Withdraw::where('user_id', $user->id)->latest()->take(3)->get(),
             'deposits' => Deposit::where('user_id', $user->id)->latest()->take(3)->get(),
             'transactions' => Transaction::where('user_id', $user->id)->latest()->take(3)->get()
