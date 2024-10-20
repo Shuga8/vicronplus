@@ -79,7 +79,7 @@ class WithdrawalController extends Controller
 
         $data = [
             'title' => 'Withdrawal Logs',
-            'deposits' => Withdraw::where('user_id', auth()->user()->id)->paginate(getPagination())
+            'withdraws' => Withdraw::where('user_id', auth()->user()->id)->paginate(getPagination())
         ];
 
         return view('users.withdraw.log')->with($data);
