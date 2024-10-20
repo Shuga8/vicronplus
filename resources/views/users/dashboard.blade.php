@@ -51,7 +51,7 @@
                 <p class="text-white text-[11px]">Total Amount WIthdrawn</p>
             </div>
 
-            <a href=""
+            <a href="{{ route('user.withdraw.log') }}"
                 class="absolute top-1/2 right-px translate-y-[-50%] bg-white bg-opacity-5 text-white px-2 py-px text-[10px] hover:bg-opacity-30">
                 View all
             </a>
@@ -71,7 +71,7 @@
                 <p class="text-white text-[11px]">Total Amount Deposited</p>
             </div>
 
-            <a href=""
+            <a href="{{ route('user.deposit.log') }}"
                 class="absolute top-1/2 right-px translate-y-[-50%] bg-white bg-opacity-5 text-white px-2 py-px text-[10px] hover:bg-opacity-30">
                 View all
             </a>
