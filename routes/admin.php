@@ -11,6 +11,8 @@ Route::namespace('Auth')->controller('AuthController')->group(function () {
 Route::middleware('admin')->group(function () {
     Route::controller('AdminController')->group(function () {
         Route::get('dashboard', 'index')->name('dashboard');
+        Route::get('settings', 'settings')->name('settings');
+        Route::post('change-password', 'changePassword')->name('changePassword');
     });
 
     Route::name('users.')->controller('ManageUsersController')->group(function () {

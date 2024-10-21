@@ -17,6 +17,8 @@ use App\Http\Controllers\PagesController;
 */
 
 Route::get('/', [PagesController::class, 'index'])->name('home');
+Route::post('/send-mail', function () {});
+Route::post('subscribe', function () {});
 Route::get('storage/{folder}/{img}', [FileController::class, 'show']);
 Route::get('lang', [LanguageController::class, 'index'])->name('getLang');
 Route::get('lang/{lang}', [LanguageController::class, 'setLang'])->name('setLang');

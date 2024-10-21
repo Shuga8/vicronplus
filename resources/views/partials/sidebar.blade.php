@@ -65,7 +65,7 @@
                 credit_card_clock
             </span> <span class="text-sm">Transaction History</span></a>
 
-        <a href=""
+        <a href="{{ route('user.settings') }}"
             class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor"><span
                 class="material-symbols-outlined text-sm">
                 manage_accounts

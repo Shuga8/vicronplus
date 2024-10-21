@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Users;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\ActiveInvestment;
 use App\Models\Deposit;
-use App\Models\Transaction;
 use App\Models\Withdraw;
+use App\Models\Transaction;
+use Illuminate\Http\Request;
+use App\Models\ActiveInvestment;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
@@ -38,8 +41,40 @@ class UsersController extends Controller
             'transactions' => Transaction::where('user_id', auth()->user()->id)->paginate(getPagination()),
         ];
 
-
-
         return view('users.transactions-log')->with($data);
+    }
+
+    public function settings()
+    {
+        $data = [
+            'title' => 'Settings'
+        ];
+
+        return view('users.settings')->with($data);
+    }
+
+    public function changePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => ['required', 'string', 'confirmed']
+        ]);
+
+        if ($validator->fails()) {
+            return back()->with(['error' => $validator->errors()->first()]);
+        }
+
+        $user = User::where('id', auth()->user()->id)->first();
+
+        try {
+            DB::beginTransaction();
+            $user->password =  Hash::make($request->password);
+            $user->save();
+
+            DB::commit();
+            return back()->with(['success' => "Password Change Successfully"]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with(['error' => $e->getMessage()]);
+        }
     }
 }
