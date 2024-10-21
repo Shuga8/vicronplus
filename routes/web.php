@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PagesController;
 
 /*
@@ -17,6 +18,5 @@ use App\Http\Controllers\PagesController;
 
 Route::get('/', [PagesController::class, 'index'])->name('home');
 Route::get('storage/{folder}/{img}', [FileController::class, 'show']);
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('home');
+Route::get('lang', [LanguageController::class, 'index'])->name('getLang');
+Route::get('lang/{lang}', [LanguageController::class, 'setLang'])->name('setLang');

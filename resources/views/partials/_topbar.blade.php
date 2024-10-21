@@ -7,6 +7,24 @@
     </div>
 
     <div class="flex flex-row gap-x-4 place-items-center">
+        <div>
+
+            <select name="locale-language" id="locale-language"
+                class="bg-transparent text-cyan-500 border-none focus:outline-none outline-none text-[11px]"
+                aria-label="Select Language">
+                <option value="en-uk">
+                    english (UK)
+                </option>
+
+                <option value="en-us">
+                    english (US)
+                </option>
+                <option value="de">german</option>
+                <option value="fr">french</option>
+                <option value="ar">arabic</option>
+            </select>
+
+        </div>
         <a href="{{ route('user.investment.new') }}"
             class="py-2.5 px-3 border-x border-y border-gray-50 text-white hover:bg-[#011E52] hover:text-white rounded-md flex flex-row gap-x-1 place-items-center"><span
                 class="material-symbols-outlined text-xs ">
@@ -42,3 +60,18 @@
 </header>
 
 <x-alerts />
+
+@push('scripts')
+    <script>
+        const presetLanguage = "{{ session()->get('locale') }}" ?? "en-uk";
+        document.querySelector("#locale-language").value = presetLanguage;
+
+        document.querySelector("#locale-language").addEventListener("change", function(e) {
+
+
+            const lang = e.target.value;
+
+            window.location.href = `/lang/${lang}`;
+        });
+    </script>
+@endpush

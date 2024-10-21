@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use App\Lib\ClientInfo;
+use Illuminate\Support\Facades\App;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
 function pathNameCheck($pathname)
@@ -98,7 +99,7 @@ function translate($word)
 {
     $tr = new GoogleTranslate();
     $tr->setSource('en');
-    $tr->setTarget('fr');
+    $tr->setTarget(session()->get('locale') ?? 'en-uk');
 
     return  $tr->translate($word);
 }
