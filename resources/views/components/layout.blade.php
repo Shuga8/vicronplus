@@ -7,6 +7,12 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
         <title>Vicron Plus | {{ $title }}</title>
+        <meta property="og:title" content="Vicron Plus | {{ $title }}}" />
+        <meta property="og:description" content="Vicron Plus | {{ $title }}" />
+        <meta property="og:image" content="{{ asset('favicon.ico') }}" />
+        <meta property="og:url" content="{{ config('app.url') }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="{{ session()->get('locale') ?? 'de' }}" />
         @vite('resources/js/app.js')
 
         <link rel="stylesheet"

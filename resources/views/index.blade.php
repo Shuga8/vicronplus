@@ -21,7 +21,8 @@
 
             <div class="mt-10 mb-3 px-14 flex justify-center">
                 <button
-                    class="flex flex-row place-items-center gap-x-3 outline-none border-0  bg-blue-800 hover:bg-blue-700 text-white px-7 py-3 rounded-lg text-left mx-auto md:mx-0">
+                    class="flex flex-row place-items-center gap-x-3 outline-none border-0  bg-blue-800 hover:bg-blue-700 text-white px-7 py-3 rounded-lg text-left mx-auto md:mx-0"
+                    onclick="window.location.href = '/user/register'">
                     <span class="uppercase">Register</span>
                     <span class="material-symbols-outlined text-white text-sm">
                         login
