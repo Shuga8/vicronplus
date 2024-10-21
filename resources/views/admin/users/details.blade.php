@@ -96,34 +96,48 @@
 
         <div class="flex w-full py-[5px] px-3 gap-x-2 gap-y-3 flex-wrap">
             <button
-                class="bg-green-600 hover:bg-green-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[8px] rounded-md grow shrink"
+                class="bg-green-600 hover:bg-green-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[4px] rounded-md grow shrink text-[13px]"
                 onclick="showFormModal({{ json_encode($user) }}, 'add')">
                 <i class="fa-solid fa-circle-plus"></i>
                 <span>Balance</span>
             </button>
 
             <button
-                class="bg-red-600 hover:bg-red-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[8px] rounded-md grow shrink"
+                class="bg-red-600 hover:bg-red-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[4px] rounded-md grow shrink text-[13px]"
                 onclick="showFormModal({{ json_encode($user) }}, 'sub')">
                 <i class="fa-solid fa-circle-minus"></i>
                 <span>Balance</span>
             </button>
 
             <a href="{{ route('admin.users.loginAsUser', $user->id) }}" target="_blank" referrerpolicy="no-referrer"
-                class="bg-indigo-600 hover:bg-indigo-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[8px] rounded-md grow shrink">
+                class="bg-indigo-600 hover:bg-indigo-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[4px] rounded-md grow shrink text-[13px]">
                 <i class="fa-solid fa-circle-right"></i>
                 <span>Login as user</span>
             </a>
 
+            <a href="{{ route('admin.users.deposits', ['all', 'search' => $user->email]) }}"
+                referrerpolicy="no-referrer"
+                class="bg-teal-600 hover:bg-teal-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[4px] rounded-md grow shrink text-[13px]">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <span>Deposits</span>
+            </a>
+
+            <a href="{{ route('admin.users.withdrawals', ['all', 'search' => $user->email]) }}"
+                referrerpolicy="no-referrer"
+                class="bg-purple-600 hover:bg-purple-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[4px] rounded-md grow shrink text-[13px]">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                <span>Withdrawals</span>
+            </a>
+
             @if ($user->status === 0)
                 <a href="{{ route('admin.users.banUnbanUser', [1, $user->id]) }}" referrerpolicy="no-referrer"
-                    class="bg-green-600 hover:bg-green-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[8px] rounded-md grow shrink">
+                    class="bg-green-600 hover:bg-green-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[4px] rounded-md grow shrink text-[13px]">
                     <i class="fa-solid fa-user-check"></i>
                     <span>Unban</span>
                 </a>
             @else
                 <a href="{{ route('admin.users.banUnbanUser', [0, $user->id]) }}" referrerpolicy="no-referrer"
-                    class="bg-yellow-600 hover:bg-yellow-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[8px] rounded-md grow shrink">
+                    class="bg-yellow-600 hover:bg-yellow-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[4px] rounded-md grow shrink text-[13px]">
                     <i class="fa-solid fa-user-slash"></i>
                     <span>Ban</span>
                 </a>

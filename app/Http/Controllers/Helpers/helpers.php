@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use App\Lib\ClientInfo;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 function pathNameCheck($pathname)
 {
@@ -86,4 +87,18 @@ function showDateTime($date, $format = 'Y-m-d h:i A')
     $lang = session()->get('lang');
     Carbon::setlocale($lang);
     return Carbon::parse($date)->translatedFormat($format);
+}
+
+/**
+ * Translate passed word from english to universerlly set language
+ * @param mixed $word
+ * @return string|null
+ */
+function translate($word)
+{
+    $tr = new GoogleTranslate();
+    $tr->setSource('en');
+    $tr->setTarget('fr');
+
+    return  $tr->translate($word);
 }

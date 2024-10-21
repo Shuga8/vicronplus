@@ -81,28 +81,28 @@ class ManageUsersController extends Controller
 
             $balance = json_decode($user->balance, true);
 
-            $transation = new Transaction();
+            // $transation = new Transaction();
 
-            $transation->user_id = $request->user_id;
-            $transation->amount = $request->amount;
+            // $transation->user_id = $request->user_id;
+            // $transation->amount = $request->amount;
 
             if ($request->type == "add") {
                 $balance['USD'] += $request->amount;
                 $message = "$$request->amount added to balance sucessfully";
-                $transation->type = 1;
+                // $transation->type = 1;
             } else {
                 $balance['USD'] -= $request->amount;
                 if ($balance['USD'] < 0) {
                     $balance['USD'] = 0;
                 }
-                $transation->type = 0;
+                // $transation->type = 0;
                 $message = "$$request->amount deducted from balance sucessfully";
             }
 
 
             $user->balance = json_encode($balance);
             $user->save();
-            $transation->save();
+            // $transation->save();
             DB::commit();
             return back()->with(['success' => $message]);
         } catch (\Exception $e) {

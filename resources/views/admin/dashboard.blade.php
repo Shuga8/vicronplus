@@ -178,7 +178,7 @@
                     <p class="text-xs text-gray-600">All Withdrawals</p>
                 </div>
 
-                <a href=""
+                <a href="{{ route('admin.users.withdrawals', 'all') }}"
                     class="absolute top-2 right-2 py-px px-3 rounded-xl border-purple-500 border text-purple-500 lowercase hover:bg-purple-400 hover:text-white text-xs">
                     View
                 </a>
