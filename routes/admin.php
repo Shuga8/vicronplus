@@ -34,6 +34,11 @@ Route::middleware('admin')->group(function () {
             Route::get('/type/{type}', 'deposits')->name('deposits');
             Route::get('/update-deposit/{status}/{id}', 'updateDeposit')->name('deposit.update');
         });
+
+        Route::prefix('withdrawals')->group(function () {
+            Route::get('/type/{type}', 'withdrawals')->name('withdrawals');
+            Route::get('/update-withdrawal/{status}/{id}', 'updateWithdrawals')->name('withdraw.update');
+        });
     });
 
     Route::prefix("investment-plans")->name('investment.')->controller('InvestmentController')->group(function () {

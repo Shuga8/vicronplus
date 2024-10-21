@@ -18,7 +18,7 @@
                             Amount
                         </th>
                         <th scope="col" class="px-6 py-4">
-                            Proof
+                            Wallet
                         </th>
                         <th scope="col" class="px-6 py-4">
                             Created On
@@ -31,46 +31,42 @@
 
                 <tbody>
 
-                    @unless ($deposits->isEmpty())
-                        @foreach ($deposits as $deposit)
+                    @unless ($withdraws->isEmpty())
+                        @foreach ($withdraws as $withdraw)
                             <tr class="bg-white border-b  hover:bg-gray-50 ">
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $deposit->user->username }}
+                                    {{ $withdraw->user->username }}
                                     <br>
                                     <span class="text-[10px] text-gray-400">
-                                        {{ $deposit->user->email }}
+                                        {{ $withdraw->user->email }}
                                     </span>
                                 </th>
                                 <td class="px-6 py-4 amount-usd">
-                                    {{ $deposit->amount }}
+                                    {{ $withdraw->amount }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $withdraw->wallet }}
                                 </td>
                                 <td class="px-6 py-4">
 
-
-                                    <a href="/storage/{{ $deposit->proof }}" target="_blank" class="">
-                                        <img src="/storage/{{ $deposit->proof }}" alt="Proof"
-                                            class="w-12 h-12 object-cover hover:scale-[1.05]">
-                                    </a>
-                                </td>
-                                <td class="px-6 py-4">
-
-                                    {{ showDateTime($deposit->created_at) }} <br> {{ diffForHumans($deposit->created_at) }}
+                                    {{ showDateTime($withdraw->created_at) }} <br>
+                                    {{ diffForHumans($withdraw->created_at) }}
 
                                 </td>
 
                                 <td class="px-6 py-4 h-auto flex flex-row justify-center place-items-center  gap-x-3">
 
-                                    @if ($deposit->status == 'approved')
+                                    @if ($withdraw->status == 'approved')
                                         <p class="text-white bg-blue-600 text-center px-3 py-[4px] cursor-pointer">Completed
                                         </p>
-                                    @elseif($deposit->status == 'rejected')
+                                    @elseif($withdraw->status == 'rejected')
                                         <p class="text-white bg-orange-600 text-center px-3 py-[4px] cursor-pointer">
                                             Rejected</p>
                                     @else
-                                        <a href="{{ route('admin.users.deposit.update', ['approved', $deposit->id]) }}"
+                                        <a href="{{ route('admin.users.withdraw.update', ['approved', $withdraw->id]) }}"
                                             class="text-white w-auto text-center bg-green-600 px-3 py-[4px] cursor-pointer">Complete</a>
-                                        <a href="{{ route('admin.users.deposit.update', ['rejected', $deposit->id]) }}"
+                                        <a href="{{ route('admin.users.withdraw.update', ['rejected', $withdraw->id]) }}"
                                             class="text-white w-auto text-center bg-red-600 px-3 py-[4px] cursor-pointer">Reject</a>
                                     @endif
 
@@ -95,27 +91,29 @@
 
             </table>
 
-            @if ($deposits->hasPages())
+            @if ($withdraws->hasPages())
                 <div class="pagination-links py-3 px-2">
-                    {{ $deposits->links() }}
+                    {{ $withdraws->links() }}
                 </div>
             @endif
 
         </div>
 
-        @push('scripts')
-            <script type="text/javascript">
-                const amountUSDFields = document.querySelectorAll(".amount-usd");
+    </div>
 
-                amountUSDFields.forEach(field => {
-                    let amount = parseFloat(field.textContent.replace(/[^\d\.]/g, ''));
-                    amount = amount.toLocaleString("en-US", {
-                        style: "currency",
-                        currency: "USD"
-                    });
-                    field.textContent = amount;
+    @push('scripts')
+        <script type="text/javascript">
+            const amountUSDFields = document.querySelectorAll(".amount-usd");
+
+            amountUSDFields.forEach(field => {
+                let amount = parseFloat(field.textContent.replace(/[^\d\.]/g, ''));
+                amount = amount.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD"
                 });
-            </script>
-        @endpush
+                field.textContent = amount;
+            });
+        </script>
+    @endpush
 
 </x-admin-layout>

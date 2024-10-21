@@ -291,4 +291,70 @@ class ManageUsersController extends Controller
             return back()->with(['error' => $e->getMessage()]);
         }
     }
+
+    public function withdrawals($type = "all")
+    {
+        if ($type == 'all') {
+            $withdrawals = Withdraw::join('users', 'withdraws.user_id', '=', 'users.id')->searchable(['users.username', 'users.email'])->with(['user'])->select('withdraws.*')->paginate(getPagination());
+        } else {
+
+            $withdrawals = Withdraw::where('withdraws.status', $type)->join('users', 'withdraws.user_id', '=', 'users.id')->searchable(['users.username', 'users.email'])->with(['user'])->select('withdraws.*')->paginate(getPagination());
+        }
+
+        $title = ucfirst("$type Withdrawals");
+
+        $data = [
+            'title' => $title,
+            'withdraws' => $withdrawals
+        ];
+
+        return view('admin.users.withrawals')->with($data);
+    }
+
+    public function updateWithdrawals($status, $id)
+    {
+        $withdrawal = Withdraw::where('id', $id)->with(['user'])->first();
+
+        if ($withdrawal->status == $status) {
+            return back()->with(['error' => 'Invalid Action']);
+        }
+
+        $amount = $withdrawal->amount;
+        $user = User::where('id', $withdrawal->user_id)->first();
+        $balance = json_decode($user->balance, true);
+
+        if ($status == 'rejected') {
+            $balance['USD'] += abs($amount);
+        }
+
+        try {
+            DB::beginTransaction();
+
+            $user->balance = json_encode($balance);
+            $withdrawal->status = $status;
+
+            if ($status == "rejected") {
+
+                $transaction = new Transaction();
+
+                $transaction->user_id = $user->id;
+                $transaction->type = 1;
+                $transaction->amount = $amount;
+
+                $transaction->save();
+            }
+
+            $user->save();
+
+            $withdrawal->save();
+
+            DB::commit();
+
+            return back()->with(['success' => "Withdrawal " . ucfirst($withdrawal->status) . " successfully"]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return back()->with(['error' => $e->getMessage()]);
+        }
+    }
 }
