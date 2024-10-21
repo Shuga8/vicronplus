@@ -29,6 +29,11 @@ Route::middleware('admin')->group(function () {
             Route::get('/type/{type}', 'investments')->name('investments');
             Route::get('/update-investment/{investment_id}/{user_id}', 'updateInvestment')->name('investments.update');
         });
+
+        Route::prefix('deposits')->group(function () {
+            Route::get('/type/{type}', 'deposits')->name('deposits');
+            Route::get('/update-deposit/{status}/{id}', 'updateDeposit')->name('deposit.update');
+        });
     });
 
     Route::prefix("investment-plans")->name('investment.')->controller('InvestmentController')->group(function () {

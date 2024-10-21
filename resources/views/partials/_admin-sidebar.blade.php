@@ -161,7 +161,7 @@
             </div>
 
             <div class="dropdown-links bg-blue-800 bg-opacity-80">
-                <a href=""
+                <a href="{{ route('admin.users.deposits', 'pending') }}"
                     class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
                     <p class="flex flex-row gap-x-2">
                         <span class="material-symbols-outlined text-xs">
@@ -173,19 +173,19 @@
                     <span class="px-1 bg-orange-500 text-xs text-white rounded-lg">{{ $pendingDepositsCount }}</span>
                 </a>
 
-                <a href=""
+                <a href="{{ route('admin.users.deposits', 'approved') }}"
                     class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
                     <p class="flex flex-row gap-x-2">
                         <span class="material-symbols-outlined text-xs">
                             radio_button_checked
                         </span>
-                        </span> <span class="text-xs">Completed Deposits</span>
+                        </span> <span class="text-xs">Approved Deposits</span>
                     </p>
 
                     <span class="px-1 bg-green-500 text-xs text-white rounded-lg">{{ $approvedDepositsCount }}</span>
                 </a>
 
-                <a href=""
+                <a href="{{ route('admin.users.deposits', 'rejected') }}"
                     class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
                     <p class="flex flex-row gap-x-2">
                         <span class="material-symbols-outlined text-xs">
@@ -197,7 +197,7 @@
                     <span class="px-1 bg-red-600 text-xs text-white rounded-lg">{{ $rejectedDepositsCount }}</span>
                 </a>
 
-                <a href=""
+                <a href="{{ route('admin.users.deposits', 'all') }}"
                     class="py-3 px-3 w-full flex flex-row justify-between place-items-center hover:bg-white hover:bg-opacity-10">
                     <p class="flex flex-row gap-x-2">
                         <span class="material-symbols-outlined text-xs">

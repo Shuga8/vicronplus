@@ -225,4 +225,70 @@ class ManageUsersController extends Controller
             return back()->with(['error' => $e->getMessage()]);
         }
     }
+
+    public function deposits($type = 'all')
+    {
+        if ($type == 'all') {
+            $deposits = Deposit::join('users', 'deposits.user_id', '=', 'users.id')->searchable(['users.username', 'users.email'])->with(['user'])->select('deposits.*')->paginate(getPagination());
+        } else {
+
+            $deposits = Deposit::where('deposits.status', $type)->join('users', 'deposits.user_id', '=', 'users.id')->searchable(['users.username', 'users.email'])->with(['user'])->select('deposits.*')->paginate(getPagination());
+        }
+
+        $title = ucfirst("$type Deposits");
+
+        $data = [
+            'title' => $title,
+            'deposits' => $deposits
+        ];
+
+        return view('admin.users.deposits')->with($data);
+    }
+
+    public function updateDeposit($status, $id)
+    {
+        $deposit = Deposit::where('id', $id)->with(['user'])->first();
+
+        if ($deposit->status == $status) {
+            return back()->with(['error' => 'Invalid action!']);
+        }
+
+        $amount = $deposit->amount;
+        $user = User::where('id', $deposit->user_id)->first();
+        $balance = json_decode($user->balance, true);
+
+        if ($status == 'approved') {
+            $balance['USD'] += abs($amount);
+        }
+
+        try {
+            DB::beginTransaction();
+
+            $user->balance = json_encode($balance);
+            $deposit->status = $status;
+
+            if ($status == "approved") {
+
+                $transaction = new Transaction();
+
+                $transaction->user_id = $user->id;
+                $transaction->type = 1;
+                $transaction->amount = $amount;
+
+                $transaction->save();
+            }
+
+            $user->save();
+
+            $deposit->save();
+
+            DB::commit();
+
+            return back()->with(['success' => "Deposit " . ucfirst($deposit->status) . " successfully"]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return back()->with(['error' => $e->getMessage()]);
+        }
+    }
 }

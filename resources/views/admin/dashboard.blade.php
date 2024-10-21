@@ -156,7 +156,7 @@
                     <p class="text-xs text-gray-600">All Deposits</p>
                 </div>
 
-                <a href=""
+                <a href="{{ route('admin.users.deposits', 'all') }}"
                     class="absolute top-2 right-2 py-px px-3 rounded-xl border-cyan-500 border text-cyan-500 lowercase hover:bg-cyan-400 hover:text-white text-xs">
                     View
                 </a>
