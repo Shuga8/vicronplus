@@ -17,8 +17,12 @@ use App\Http\Controllers\PagesController;
 */
 
 Route::get('/', [PagesController::class, 'index'])->name('home');
-Route::post('/send-mail', function () {});
-Route::post('subscribe', function () {});
+Route::post('/send-mail', function () {
+    return back()->with(['success' => 'Message recieved']);
+});
+Route::post('subscribe', function () {
+    return back()->with(['success' => 'Subscription successful']);
+})->name('subscribe');
 Route::get('storage/{folder}/{img}', [FileController::class, 'show']);
 Route::get('lang', [LanguageController::class, 'index'])->name('getLang');
 Route::get('lang/{lang}', [LanguageController::class, 'setLang'])->name('setLang');

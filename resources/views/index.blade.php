@@ -92,7 +92,7 @@
 
     </section>
 
-    <section class="about-investment py-10 ">
+    <section class="about-investment py-10 " id="about">
         <h3 class="text-center font-bold text-2xl uppercase">About Vicron Investment</h3>
 
         <div class="block md:flex md:gap-x-7 md:gap-y-3 md:justify-between py-6">
@@ -190,7 +190,7 @@
                         </li>
 
                     </ul>
-                    <button class="button">Buy Now</button>
+                    <button class="button" onclick="window.location.href = '/user/investment/new'">Buy Now</button>
                 </div>
             @endforeach
 

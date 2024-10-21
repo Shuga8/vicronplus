@@ -11,11 +11,11 @@
             <a href="{{ route('home') }}">Home</a>
         </li>
         <li class="px-4 py-2">
-            <a href="">About</a>
+            <a href="#about">About</a>
         </li>
-        <li class="px-4 py-2">
+        {{-- <li class="px-4 py-2">
             <a href="">Contact</a>
-        </li>
+        </li> --}}
     </ul>
 
     <ul class="actions hidden md:flex md:flex-row">
@@ -66,9 +66,9 @@
             <li class="px-4 py-3 text-center">
                 <a href="">About</a>
             </li>
-            <li class="px-4 py-3 text-center">
+            {{-- <li class="px-4 py-3 text-center">
                 <a href="">Contact</a>
-            </li>
+            </li> --}}
 
             @guest
                 <li class="px-4 py-3 text-center">

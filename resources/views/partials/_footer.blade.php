@@ -33,7 +33,8 @@
                     </li>
 
                     <li class="mb-4 ">
-                        <a href="" class="text-gray-400 flex flex-row gap-x-3 justify-center md:justify-start"><span
+                        <a href="{{ route('user.investment.new') }}"
+                            class="text-gray-400 flex flex-row gap-x-3 justify-center md:justify-start"><span
                                 class="text-red-500">*</span>
                             <span>Invest</span></a>
                     </li>
@@ -58,7 +59,7 @@
                         <a href="{{ route('user.register') }}"
                             class="text-gray-400 flex flex-row gap-x-3 justify-center md:justify-start"><span
                                 class="text-red-500">*</span>
-                            <span>Dashboard</span></a>
+                            <span>Register</span></a>
                     </li>
                 @endguest
 
@@ -87,12 +88,14 @@
         </p>
 
         <div class="subscribe-form mx-auto w-full border-b border-b-slate-500 pb-7">
-            <form action="">
+            <form action="{{ route('subscribe') }}" method="POST">
+                @csrf
                 <label>
                     <label for="email" class="text-[10px] text-red-400">Subscribe to our newsletter</label>
                     <div class="input-group flex flex-row gap-x-2 relative">
                         <input type="email" autocomplete="current-email" name="email" placeholder="email address..."
-                            class="w-full bg-white bg-opacity-10 border-none outline-none rounded-md focus:outline-none pt-2.5 pb-3">
+                            class="w-full bg-white bg-opacity-10 border-none outline-none rounded-md focus:outline-none pt-2.5 pb-3"
+                            required>
                         <button
                             class="py-3 px-3 bg-blue-600 text-white rounded-md  absolute right-1 top-[5px] flex place-items-center">
                             <span class="material-symbols-outlined text-[12px]">
