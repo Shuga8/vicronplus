@@ -186,6 +186,11 @@ class ManageUsersController extends Controller
         $investment = ActiveInvestment::where('id', $investment_id)->with(['plan', 'user'])->first();
         $user = User::where('id', $user_id)->first();
 
+        if ($investment->status == 1) {
+
+            return back()->with(['error' => 'Investment already completed']);
+        }
+
         try {
             DB::beginTransaction();
 

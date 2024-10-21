@@ -90,7 +90,7 @@
                     <p class="text-xs text-gray-600">Running Investments</p>
                 </div>
 
-                <a href=""
+                <a href="{{ route('admin.users.investments', 0) }}"
                     class="absolute top-2 right-2 py-px px-3 rounded-xl border-orange-500 border text-orange-500 lowercase hover:bg-orange-400 hover:text-white text-xs">
                     View
                 </a>
@@ -112,7 +112,7 @@
                     <p class="text-xs text-gray-600">Completed Investments</p>
                 </div>
 
-                <a href=""
+                <a href="{{ route('admin.users.investments', 1) }}"
                     class="absolute top-2 right-2 py-px px-3 rounded-xl border-green-500 border text-green-500 lowercase hover:bg-green-400 hover:text-white text-xs">
                     View
                 </a>
@@ -134,7 +134,7 @@
                     <p class="text-xs text-gray-600">All Investments</p>
                 </div>
 
-                <a href=""
+                <a href="{{ route('admin.users.investments', 'all') }}"
                     class="absolute top-2 right-2 py-px px-3 rounded-xl border-blue-500 border text-blue-500 lowercase hover:bg-blue-400 hover:text-white text-xs">
                     View
                 </a>
