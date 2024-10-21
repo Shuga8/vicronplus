@@ -20,7 +20,7 @@
                     required>
             </div>
 
-            <button class="px-3 py-[4px] text-white bg-blue-700">Change Password</button>
+            <button class="px-3 py-3 hover:bg-blue-500 text-white bg-blue-700">Change Password</button>
         </form>
     </div>
 </x-layout>

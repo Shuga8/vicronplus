@@ -20,7 +20,7 @@
             </div>
 
             <div id="header-drop" class="hidden fixed top-16 right-4 w-32 rounded-md bg-white shadow-2xl z-20">
-                <a href=""
+                <a href="{{ route('admin.settings') }}"
                     class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-gray-200 hover:bg-opacity-10 text-blue-600 border-b border-slate-300"><span
                         class="material-symbols-outlined text-sm">
                         manage_accounts

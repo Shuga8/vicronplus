@@ -43,7 +43,7 @@
 
             <div id="header-drop"
                 class="hidden fixed z-10 top-[70px] right-2 w-40 rounded-md bg-white shadow-slate-600  shadow-lg">
-                <a href=""
+                <a href="{{ route('user.settings') }}"
                     class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 text-primary-600"><span
                         class="material-symbols-outlined text-sm">
                         manage_accounts
