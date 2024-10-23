@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
         <title>Vicron Plus | {{ $title }}</title>
-        <meta property="og:title" content="Vicron Plus | {{ $title }}}" />
+        <meta property="og:title" content="Vicron Plus | {{ $title }}" />
         <meta property="og:description" content="Vicron Plus | {{ $title }}" />
         <meta property="og:image" content="{{ asset('favicon.ico') }}" />
         <meta property="og:url" content="{{ config('app.url') }}" />
@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="{{ asset('user.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/user.css') }}">
     </head>
 
     <body>
@@ -39,7 +39,7 @@
 
         </div>
 
-        <script src="{{ asset('js/layout.js') }}"></script>
+        <script src="{{ asset('assets/js/layout.js') }}"></script>
 
         @stack('scripts')
 

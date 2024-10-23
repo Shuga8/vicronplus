@@ -23,7 +23,7 @@
             crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-        <link rel="stylesheet" href="{{ asset('admin.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin.css') }}">
 
         <link rel="cannonical" href="{{ config('app.url') }}">
     </head>
