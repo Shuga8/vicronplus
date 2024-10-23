@@ -1,4 +1,4 @@
-<x-page-layout :title="$title">
+<x-page-layout :title="$title" :showHeader="false">
 
     <div class="login-container h-fit pb-4" style="height: fit-content">
         <div class="menu-img-container hidden md:block">

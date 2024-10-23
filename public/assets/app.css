@@ -11,4 +11,151 @@ html {
 
 body {
   overflow-x: hidden;
+  min-height: 300dvh;
+  position: relative;
+}
+body::-webkit-scrollbar {
+  width: 5px;
+  height: 3px;
+  border-radius: 8px;
+  background: transparent;
+}
+body::-moz-scrollbar {
+  width: 5px;
+  height: 3px;
+  border-radius: 8px;
+  background: transparent;
+}
+body::-ms-scrollbar {
+  width: 5px;
+  height: 3px;
+  border-radius: 8px;
+  background: transparent;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+body::-moz-scrollbar-track {
+  background: transparent;
+}
+body::-ms-scrollbar-track {
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  color: #04c8c4;
+  background: #04c8c4;
+}
+body::-moz-scrollbar-thumb {
+  color: #04c8c4;
+  background: #04c8c4;
+}
+body::-ms-scrollbar-thumb {
+  color: #04c8c4;
+  background: #04c8c4;
+}
+
+header {
+  width: 100%;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  transition: position 0.7s linear;
+  transition: background 0.7s linear;
+}
+header > .links a {
+  color: #fff;
+  font-size: 17px;
+}
+header > .links a:hover {
+  color: #eee;
+  transition: all 0.3s linear;
+}
+header .actions a {
+  color: #08cafb;
+  padding: 10px 24px;
+  border: 2px solid #08cafb;
+  border-radius: 7px;
+  background: transparent;
+}
+header .actions a:hover {
+  background: #08cafb;
+  color: #fff;
+  transition: all 0.3s linear;
+}
+header.sticky-header {
+  position: sticky;
+  background: #fff;
+  top: 0;
+  z-index: 10;
+  transition: all 0.7s linear;
+}
+header.sticky-header > .links a {
+  color: #06b6d4;
+}
+header.sticky-header > .links a:hover {
+  color: #468cf6;
+  transition: all 0.3s linear;
+}
+
+section.hero {
+  width: 100dvw;
+  height: 90dvh;
+  background-image: linear-gradient(to right, #131a2e, #1f334e);
+  position: relative;
+}
+section.hero canvas {
+  vertical-align: bottom;
+}
+section.hero #particles-js {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+section.hero .body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 0px 30px;
+}
+section.hero .body .text h3 {
+  font-size: 2rem;
+  font-weight: 550;
+}
+section.hero .body .text p {
+  font-size: 1rem;
+  line-height: 1.3;
+}
+section.hero .body .text p span {
+  font-style: italic;
+  font-weight: 550;
+}
+section.hero .body .text .go-to a:first-child:hover {
+  background: #164e63;
+  transition: all 0.5s;
+}
+section.hero .body .text .go-to a:last-child:hover {
+  background: #06b6d4;
+  transition: all 0.5s;
+}
+section.hero .body .img {
+  padding: 0px 12px;
+}
+section.hero .body .img img {
+  width: 100%;
+}
+
+.marquee {
+  padding: 10px 2px;
+  background-image: linear-gradient(to right, #1a2840, #1e324d);
+  width: 100%;
+  height: 10dvh;
+  display: flex;
+  align-items: center;
 }/*# sourceMappingURL=app.css.map */

@@ -1,19 +1,31 @@
-const aside = document.querySelector(".aside");
+const header = document.querySelector(".header");
 
-function togglePageAsideBar(e){
-    aside.classList.remove("shimmer-out");
-    aside.classList.replace("hidden", "flex");
-    aside.classList.add("shimmer-in");
-    
-}
+let previousY = window.scrollY;
 
-function closePageAside(){
-    aside.classList.remove("shimmer-in");
-    aside.classList.add("shimmer-out");
-    
-    setTimeout(() => {
-        aside.classList.replace("flex", "hidden");
-        aside.classList.remove("shimmer-out");
-        
-    }, 700);
-}
+window.addEventListener("scroll", function () {
+    const currentY = window.scrollY;
+
+    if (currentY < 100) {
+        if (header.classList.contains("sticky-header")) {
+            header.classList.remove("sticky-header");
+        }
+    } else {
+        if (currentY > previousY) {
+            previousY = currentY;
+            if (header.classList.contains("sticky-header")) {
+                header.classList.remove("sticky-header");
+            }
+        } else {
+            previousY = currentY;
+            if (previousY < 5) {
+                if (header.classList.contains("sticky-header")) {
+                    header.classList.remove("sticky-header");
+                    return;
+                }
+            }
+            if (!header.classList.contains("sticky-header")) {
+                header.classList.add("sticky-header");
+            }
+        }
+    }
+});

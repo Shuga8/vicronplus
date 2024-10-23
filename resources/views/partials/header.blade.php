@@ -1,4 +1,4 @@
-<header class="header flex flex-row justify-between place-items-center px-3 py-3 bg-transparent">
+<header class="header flex flex-row justify-between place-items-center px-3 py-4">
 
     <div class="logo">
         <a href="{{ route('home') }}">
@@ -6,7 +6,7 @@
         </a>
     </div>
 
-    <div class="links flex flex-row gap-x-7">
+    <div class="links flex flex-row gap-x-10">
 
         <a href="{{ route('home') }}">Home</a>
         <a href="">About</a>
