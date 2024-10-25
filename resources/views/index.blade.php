@@ -143,6 +143,63 @@
 
     </div>
 
+    <div class="how">
+        <h3 class=" text-center mb-3">How it works</h3>
+        <hr>
+
+        <div
+            class="container w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-20 gap-y-24 pt-20 pb-10 px-4 justify-center  place-content-center">
+
+            <div class="card relative h-[250px]">
+                <div class="icon">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+
+                <div class="card-body">
+
+                    <h4>Register An account</h4>
+
+                    <p>
+                        Go to the sign up page and register an account.Fill in all data appropiately.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="card relative h-[250px]">
+                <div class="icon">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                </div>
+
+                <div class="card-body">
+
+                    <h4>Make a Deposit</h4>
+
+                    <p>
+                        Make a deposit by going to the deposit page and selecting a wallet address you will like to
+                        deposit to. Your deposit will be confirmed in a few minutes.
+                    </p>
+                </div>
+            </div>
+            <div class="card relative h-[250px]">
+
+                <div class="icon">
+                    <i class="fa-solid fa-money-bill-trend-up"></i>
+                </div>
+
+                <div class="card-body">
+
+                    <h4>Select an Invesment Plan</h4>
+
+                    <p>
+                        Go to the investment plan and pick an investment plan. Appropriately follow the plan minimum and
+                        maximum amount rules.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="subscribe">
 
         <div class="subscribe-form">
@@ -208,7 +265,7 @@
                         </ul>
 
                         <a href="{{ route('user.investment.new') }}"
-                            class="px-7 py-2 text-white bg-primary-600 rounded-sm">
+                            class="px-7 py-2 text-white bg-primary-600 hover:bg-primary-500 rounded-sm">
                             Buy Plan
                         </a>
                     </div>

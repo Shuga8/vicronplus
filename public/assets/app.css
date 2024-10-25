@@ -289,6 +289,58 @@ section.hero .body .img img {
   gap: 12px;
 }
 
+.how {
+  width: 100%;
+  padding: 24px 10px;
+}
+.how > h3 {
+  font-size: 1.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #468cf6;
+}
+.how hr {
+  width: 50px;
+  border: 1px solid #06b6d4;
+  margin: 0px auto 10px auto;
+}
+.how .container .card {
+  box-shadow: 0px 2px 3px #eee, 0px -2px 3px #eee;
+  padding: 0px 10px;
+}
+.how .container .card .icon {
+  width: 120px;
+  height: 120px;
+  background: rgb(4, 91, 205);
+  position: absolute;
+  z-index: 1;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  border: 6px solid #fff;
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.how .container .card .card-body {
+  margin-top: 70px;
+}
+.how .container .card .card-body h4 {
+  color: #000;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.how .container .card .card-body p {
+  margin-top: 13px;
+  color: #000;
+  text-align: center;
+  line-height: 2;
+}
+
 @media (max-width: 750px) {
   header {
     width: 100%;
