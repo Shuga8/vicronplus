@@ -511,6 +511,12 @@ footer {
             border-radius: 7px;
             margin-right: 10px;
             cursor: pointer;
+
+            &:hover {
+                background: #08cafb;
+                color: #fff;
+                transition: all 0.3s linear;
+            }
         }
     }
 

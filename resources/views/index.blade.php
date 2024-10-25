@@ -150,7 +150,7 @@
         <div
             class="container w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-20 gap-y-24 pt-20 pb-10 px-4 justify-center  place-content-center">
 
-            <div class="card relative h-[250px]">
+            <div class="card relative h-[280px]">
                 <div class="icon">
                     <i class="fa-solid fa-user-plus"></i>
                 </div>
@@ -166,7 +166,7 @@
             </div>
 
 
-            <div class="card relative h-[250px]">
+            <div class="card relative h-[280px]">
                 <div class="icon">
                     <i class="fa-solid fa-hand-holding-dollar"></i>
                 </div>
@@ -181,7 +181,7 @@
                     </p>
                 </div>
             </div>
-            <div class="card relative h-[250px]">
+            <div class="card relative h-[280px]">
 
                 <div class="icon">
                     <i class="fa-solid fa-money-bill-trend-up"></i>
