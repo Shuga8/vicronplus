@@ -22,4 +22,8 @@
         @endguest
     </div>
 
+    <div class="toggle-icon">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
 </header>

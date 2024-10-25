@@ -155,7 +155,7 @@
                             class="w-full px-2 text-[12px] py-2 bg-transparent border text-white"
                             placeholder="enter your email address...." required>
                         <button
-                            class="absolute right-[3px] top-[50%] translate-y-[-50%] px-3 py-2 text-[12px] bg-primary-600">
+                            class="absolute right-[3px] top-[50%] translate-y-[-50%] px-3 py-2 text-[12px] bg-primary-600 text-white">
                             <i class="fa-solid fa-paper-plane"></i>
                         </button>
                     </div>
@@ -164,8 +164,61 @@
         </div>
     </div>
 
-    <section class="invest-plans">
-        <h3>Investment Plans</h3>
+    <section class="investment-plans w-full">
+        <h3 class=" text-center mb-3">investment Plans</h3>
+        <hr>
+
+        <div class="plans">
+
+            @foreach ($plans as $plan)
+                <div class="plan">
+
+                    <div class="card-img">
+                        <div class="overlay">
+
+                            <h4 class="text-[1.1rem] uppercase text-white font-bold">{{ $plan->plan_name }}</h4>
+
+                            <p class=" text-white text-[1.4rem] font-light">{{ $plan->percentage }}%</p>
+
+                            <p class=" text-white text-[0.98rem] font-light capitalize">After {{ $plan->duration }}
+                                {{ $plan->unit . 's' }}</p>
+
+                        </div>
+                    </div>
+
+                    <div class="card-body h-[calc(100%-180px)] flex flex-col gap-y-9 items-center justify-center">
+                        <ul>
+                            <li class="flex gap-x-1 place-items-center mb-3">
+                                <i class="fa-solid fa-angles-right text-[11px] text-[#468cf6] font-bold"></i>
+                                <span>Minimum - <span class="amount-usd">{{ $plan->minimum }}</span></span>
+                            </li>
+
+                            <li class="flex gap-x-1 place-items-center mb-3">
+                                <i class="fa-solid fa-angles-right text-[11px] text-[#468cf6] font-bold"></i>
+                                <span>Maximum - <span class="amount-usd">{{ $plan->maximum }}</span></span>
+                            </li>
+
+                            <li class="flex gap-x-1 place-items-center mb-3">
+                                <i class="fa-solid fa-angles-right text-[11px] text-[#468cf6] font-bold"></i>
+                                <span>Capital Return <span
+                                        class="text-white px-1 pb-[1px] rounded-sm {{ $plan->capital_return == 'on' ? 'bg-green-600' : 'bg-red-600' }}">{{ $plan->capital_return }}</span></span>
+                            </li>
+
+
+                        </ul>
+
+                        <a href="{{ route('user.investment.new') }}"
+                            class="px-7 py-2 text-white bg-primary-600 rounded-sm">
+                            Buy Plan
+                        </a>
+                    </div>
+
+                </div>
+            @endforeach
+
+
+        </div>
+
     </section>
 
     @push('script')
@@ -281,7 +334,7 @@
             /* ---- stats.js config ---- */
 
             var count_particles, stats, update;
-            stats = new Stats;
+            stats = new Stats();
             stats.setMode(0);
             stats.domElement.style.position = 'absolute';
             stats.domElement.style.left = '0px';
@@ -297,6 +350,18 @@
                 requestAnimationFrame(update);
             };
             requestAnimationFrame(update);
+        </script>
+        <script type="text/javascript">
+            const amountUSDFields = document.querySelectorAll(".amount-usd");
+
+            amountUSDFields.forEach(field => {
+                let amount = parseFloat(field.textContent.replace(/[^\d\.]/g, ''));
+                amount = amount.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD"
+                });
+                field.textContent = amount;
+            });
         </script>
     @endpush
 

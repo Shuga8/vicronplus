@@ -103,6 +103,10 @@ header {
         }
     }
 
+    .toggle-icon {
+        display: none;
+    }
+
     &.sticky-header {
         position: sticky;
         background: #fff;
@@ -286,6 +290,63 @@ section.hero {
     }
 }
 
+.investment-plans {
+    width: 100%;
+    padding: 24px 10px;
+
+    > h3 {
+        font-size: 1.7rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #468cf6;
+    }
+
+    hr {
+        width: 50px;
+        border: 1px solid #06b6d4;
+        margin: 0px auto 10px auto;
+    }
+
+    .plans {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1.7rem 2.5rem;
+        gap: 20px;
+        place-items: center;
+
+        .plan {
+            width: 340px;
+            height: 430px;
+            border-radius: 5px;
+            flex-shrink: 1;
+            box-shadow: 2px 0px 7px #eee, -2px 0px 7px #eee;
+
+            .card-img {
+                position: relative;
+                width: 100%;
+                height: 180px;
+                background: url("../assets/finance-8045002_1280.jpg") no-repeat
+                    center center / cover;
+                border-radius: 5px 5px 0px 0px;
+                overflow: hidden;
+
+                .overlay {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    background: rgba($color: #000000, $alpha: 0.8);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    gap: 12px;
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 750px) {
     header {
         width: 100%;
@@ -304,6 +365,15 @@ section.hero {
         .actions {
             display: none;
         }
+
+        .toggle-icon {
+            display: block;
+            color: #08cafb;
+            padding: 7px 12px;
+            border: 2px solid #08cafb;
+            border-radius: 7px;
+            margin-right: 10px;
+        }
     }
 
     .index-about {
@@ -313,6 +383,14 @@ section.hero {
             .img-about {
                 display: none;
             }
+        }
+    }
+
+    .investment-plans {
+        .plans {
+            padding: 1.7rem 1rem;
+            justify-content: center;
+            flex-grow: 1;
         }
     }
 }
