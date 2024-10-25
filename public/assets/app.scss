@@ -283,8 +283,12 @@ section.hero {
             display: flex;
             .input-group {
                 max-width: 550px;
-
                 min-width: 300px;
+                flex-shrink: 1;
+
+                input {
+                    flex-shrink: 1;
+                }
             }
         }
     }
@@ -326,7 +330,7 @@ section.hero {
                 position: relative;
                 width: 100%;
                 height: 180px;
-                background: url("../assets/finance-8045002_1280.jpg") no-repeat
+                background: url("../assets/finance-8041770_1280.jpg") no-repeat
                     center center / cover;
                 border-radius: 5px 5px 0px 0px;
                 overflow: hidden;
@@ -408,6 +412,78 @@ section.hero {
     }
 }
 
+footer {
+    width: 100%;
+    background: #1d2334;
+
+    > div {
+        width: 100%;
+        padding: 3rem 1.2rem 2rem 1.2rem;
+        .about-footer {
+            .content {
+                margin-top: 10px;
+                color: #fff;
+                padding: 15px 12px;
+                line-height: 2;
+                text-align: center;
+                font-size: 0.9rem;
+            }
+        }
+
+        .explore {
+            padding: 15px 12px;
+
+            h3 {
+                font-size: 1.7rem;
+                color: #986df5;
+                text-align: center;
+                font-style: italic;
+            }
+
+            hr {
+                width: 30px;
+                border: 1px solid #fff;
+                margin: 10px auto;
+            }
+
+            ul {
+                margin: 24px auto 0px auto;
+                width: fit-content;
+                li {
+                    text-align: center;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        .get-in-touch {
+            padding: 15px 12px;
+
+            h3 {
+                font-size: 1.7rem;
+                color: #986df5;
+                text-align: center;
+                font-style: italic;
+            }
+
+            hr {
+                width: 30px;
+                border: 1px solid #fff;
+                margin: 10px auto;
+            }
+
+            ul {
+                margin: 24px auto 0px auto;
+                width: fit-content;
+                li {
+                    text-align: center;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 750px) {
     header {
         width: 100%;
@@ -434,6 +510,7 @@ section.hero {
             border: 2px solid #08cafb;
             border-radius: 7px;
             margin-right: 10px;
+            cursor: pointer;
         }
     }
 
