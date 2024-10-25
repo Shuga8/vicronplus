@@ -5,7 +5,7 @@ let previousY = window.scrollY;
 window.addEventListener("scroll", function () {
     const currentY = window.scrollY;
 
-    if (currentY < 100) {
+    if (currentY < 150) {
         if (header.classList.contains("sticky-header")) {
             header.classList.remove("sticky-header");
         }

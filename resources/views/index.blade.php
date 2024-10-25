@@ -105,8 +105,68 @@
 
     <div class="index-about w-full">
 
-        <h3 class="text-blue-700 text-center">About Us</h3>
+        <h3 class=" text-center mb-3">About Us</h3>
+
+        <hr>
+
+        <div class="">
+
+            <div class="content">
+                <p>
+                    VicronPlus is a forward-thinking investment company dedicated to empowering individuals and
+                    businesses
+                    to achieve their financial goals. Founded on the principles of innovation, integrity, and
+                    excellence,
+                    VicronPlus specializes in a diverse range of investment solutions tailored to meet the unique
+                    needs
+                    of
+                    our clients.
+                </p>
+
+                <h3>Our Mission</h3>
+
+                <p>
+                    At VicronPlus, our mission is to provide strategic investment opportunities that foster growth
+                    and
+                    sustainability. We aim to create value for our clients through informed decision-making and a
+                    commitment
+                    to transparency.
+                </p>
+
+            </div>
+
+            <div class="img-about">
+            </div>
+
+        </div>
+
+
     </div>
+
+    <div class="subscribe">
+
+        <div class="subscribe-form">
+            <form action="{{ route('subscribe') }}" method="POST">
+                @csrf
+                <div class="">
+                    <label for="" class="text-white text-[12px]">Subscribe to our newsletter</label>
+                    <div class="input-group relative">
+                        <input type="email" autocomplete="off"
+                            class="w-full px-2 text-[12px] py-2 bg-transparent border text-white"
+                            placeholder="enter your email address...." required>
+                        <button
+                            class="absolute right-[3px] top-[50%] translate-y-[-50%] px-3 py-2 text-[12px] bg-primary-600">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <section class="invest-plans">
+        <h3>Investment Plans</h3>
+    </section>
 
     @push('script')
         <script src="{{ asset('assets/js/particles.js') }}"></script>

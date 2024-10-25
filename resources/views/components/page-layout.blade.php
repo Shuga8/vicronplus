@@ -34,6 +34,8 @@
             @include('partials.header')
         @endif
 
+        <x-alerts />
+
 
         <div class="content-body">
             {{ $slot }}
