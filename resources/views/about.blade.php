@@ -16,7 +16,7 @@
 
     <div class="index-about w-full">
 
-        <h3 class=" text-center mb-3">About Us</h3>
+        <h3 class=" text-center mb-3">Know More About Us</h3>
 
         <hr>
 
