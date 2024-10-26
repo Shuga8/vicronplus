@@ -484,6 +484,59 @@ footer {
     }
 }
 
+.auth-container {
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10px;
+
+    .form-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 3rem;
+        width: 95%;
+        min-height: 350px;
+        .form-hero {
+            background: url("../assets/dash.png") no-repeat center center /
+                cover;
+            background-size: contain;
+            width: auto;
+            display: flex;
+        }
+
+        form {
+            h1 {
+                text-transform: uppercase;
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: #164e63;
+            }
+
+            .upper-text {
+                color: #06b6d4;
+                font-size: 12px;
+            }
+
+            .group {
+                width: clamp(280px, 420px, 100%);
+                padding: 7px 12px;
+
+                label {
+                    font-weight: 600;
+                    font-size: 14px;
+                }
+
+                input {
+                    width: 100%;
+                    border: 1px solid #ddd;
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 750px) {
     header {
         width: 100%;
@@ -535,6 +588,34 @@ footer {
             padding: 1.7rem 1rem;
             justify-content: center;
             flex-grow: 1;
+        }
+    }
+
+    .auth-container {
+        .form-container {
+            grid-template-columns: 1fr;
+            width: 90%;
+            .form-hero {
+                display: none;
+            }
+
+            form {
+                h1 {
+                    text-align: center;
+                }
+
+                .upper-text {
+                    text-align: center;
+                }
+
+                .group {
+                    width: clamp(280px, 100%, 100%);
+
+                    label {
+                        font-size: 12px;
+                    }
+                }
+            }
         }
     }
 }

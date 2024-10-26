@@ -408,6 +408,51 @@ footer > div .get-in-touch ul li {
   margin-bottom: 10px;
 }
 
+.auth-container {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 10px;
+}
+.auth-container .form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  -moz-column-gap: 3rem;
+       column-gap: 3rem;
+  width: 95%;
+  min-height: 350px;
+}
+.auth-container .form-container .form-hero {
+  background: url("../assets/dash.png") no-repeat center center/cover;
+  background-size: contain;
+  width: auto;
+  display: flex;
+}
+.auth-container .form-container form h1 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #164e63;
+}
+.auth-container .form-container form .upper-text {
+  color: #06b6d4;
+  font-size: 12px;
+}
+.auth-container .form-container form .group {
+  width: clamp(280px, 420px, 100%);
+  padding: 7px 12px;
+}
+.auth-container .form-container form .group label {
+  font-weight: 600;
+  font-size: 14px;
+}
+.auth-container .form-container form .group input {
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
 @media (max-width: 750px) {
   header {
     width: 100%;
@@ -450,5 +495,24 @@ footer > div .get-in-touch ul li {
     padding: 1.7rem 1rem;
     justify-content: center;
     flex-grow: 1;
+  }
+  .auth-container .form-container {
+    grid-template-columns: 1fr;
+    width: 90%;
+  }
+  .auth-container .form-container .form-hero {
+    display: none;
+  }
+  .auth-container .form-container form h1 {
+    text-align: center;
+  }
+  .auth-container .form-container form .upper-text {
+    text-align: center;
+  }
+  .auth-container .form-container form .group {
+    width: clamp(280px, 100%, 100%);
+  }
+  .auth-container .form-container form .group label {
+    font-size: 12px;
   }
 }/*# sourceMappingURL=app.css.map */

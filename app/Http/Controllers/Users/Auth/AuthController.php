@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Users\Auth;
 
 use App\Models\User;
+use App\Models\UserLogin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\UserLogin;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AuthController extends Controller
 {
@@ -41,12 +42,16 @@ class AuthController extends Controller
 
     public function registerUser(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'fullname' => ['required', 'string'],
             'email' => ['required', 'email', 'unique:users,email'],
             'username' => ['required', 'string', 'unique:users,username'],
             'password' => ['required', 'string', 'confirmed']
         ]);
+
+        if ($validate->fails()) {
+            return back()->with(['error' => $validate->errors()->first()]);
+        }
 
         try {
             DB::beginTransaction();
