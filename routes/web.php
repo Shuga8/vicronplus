@@ -17,6 +17,8 @@ use App\Http\Controllers\PagesController;
 */
 
 Route::get('/', [PagesController::class, 'index'])->name('home');
+Route::get('/about-us', [PagesController::class, 'about'])->name('about');
+Route::get('/contact-us', [PagesController::class, 'contact'])->name('contact');
 Route::post('/send-mail', function () {
     return back()->with(['success' => 'Message recieved']);
 });

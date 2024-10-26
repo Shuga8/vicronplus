@@ -32,12 +32,12 @@
 
                 <li class="flex flex-row gap-x-4 place-items-center text-cyan-200 hover:text-cyan-100">
                     <i class="fa-solid fa-location-arrow"></i>
-                    <a href="">About Us</a>
+                    <a href="{{ route('about') }}">About Us</a>
                 </li>
 
                 <li class="flex flex-row gap-x-4 place-items-center text-cyan-200 hover:text-cyan-100">
                     <i class="fa-solid fa-location-arrow"></i>
-                    <a href="">Contact Us</a>
+                    <a href="{{ route('contact') }}">Contact Us</a>
                 </li>
 
                 @auth('web')

@@ -9,8 +9,8 @@
     <div class="links flex flex-row gap-x-10">
 
         <a href="{{ route('home') }}">Home</a>
-        <a href="">About</a>
-        <a href="">Contact</a>
+        <a href="{{ route('about') }}">About</a>
+        <a href="{{ route('contact') }}">Contact Us</a>
     </div>
 
     <div class="actions px-4">
