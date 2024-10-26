@@ -41,7 +41,7 @@
 
         </div>
 
-        <script src="{{ asset('js/admin-layout.js') }}"></script>
+        <script src="{{ asset('assets/js/admin-layout.js') }}"></script>
 
         @stack('scripts')
 

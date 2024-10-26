@@ -3,8 +3,7 @@
     <div class="logo py-3 mb-12">
         <a href="{{ route('user.dashboard') }}"
             class="flex justify-center items-center place-content-center place-items-center">
-            <img src="{{ asset('android-chrome-192x192.png') }}" alt="VicronPlus" loading="lazy" class="w-14 h-14"><span
-                class="text-2xl font-bold mt-8 -ml-4 uppercase text-gray-50 italic">icron</span>
+            <img src="{{ asset('assets/logo.png') }}" alt="VicronPlus" loading="lazy" class="w-20 h-20 object-contain">
         </a>
     </div>
 

@@ -44,7 +44,7 @@
 
             <label for="logo" class="text-gray-700 text-sm flex flex-row gap-x-1"><span
                     class="font-semibold">Network Logo</span><span class="text-red-600">*</span></label>
-            <img src="{{ asset('upload.png') }}" alt="former_logo" id="former_logo"
+            <img src="{{ asset('assets/upload.png') }}" alt="former_logo" id="former_logo"
                 class="w-20 h-20 mx-auto rounded-full mix-blend-multiply">
             <input type="file" name="logo" id="logo"
                 class="w-full outline-none focus:outline-none  rounded-sm px-3 py-2 text-gray-600 mt-2 hidden"
@@ -88,7 +88,7 @@
         function showNewForm(data = null) {
             if (data == null) {
                 modal.querySelector(".modal-title").textContent = `New Wallet`;
-                modalForm.querySelector("#former_logo").setAttribute("src", `/upload.png`);
+                modalForm.querySelector("#former_logo").setAttribute("src", `/assets/upload.png`);
                 modalForm.querySelector(".change-btn").textContent = "Choose Logo";
                 modalForm.classList.remove("slide-up");
                 modal.classList.add("active-modal");
