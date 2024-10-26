@@ -37,7 +37,7 @@
                         <i class="fa-solid fa-right-to-bracket text-xs"></i>
                     </a>
 
-                    <a href=""
+                    <a href="{{ route('contact') }}"
                         class="text-white bg-transparent border-cyan-500 border-[1px] py-[11px] px-[26px]">Contact</a>
 
                 </div>
