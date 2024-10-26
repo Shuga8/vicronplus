@@ -30,6 +30,11 @@
 
 
                 <div class="group">
+                    <div class="input-group flex flex-row gap-x-1 place-items-center">
+                        <input type="checkbox" name="remember" id="remember"><label for="remember"
+                            class="text-[11px] text-gray-500 outline-2 outline-transparent checked:outline-transparent focus:outline-transparent">Remember
+                            Me</label>
+                    </div>
                     <p class="text-[12px] w-full text-right">Don't have an account?<a class="text-primary-600"
                             href="{{ route('user.register') }}" class="login"> register here</a></p>
 

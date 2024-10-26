@@ -12,6 +12,27 @@ html {
     scroll-behavior: smooth;
 }
 
+.aside {
+    width: 100dvw;
+    height: 100dvh;
+    background: rgba($color: #000000, $alpha: 0.7);
+    backdrop-filter: blur(3px);
+    position: fixed;
+    top: 0;
+    left: -100%;
+    z-index: 13;
+    overflow: hidden;
+    transition: left 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.active {
+        left: 0;
+        transition: left 0.3s ease-in-out;
+    }
+}
+
 body {
     overflow-x: hidden;
     position: relative;
@@ -546,7 +567,7 @@ footer {
                     font-size: 14px;
                 }
 
-                input {
+                input:not([type="checkbox"]) {
                     width: 100%;
                     border: 1px solid #ddd;
                 }

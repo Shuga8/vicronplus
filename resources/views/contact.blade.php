@@ -28,7 +28,7 @@
 
                 <div class="grow shrink">
 
-                    <label for="firstname" class="text-slate-700 uppercase font-semibold">
+                    <label for="firstname" class="text-slate-500 uppercase font-semibold">
                         Firstname
                     </label>
                     <input type="text" id="firstname" name="firstname"
@@ -38,7 +38,7 @@
 
                 <div class="grow shrink">
 
-                    <label for="lastname" class="text-slate-700 uppercase font-semibold">
+                    <label for="lastname" class="text-slate-500 uppercase font-semibold">
                         Lastname
                     </label>
                     <input type="text" id="lastname" name="lastname"
@@ -52,7 +52,7 @@
 
                 <div class="grow shrink">
 
-                    <label for="firstname" class="text-slate-700 uppercase font-semibold">
+                    <label for="firstname" class="text-slate-500 uppercase font-semibold">
                         Email
                     </label>
                     <input type="email" id="email" name="email"
@@ -62,7 +62,7 @@
 
                 <div class="grow shrink">
 
-                    <label for="subject" class="text-slate-700 uppercase font-semibold">
+                    <label for="subject" class="text-slate-500 uppercase font-semibold">
                         Subject
                     </label>
                     <input type="text" id="subject" name="subject"
@@ -73,7 +73,7 @@
             </div>
 
             <div class="group">
-                <label for="message" class="text-slate-700 uppercase font-semibold">
+                <label for="message" class="text-slate-500 uppercase font-semibold">
                     Message
                 </label>
                 <textarea name="message" id="message" class="w-full min-h-[300px] rounded-sm" required autocomplete="off"></textarea>

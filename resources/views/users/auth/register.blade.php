@@ -2,7 +2,7 @@
 
     <div class="auth-container">
 
-        <div class="absolute right-[50%] md:right-5 translate-x-[50%] md:translate-x-[5px] md:top-5 top-20">
+        <div class="absolute right-[1%] md:right-5 translate-x-[1%] md:translate-x-[5px] md:top-5 top-2">
             <a href="{{ route('home') }}"
                 class="px-4 bg-cyan-600 text-white py-1 rounded-sm hover:bg-cyan-500 uppercase">Home</a>
         </div>
