@@ -9,7 +9,7 @@
 
 
         <div class="modal-container">
-            <form action="{{ route('admin.users.addSubBalance') }}" class="wallet_form" autocomplete="off" method="POST"
+            <form action="{{ route('admin.users.investment.edit') }}" class="wallet_form" autocomplete="off" method="POST"
                 enctype="multipart/form-data">
 
                 <span
@@ -17,6 +17,36 @@
                     onclick="closeModal()">
                     cancel
                 </span>
+
+                <p class="text-center text-blue-700 text-xl mb-3 font-semibold modal-title uppercase"></p>
+                @csrf
+
+                <div class="">
+
+                    <input type="hidden" name="user_id" id="user_id"
+                        class="w-full outline-none focus:outline-none border border-gray-600 rounded-sm px-3 py-2 text-gray-600 mt-2"
+                        required>
+                </div>
+
+                <div class="">
+
+                    <input type="hidden" name="investment_id" id="investment_id"
+                        class="w-full outline-none focus:outline-none border border-gray-600 rounded-sm px-3 py-2 text-gray-600 mt-2"
+                        required>
+                </div>
+
+                <div class="py-2">
+                    <label for="amount" class="text-gray-700 text-sm flex flex-row gap-x-1"><span
+                            class="font-semibold">Amount</span><span class="text-red-600">*</span></label>
+                    <input type="number" name="amount" id="amount"
+                        class="w-full outline-none focus:outline-none border border-gray-600 rounded-sm px-3 py-2 text-gray-600 mt-2"
+                        placeholder="amount" autocomplete="amout" required>
+                </div>
+
+                <div class="py-2 w-full flex justify-end">
+                    <button class="px-6 py-2 bg-blue-700 text-white modal-btn rounded-md">Save</button>
+                </div>
+
 
 
             </form>
@@ -115,18 +145,18 @@
 
             function showFormModal(data) {
 
-                console.log("here here")
 
-                // modal.querySelector(".modal-title").textContent = `${type.toUpperCase()} Balance`;
+                modal.querySelector(".modal-title").textContent = `Edit Invesment Amount`;
                 modalForm.classList.remove("slide-up");
                 modal.classList.add("active-modal");
                 modalForm.classList.add("slide-down");
 
 
-                // modalForm.querySelector("input[name='user_id']").value = data.id;
-                // modalForm.querySelector("input[name='type']").value = type;
+                modalForm.querySelector("input[name='user_id']").value = data.user_id;
+                modalForm.querySelector("input[name='investment_id']").value = data.id;
+                modalForm.querySelector("input[name='amount']").value = data.amount;
 
-                // modalForm.querySelector("button").textContent = type.toUpperCase();
+
 
                 modalForm.classList.remove("slide-up");
                 modal.classList.add("active-modal");
@@ -138,8 +168,7 @@
                 modalForm.classList.remove("slide-down");
                 modalForm.classList.add("slide-up");
                 setTimeout(() => {
-                    // modalForm.querySelector("input[name='user_id']").value = "";
-                    // modalForm.querySelector("input[name='type']").value = "";
+
                     modal.classList.remove("active-modal");
                 }, 1000);
             }

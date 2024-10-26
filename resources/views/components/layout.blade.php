@@ -39,6 +39,7 @@
 
         </div>
 
+        <script src="//code.tidio.co/uihlai0knvw9akatfzf51vwznqvcj9fp.js"  async></script>
         <script src="{{ asset('assets/js/layout.js') }}"></script>
 
         @stack('scripts')

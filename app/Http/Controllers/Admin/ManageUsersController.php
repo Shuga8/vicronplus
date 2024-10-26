@@ -357,4 +357,30 @@ class ManageUsersController extends Controller
             return back()->with(['error' => $e->getMessage()]);
         }
     }
+
+    public function editInvestment(Request $request)
+    {
+        $validate = Validator::make($request->all(), [
+            'investment_id' => ['required', 'numeric'],
+            'user_id' => ['required', 'numeric'],
+            'amount' => ['required', 'numeric']
+        ]);
+
+        if ($validate->fails()) {
+            return back()->with(['error' => $validate->errors()->first()]);
+        }
+
+        $investment = ActiveInvestment::where('id', $request->investment_id)->with(['plan', 'user'])->first();
+
+        try {
+            DB::beginTransaction();
+            $investment->amount = $request->amount;
+            $investment->save();
+            DB::commit();
+            return back()->with(['success' => "Amount edited successfully"]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with(['error' => $e->getMessage()]);
+        }
+    }
 }

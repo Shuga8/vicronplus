@@ -30,6 +30,7 @@ Route::middleware('admin')->group(function () {
         Route::prefix('investments')->group(function () {
             Route::get('/type/{type}', 'investments')->name('investments');
             Route::get('/update-investment/{investment_id}/{user_id}', 'updateInvestment')->name('investments.update');
+            Route::post('/update-edit', 'editInvestment')->name('investment.edit');
         });
 
         Route::prefix('deposits')->group(function () {
