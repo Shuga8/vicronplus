@@ -129,6 +129,13 @@
                 <span>Withdrawals</span>
             </a>
 
+            <a href="{{ route('admin.users.investments', ['all', 'search' => $user->email]) }}"
+                referrerpolicy="no-referrer"
+                class="bg-cyan-600 hover:bg-cyan-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[4px] rounded-md grow shrink text-[13px]">
+                <i class="fa-solid fa-money-bill-trend-up"></i>
+                <span>Investments</span>
+            </a>
+
             @if ($user->status === 0)
                 <a href="{{ route('admin.users.banUnbanUser', [1, $user->id]) }}" referrerpolicy="no-referrer"
                     class="bg-green-600 hover:bg-green-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[4px] rounded-md grow shrink text-[13px]">

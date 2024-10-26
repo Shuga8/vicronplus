@@ -7,6 +7,21 @@
 
         <x-user-search />
 
+
+        <div class="modal-container">
+            <form action="{{ route('admin.users.addSubBalance') }}" class="wallet_form" autocomplete="off" method="POST"
+                enctype="multipart/form-data">
+
+                <span
+                    class="absolute top-0 right-0 p-2 cursor-pointer material-symbols-outlined close-modal-btn text-red-700"
+                    onclick="closeModal()">
+                    cancel
+                </span>
+
+
+            </form>
+        </div>
+
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
                 <thead class="text-xs text-gray-50 uppercase bg-blue-800 ">
@@ -50,7 +65,12 @@
                                 <td class="px-6 py-4 uppercase">
                                     {{ $investment->plan->duration }} {{ $investment->plan->unit }}s
                                 </td>
-                                <td class="px-6 py-4 text-right">
+                                <td class="px-6 py-4 flex flex-row justify-end gap-x-2">
+
+                                    <button
+                                        class="px-4 rounded-md py-1.5 bg-cyan-700 text-white  text-[11px] hover:bg-cyan-600"
+                                        onclick="showFormModal({{ json_encode($investment) }})">
+                                        <i class="fa-solid fa-pen"></i></button>
 
                                     @if ($investment->status != 1)
                                         <a href="{{ route('admin.users.investments.update', [$investment->id, $investment->user->id]) }}"
@@ -86,5 +106,44 @@
         </div>
 
     </div>
+
+
+    @push('scripts')
+        <script>
+            const modal = document.querySelector(".modal-container");
+            const modalForm = modal.querySelector("form");
+
+            function showFormModal(data) {
+
+                console.log("here here")
+
+                // modal.querySelector(".modal-title").textContent = `${type.toUpperCase()} Balance`;
+                modalForm.classList.remove("slide-up");
+                modal.classList.add("active-modal");
+                modalForm.classList.add("slide-down");
+
+
+                // modalForm.querySelector("input[name='user_id']").value = data.id;
+                // modalForm.querySelector("input[name='type']").value = type;
+
+                // modalForm.querySelector("button").textContent = type.toUpperCase();
+
+                modalForm.classList.remove("slide-up");
+                modal.classList.add("active-modal");
+                modalForm.classList.add("slide-down");
+
+            }
+
+            function closeModal() {
+                modalForm.classList.remove("slide-down");
+                modalForm.classList.add("slide-up");
+                setTimeout(() => {
+                    // modalForm.querySelector("input[name='user_id']").value = "";
+                    // modalForm.querySelector("input[name='type']").value = "";
+                    modal.classList.remove("active-modal");
+                }, 1000);
+            }
+        </script>
+    @endpush
 
 </x-admin-layout>
