@@ -278,6 +278,10 @@
 
     </section>
 
+    <div class="certificate w-full flex justify-center place-content-center px-3 py-10">
+        <img src="{{ asset('assets/certificate.png') }}" alt="Certificate" class=" object-cover">
+    </div>
+
     @push('script')
         <script src="{{ asset('assets/js/particles.js') }}"></script>
         <script>
