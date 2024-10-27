@@ -210,7 +210,7 @@
                     <div class="input-group relative">
                         <input type="email" autocomplete="off"
                             class="w-full px-2 text-[12px] py-2 bg-transparent border text-white"
-                            placeholder="enter your email address...." required>
+                            placeholder="enter your email address...." name="email" id="email" required>
                         <button
                             class="absolute right-[3px] top-[50%] translate-y-[-50%] px-3 py-2 text-[12px] bg-primary-600 text-white">
                             <i class="fa-solid fa-paper-plane"></i>

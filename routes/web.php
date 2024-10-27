@@ -40,7 +40,7 @@ Route::post('subscribe', function (Request $request) {
 
     dispatch(new SubcriptionJob($request->input('email')));
 
-    return back()->with(['success' => 'your subscribtion is being reviewed, please check your mail.']);
+    return back()->with(['success' => 'subscribtion is being reviewed']);
 })->name('subscribe');
 Route::get('storage/{folder}/{img}', [FileController::class, 'show']);
 Route::get('lang', [LanguageController::class, 'index'])->name('getLang');

@@ -43,7 +43,7 @@ class SubscriptionSuccessMail extends Mailable
     public function content()
     {
         return new Content(
-            text: "Your subcripton to our nwsletter is successfull"
+            view: "mail.subscription-successfull"
         );
     }
 
