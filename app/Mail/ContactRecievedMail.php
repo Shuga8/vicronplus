@@ -31,7 +31,7 @@ class ContactRecievedMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Contact Recieved Mail',
+            subject: 'Your Message Was Recieved',
         );
     }
 
@@ -43,7 +43,7 @@ class ContactRecievedMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.contact-recieved',
         );
     }
 

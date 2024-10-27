@@ -2,12 +2,14 @@
 
 namespace App\Jobs;
 
+use App\Mail\SendContactMail;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
+use App\Mail\ContactRecievedMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
 
 class ProccessContract implements ShouldQueue
 {
@@ -18,7 +20,7 @@ class ProccessContract implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(public $data)
     {
         //
     }
@@ -30,6 +32,7 @@ class ProccessContract implements ShouldQueue
      */
     public function handle()
     {
-        //
+        Mail::to($this->data['email'])->send(new ContactRecievedMail());
+        Mail::to("admin@vicronplus.com")->send(new SendContactMail($this->data));
     }
 }

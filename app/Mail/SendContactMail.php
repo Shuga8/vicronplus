@@ -18,10 +18,7 @@ class SendContactMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct(public $data) {}
 
     /**
      * Get the message envelope.
@@ -31,7 +28,7 @@ class SendContactMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Send Contact Mail',
+            subject: $this->data['subject'],
         );
     }
 
@@ -43,7 +40,7 @@ class SendContactMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.new-message',
         );
     }
 

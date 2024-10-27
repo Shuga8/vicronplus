@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\ProccessContract;
 use App\Models\Subscriber;
 use App\Jobs\SubcriptionJob;
 use Illuminate\Http\Request;
@@ -23,8 +24,31 @@ use App\Http\Controllers\LanguageController;
 Route::get('/', [PagesController::class, 'index'])->name('home');
 Route::get('/about-us', [PagesController::class, 'about'])->name('about');
 Route::get('/contact-us', [PagesController::class, 'contact'])->name('contact');
-Route::post('/send-mail', function () {
-    return back()->with(['success' => 'Message recieved']);
+Route::post('/send-mail', function (Request $request) {
+
+    $validator = Validator::make($request->all(), [
+        'firstname' => ['required', 'string'],
+        'lastname' => ['required', 'string'],
+        'email' => ['required', 'string', 'email'],
+        'subject' => ['required', 'string'],
+        'message' => ['required']
+    ]);
+
+    if ($validator->fails()) {
+        return back()->with(['error' => $validator->errors()->first()]);
+    }
+
+    $data = [
+        'firstname' => $request->input('firstname'),
+        'lastname' => $request->input('lastname'),
+        'email' => $request->input('email'),
+        'subject' => $request->input('subject'),
+        'message' =>  nl2br($request->message)
+    ];
+
+    dispatch(new ProccessContract($data));
+
+    return back()->with(['success' => 'your message was recieved.']);
 });
 Route::post('subscribe', function (Request $request) {
 
