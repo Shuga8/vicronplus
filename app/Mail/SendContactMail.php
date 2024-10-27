@@ -28,7 +28,7 @@ class SendContactMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: $this->data['subject'],
+            subject: $this->data["subject"],
         );
     }
 
@@ -40,7 +40,7 @@ class SendContactMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'mail.new-message',
+            view: "mail.new-message",
         );
     }
 
