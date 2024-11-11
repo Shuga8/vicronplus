@@ -136,7 +136,7 @@ header {
         box-shadow: 1px 2px 2px #ccc;
         transition: position 0.7s linear;
         transition: background 0.7s linear;
-        transition: top 2.7s linear;
+        animation: slide-down 0.7s;
 
         > .links {
             a {
@@ -656,5 +656,15 @@ footer {
                 }
             }
         }
+    }
+}
+
+@keyframes slide-down {
+    from {
+        top: -100px;
+    }
+
+    to {
+        top: 0px;
     }
 }

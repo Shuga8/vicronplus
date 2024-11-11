@@ -11,12 +11,10 @@ window.addEventListener("scroll", function () {
         }
     } else {
         if (currentY > previousY) {
-            previousY = currentY;
             if (header.classList.contains("sticky-header")) {
                 header.classList.remove("sticky-header");
             }
         } else {
-            previousY = currentY;
             if (previousY < 5) {
                 if (header.classList.contains("sticky-header")) {
                     header.classList.remove("sticky-header");
@@ -27,5 +25,7 @@ window.addEventListener("scroll", function () {
                 header.classList.add("sticky-header");
             }
         }
+
+        previousY = currentY;
     }
 });

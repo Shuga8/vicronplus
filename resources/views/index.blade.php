@@ -273,6 +273,52 @@
         </div>
     </div>
 
+    <div class="w-full h-[500px] px-2.5 py-3">
+
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+                {
+                    "width": "100%",
+                    "height": "100%",
+                    "defaultColumn": "overview",
+                    "screener_type": "crypto_mkt",
+                    "displayCurrency": "BTC",
+                    "colorTheme": "light",
+                    "locale": "en"
+                }
+            </script>
+        </div>
+
+    </div>
+    <div class="w-full h-[500px] px-3.5 py-4">
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js"
+                async>
+                {
+                    "dataSource": "Crypto",
+                    "blockSize": "market_cap_calc",
+                    "blockColor": "change|60",
+                    "locale": "en",
+                    "symbolUrl": "",
+                    "colorTheme": "light",
+                    "hasTopBar": false,
+                    "isDataSetEnabled": false,
+                    "isZoomEnabled": true,
+                    "hasSymbolTooltip": true,
+                    "isMonoSize": false,
+                    "width": "100%",
+                    "height": "100%"
+                }
+            </script>
+        </div>
+    </div>
+
+
+
     <section class="investment-plans w-full bg-slate-50">
         <h3 class=" text-center mb-3">investment Plans</h3>
         <hr>

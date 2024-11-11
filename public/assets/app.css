@@ -119,7 +119,7 @@ header.sticky-header {
   box-shadow: 1px 2px 2px #ccc;
   transition: position 0.7s linear;
   transition: background 0.7s linear;
-  transition: top 2.7s linear;
+  animation: slide-down 0.7s;
 }
 header.sticky-header > .links a {
   color: #06b6d4;
@@ -551,5 +551,13 @@ footer > div .get-in-touch ul li {
   }
   .auth-container .form-container form .group label {
     font-size: 12px;
+  }
+}
+@keyframes slide-down {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 0px;
   }
 }/*# sourceMappingURL=app.css.map */
