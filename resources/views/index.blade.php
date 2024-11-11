@@ -37,8 +37,8 @@
                         <i class="fa-solid fa-right-to-bracket text-xs"></i>
                     </a>
 
-                    <a href="{{ route('contact') }}"
-                        class="text-white bg-transparent border-cyan-500 border-[1px] py-[11px] px-[26px]">Contact</a>
+                    <a href="{{ route('user.login') }}"
+                        class="text-white bg-transparent border-cyan-500 border-[1px] py-[11px] px-[26px]">Login</a>
 
                 </div>
             </div>
@@ -143,6 +143,50 @@
 
     </div>
 
+    <div class="w-full px-2 md:px-10 py-10 gap-y-10 flex flex-wrap gap-x-16 justify-center bg-slate-200">
+
+        <div class="segment basis-[350px] shrink-0 grow lg:shrink md:grow-0 bg-white h-[300px] py-[10px] px-[15px]">
+            <div class="icon text-blue-900 text-[4rem] w-full text-center">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <h3 class="uppercase text-center text-[20px] my-[4px] font-[450] text-stone-900">STEADY GROWTH</h3>
+
+            <div class="text-center text-sm text- py-[5px] leading-[2.1]">
+                Vicronplus is a safe and secure option, which ensures steady growth on your investments with daily
+                returns on an ongoing basis with no hustle and instantly.
+            </div>
+        </div>
+
+        <div class="segment basis-[350px] shrink-0 grow lg:shrink md:grow-0 bg-white h-[300px] py-[10px] px-[15px]">
+            <div class="icon text-blue-900 text-[4rem] w-full text-center">
+                <i class="fa-brands fa-ubuntu"></i>
+            </div>
+
+            <h3 class="uppercase text-center text-[20px] my-[4px] font-[450] text-stone-900">RELIABLE SYSTEM</h3>
+
+            <div class="text-center text-sm text- py-[5px] leading-[2.1]">
+                Vicronplus is backed by team of professionals, experts and specialist of trading market
+                providing 24/7 guidance and support to the users ensuring a reliable system.
+            </div>
+        </div>
+
+        <div class="segment basis-[350px] shrink-0 grow lg:shrink md:grow-0 bg-white h-[300px] py-[10px] px-[15px]">
+            <div class="icon text-blue-900 text-[4rem] w-full text-center">
+                <i class="fa-solid fa-sailboat"></i>
+            </div>
+
+            <h3 class="uppercase text-center text-[20px] my-[4px] font-[450] text-stone-900">MAXIMUM EFFICIENCY</h3>
+
+            <div class="text-center text-sm text- py-[5px] leading-[2.1]">
+                The most advanced intelligent monitoring technology with high level of professionalism of Vicronplus
+                provides safe returns on your investments ensuring maximum efficiency.
+            </div>
+        </div>
+
+
+    </div>
+
     <div class="how">
         <h3 class=" text-center mb-3">How it works</h3>
         <hr>
@@ -221,7 +265,15 @@
         </div>
     </div>
 
-    <section class="investment-plans w-full">
+    <div class="video py-24 flex justify-center">
+        <div class="w-[90%] max-w-[700px]">
+            <video controls width="100%">
+                <source src="{{ asset('assets/PACCC.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <section class="investment-plans w-full bg-slate-50">
         <h3 class=" text-center mb-3">investment Plans</h3>
         <hr>
 
