@@ -7,74 +7,72 @@
         </a>
     </div>
 
-    <div class="close-btn cursor-pointer">
-        <span class="material-symbols-outlined text-base text-red-600 " onclick="toggleAsideVisisbilty()">
-            cancel
-        </span>
+    <div class="close-btn cursor-pointer  text-red-600 text-base p-1" onclick="toggleAsideVisisbilty()">
+        <i class="fa-solid fa-xmark"></i>
     </div>
 
 
     <div class="links flex flex-col gap-y-1 px-5 w-full h-full">
 
         <a href="{{ route('user.dashboard') }}"
-            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor"><span
-                class="material-symbols-outlined text-sm">
-                dashboard
-            </span> <span class="text-sm">Dashboard</span></a>
+            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 place-items-center hover:bg-white hover:bg-opacity-10 sidebar-anchor text-[14px]">
+            <i class="fa-solid fa-chart-simple"></i>
+            <span>{{ __('sidebar.dashboard') }}</span>
+        </a>
 
         <a href="{{ route('user.investment.new') }}"
-            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor"><span
-                class="material-symbols-outlined text-sm">
-                currency_exchange
-            </span> <span class="text-sm">Invest</span></a>
+            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor place-items-center text-[14px]">
+            <i class="fa-brands fa-gg-circle"></i>
+            <span>{{ __('sidebar.invest') }}</span>
+        </a>
 
         <a href="{{ route('user.investment.log') }}"
-            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor"><span
-                class="material-symbols-outlined text-sm">
-                description
-            </span> <span class="text-sm">Investment Logs</span></a>
+            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor place-items-center text-[14px]">
+            <i class="fa-solid fa-file-invoice"></i>
+            <span>{{ __('sidebar.investment_logs') }}</span>
+        </a>
 
         <a href="{{ route('user.deposit.new') }}"
-            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor"><span
-                class="material-symbols-outlined text-sm">
-                account_balance_wallet
-            </span> <span class="text-sm">Deposit</span></a>
+            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor place-items-center text-[14px]">
+            <i class="fa-solid fa-money-bill"></i>
+            <span> {{ __('sidebar.deposit') }}</span>
+        </a>
 
         <a href="{{ route('user.deposit.log') }}"
-            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor"><span
-                class="material-symbols-outlined text-sm">
-                description
-            </span> <span class="text-sm">Deposit Logs</span></a>
+            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor place-items-center text-[14px]">
+            <i class="fa-solid fa-file-invoice"></i>
+            <span>{{ __('sidebar.deposit_logs') }}</span>
+        </a>
 
         <a href="{{ route('user.withdraw.new') }}"
-            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor"><span
-                class="material-symbols-outlined text-sm">
-                send_money
-            </span> <span class="text-sm">Withdraw</span></a>
+            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor place-items-center text-[14px]">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            <span>{{ __('sidebar.widthdraw') }}</span>
+        </a>
 
         <a href="{{ route('user.withdraw.log') }}"
-            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor"><span
-                class="material-symbols-outlined text-sm">
-                description
-            </span> <span class="text-sm">Withdraw Logs</span></a>
+            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor place-items-center text-[14px]">
+            <i class="fa-solid fa-file-invoice"></i>
+            <span>{{ __('sidebar.withdrawal_logs') }}</span>
+        </a>
 
         <a href="{{ route('user.transactions') }}"
-            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor"><span
-                class="material-symbols-outlined text-sm">
-                credit_card_clock
-            </span> <span class="text-sm">Transaction History</span></a>
+            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor place-items-center text-[14px]">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>{{ __('sidebar.transaction_history') }}</span>
+        </a>
 
         <a href="{{ route('user.settings') }}"
-            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor"><span
-                class="material-symbols-outlined text-sm">
-                manage_accounts
-            </span> <span class="text-sm">Settings</span></a>
+            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor place-items-center text-[14px]">
+            <i class="fa-solid fa-user-gear"></i>
+            <span>{{ __('sidebar.settings') }}</span>
+        </a>
 
         <a href="{{ route('user.logout') }}"
-            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor"><span
-                class="material-symbols-outlined text-sm">
-                logout
-            </span> <span class="text-sm">Logout</span></a>
+            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor place-items-center text-[14px]">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span>{{ __('sidebar.logout') }}</span>
+        </a>
 
 
     </div>

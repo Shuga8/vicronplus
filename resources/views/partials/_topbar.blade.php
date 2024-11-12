@@ -1,8 +1,6 @@
 <header class="w-full py-3 px-2 bg-[#011E52] flex flex-row justify-between">
     <div class="py-3 px-3 cursor-pointer toggle-menu" onclick="toggleAsideVisisbilty()">
-        <span class="material-symbols-outlined text-white">
-            menu
-        </span>
+        <i class="fa-solid fa-bars text-white"></i>
 
     </div>
 
@@ -23,34 +21,30 @@
 
         </div>
         <a href="{{ route('user.investment.new') }}"
-            class="py-2.5 px-3 border-x border-y border-gray-50 text-white hover:bg-[#011E52] hover:text-white rounded-md flex flex-row gap-x-1 place-items-center"><span
-                class="material-symbols-outlined text-xs ">
-                currency_exchange
-            </span><span class="text-sm uppercase font-semibold">Invest</span></a>
+            class="py-2.5 px-3 border-x border-y border-gray-50 text-white hover:bg-[#011E52] hover:text-white rounded-md flex flex-row gap-x-1 place-items-center text-[11px]">
+            <i class="fa-brands fa-gg-circle"></i>
+            <span class="uppercase">Invest</span>
+        </a>
         <div class="">
-            <div class="cursor-pointer flex flex-row place-items-center gap-x-1" onclick="toggleHeaderDrop()">
-                <span class="material-symbols-outlined text-white">
-                    account_circle
-                </span>
-                <span class="text-[11px] text-white">{{ auth()->user()->username }}</span>
-                <span class="material-symbols-outlined text-white">
-                    keyboard_arrow_down
-                </span>
+            <div class="cursor-pointer flex flex-row place-items-center gap-x-1.5 px-2" onclick="toggleHeaderDrop()">
+                <i class="fa-regular fa-user text-white text-[12px]"></i>
+                <span class="text-[12px] text-white">{{ auth()->user()->username }}</span>
+                <i class="fa-solid fa-angle-down text-white text-[12px]"></i>
             </div>
 
             <div id="header-drop"
-                class="hidden fixed z-10 top-[70px] right-2 w-40 rounded-md bg-white shadow-slate-600  shadow-lg">
+                class="hidden absolute z-10 top-[70px] right-2 w-40 rounded-md bg-white shadow-slate-600  shadow-lg">
                 <a href="{{ route('user.settings') }}"
-                    class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 text-primary-600"><span
-                        class="material-symbols-outlined text-sm">
-                        manage_accounts
-                    </span> <span class="text-sm">Settings</span></a>
+                    class="py-3 px-3 w-full flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 text-primary-600 place-items-center text-[12px]">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span>Settings</span>
+                </a>
 
                 <a href="{{ route('user.logout') }}"
-                    class="py-3 px-3 w-full r flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 text-primary-600"><span
-                        class="material-symbols-outlined text-sm">
-                        logout
-                    </span> <span class="text-sm">Logout</span></a>
+                    class="py-3 px-3 w-full r flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 text-primary-600 place-items-center text-[12px]">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class="text-sm">Logout</span>
+                </a>
             </div>
         </div>
     </div>
