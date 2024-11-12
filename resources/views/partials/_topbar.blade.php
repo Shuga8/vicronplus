@@ -9,8 +9,9 @@
     <div class="flex flex-row gap-x-4 place-items-center">
         <div>
 
+
             <select name="locale-language" id="locale-language"
-                class="bg-transparent text-cyan-500 border-none focus:outline-none outline-none text-[11px]"
+                class="bg-transparent text-cyan-500 border-cyan-600 focus:outline-none outline-none active:outline-none active:border-none focus:border-none text-[11px]"
                 aria-label="Select Language">
                 <option value="en-uk">
                     english (UK)
@@ -62,15 +63,23 @@
 <x-alerts />
 
 @push('scripts')
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                    pageLanguage: "{{ session('locale') }}" ?? "en-uk"
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
     <script>
-        const presetLanguage = "{{ session()->get('locale') }}" ?? "en-uk";
-        document.querySelector("#locale-language").value = presetLanguage;
+        const presetLanguage = "{{ session()->get('locale') }}";
+        document.querySelector("#locale-language").value = presetLanguage ?? "en-uk";
 
         document.querySelector("#locale-language").addEventListener("change", function(e) {
-
-
             const lang = e.target.value;
-
             window.location.href = `/lang/${lang}`;
         });
     </script>

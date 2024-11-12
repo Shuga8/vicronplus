@@ -41,5 +41,9 @@ class AppServiceProvider extends ServiceProvider
                 'allInvestmentsCount' => ActiveInvestment::count()
             ]);
         });
+
+        if (!session()->has('locale')) {
+            session()->put('locale', 'en-uk');
+        }
     }
 }

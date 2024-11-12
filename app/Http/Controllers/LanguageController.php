@@ -10,7 +10,7 @@ class LanguageController extends Controller
 {
     public function index() {}
 
-    public function setLang($lang)
+    public function setLang($lang = 'en-uk')
     {
         App::setLocale($lang);
         session()->put('locale', $lang);

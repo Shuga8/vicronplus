@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="{{ asset('assets/user.css') }}">
     </head>
 
-    <body>
+    <body id="body">
 
         @include('partials.sidebar')
 
