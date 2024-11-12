@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         if (!session()->has('locale')) {
-            session()->put('locale', 'en-uk');
+            session()->put('locale', 'en');
         }
     }
 }

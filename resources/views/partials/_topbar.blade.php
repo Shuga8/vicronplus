@@ -13,12 +13,8 @@
             <select name="locale-language" id="locale-language"
                 class="bg-transparent text-cyan-500 border-cyan-600 focus:outline-none outline-none active:outline-none active:border-none focus:border-none text-[11px]"
                 aria-label="Select Language">
-                <option value="en-uk">
-                    english (UK)
-                </option>
-
-                <option value="en-us">
-                    english (US)
+                <option value="en">
+                    english
                 </option>
                 <option value="de">german</option>
                 <option value="fr">french</option>
@@ -63,20 +59,9 @@
 <x-alerts />
 
 @push('scripts')
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-    </script>
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                    pageLanguage: "{{ session('locale') }}" ?? "en-uk"
-                },
-                'google_translate_element'
-            );
-        }
-    </script>
     <script>
         const presetLanguage = "{{ session()->get('locale') }}";
-        document.querySelector("#locale-language").value = presetLanguage ?? "en-uk";
+        document.querySelector("#locale-language").value = presetLanguage ?? "en";
 
         document.querySelector("#locale-language").addEventListener("change", function(e) {
             const lang = e.target.value;
