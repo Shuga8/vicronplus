@@ -13,7 +13,7 @@
             <div class="widget-content">
                 <p class="text-white text-xl amount-usd">{{ $user->balance['USD'] }}</p>
 
-                <p class="text-white text-[11px]">Balance</p>
+                <p class="text-white text-[11px]">{{ __('general.balance') }}</p>
             </div>
 
         </div>
@@ -28,7 +28,7 @@
             <div class="widget-content">
                 <p class="text-white text-xl amount-usd">{{ $user->profit->amount ?? 0 }}</p>
 
-                <p class="text-white text-[11px]">Total Profit</p>
+                <p class="text-white text-[11px]">{{ __('general.total_profit') }}</p>
             </div>
 
         </div>
@@ -43,7 +43,7 @@
             <div class="widget-content">
                 <p class="text-white text-xl amount-usd">{{ $totalInvestment }}</p>
 
-                <p class="text-white text-[11px]">Total Invested</p>
+                <p class="text-white text-[11px]">{{ __('general.total_invested') }}</p>
             </div>
 
             <a href="{{ route('user.investment.log') }}"
@@ -63,7 +63,7 @@
             <div class="widget-content">
                 <p class="text-white text-xl amount-usd">{{ $totalWithdrawn }}</p>
 
-                <p class="text-white text-[11px]">Total WIthdrawn</p>
+                <p class="text-white text-[11px]">{{ __('general.total_withdrawn') }}</p>
             </div>
 
             <a href="{{ route('user.withdraw.log') }}"
@@ -83,7 +83,7 @@
             <div class="widget-content">
                 <p class="text-white text-xl amount-usd">{{ $totalDeposit }}</p>
 
-                <p class="text-white text-[11px]">Total Deposits</p>
+                <p class="text-white text-[11px]">{{ __('general.total_deposit') }}</p>
             </div>
 
             <a href="{{ route('user.deposit.log') }}"
@@ -337,7 +337,7 @@
                 @endforeach
             @else
                 <div class="w-full h-full flex justify-center items-center text-red-600">
-                    No deposit has been made!
+                    {{ __('general.no_deposit') }}
                 </div>
             @endunless
 
@@ -382,7 +382,7 @@
                 @endforeach
             @else
                 <div class="w-full h-full flex justify-center items-center text-red-600">
-                    No withdrawal has been placed!
+                    {{ __('general.no_withdrawal') }}
                 </div>
             @endunless
 
@@ -416,7 +416,7 @@
                 @endforeach
             @else
                 <div class="w-full h-full flex justify-center items-center text-red-600">
-                    No Transaction has been placed!
+                    {{ __('general.no_history') }}
                 </div>
             @endunless
         </div>
