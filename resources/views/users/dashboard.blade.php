@@ -1,7 +1,7 @@
 <x-layout :title="$title">
 
     <div
-        class="details-widgets jus grid grid-cols-1 min-[600px]:grid-cols-2 min-[1120px]:grid-cols-4 py-7 px-3 gap-x-3 gap-y-4">
+        class="details-widgets jus grid grid-cols-1 min-[600px]:grid-cols-3 min-[1120px]:grid-cols-5 py-7 px-3 gap-x-3 gap-y-4">
 
         <div
             class="relative widget h-[100px] bg-gradient-to-br flex flex-row gap-x-5 items-center from-[#61325c] to-[#43173f] shadow-slate-400 shadow-lg px-2 py-1 rounded-sm">
@@ -19,6 +19,21 @@
         </div>
 
         <div
+            class="relative widget h-[100px] bg-gradient-to-br flex flex-row gap-x-5 items-center from-[#a9b55e] to-[#94a139] shadow-slate-400 shadow-lg px-2 py-1 rounded-sm">
+
+            <div class="icon w-16 h-4/5 bg-white bg-opacity-10 flex flex-row justify-center items-center rounded-md">
+                <i class="fa-solid fa-coins text-2xl text-white"></i>
+            </div>
+
+            <div class="widget-content">
+                <p class="text-white text-xl amount-usd">{{ $user->profit->amount ?? 0 }}</p>
+
+                <p class="text-white text-[11px]">Total Profit</p>
+            </div>
+
+        </div>
+
+        <div
             class="relative widget h-[100px] bg-gradient-to-br flex flex-row gap-x-5 items-center from-[#342EAD] to-[#1e1b4d] shadow-slate-400 shadow-lg px-2 py-1 rounded-sm">
 
             <div class="icon w-16 h-4/5 bg-white bg-opacity-10 flex flex-row justify-center items-center rounded-md">
@@ -28,7 +43,7 @@
             <div class="widget-content">
                 <p class="text-white text-xl amount-usd">{{ $totalInvestment }}</p>
 
-                <p class="text-white text-[11px]">Total Amount Invested</p>
+                <p class="text-white text-[11px]">Total Invested</p>
             </div>
 
             <a href="{{ route('user.investment.log') }}"
@@ -48,7 +63,7 @@
             <div class="widget-content">
                 <p class="text-white text-xl amount-usd">{{ $totalWithdrawn }}</p>
 
-                <p class="text-white text-[11px]">Total Amount WIthdrawn</p>
+                <p class="text-white text-[11px]">Total WIthdrawn</p>
             </div>
 
             <a href="{{ route('user.withdraw.log') }}"
@@ -68,7 +83,7 @@
             <div class="widget-content">
                 <p class="text-white text-xl amount-usd">{{ $totalDeposit }}</p>
 
-                <p class="text-white text-[11px]">Total Amount Deposited</p>
+                <p class="text-white text-[11px]">Total Deposits</p>
             </div>
 
             <a href="{{ route('user.deposit.log') }}"

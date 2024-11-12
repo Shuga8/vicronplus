@@ -17,7 +17,7 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $user = User::where('id', auth()->user()->id)->first();
+        $user = User::where('id', auth()->user()->id)->with(['profit'])->first();
         $user->balance = json_decode($user->balance, true);
 
         $data = [

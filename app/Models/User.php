@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Traits\Searchable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -73,5 +74,10 @@ class User extends Authenticatable
     public function activeInvestments(): HasMany
     {
         return $this->hasMany(ActiveInvestment::class, 'user_id', 'id');
+    }
+
+    public function profit(): HasOne
+    {
+        return $this->hasOne(Profit::class, 'user_id');
     }
 }
