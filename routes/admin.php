@@ -25,6 +25,7 @@ Route::middleware('admin')->group(function () {
             Route::get('login/{id}', 'loginAsUser')->name('loginAsUser');
             Route::get('changeStatus/{type}/{id}', 'banUnbanUser')->name('banUnbanUser');
             Route::post('add-sub-balance', 'addSubBalance')->name('addSubBalance');
+            Route::post('update-profit', 'updateProfit')->name('updateProfit');
         });
 
         Route::prefix('investments')->group(function () {

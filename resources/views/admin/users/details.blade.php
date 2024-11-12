@@ -9,7 +9,7 @@
         <x-template view="admin.users.addSubBalance" />
 
         <div
-            class="details-widgets grid grid-cols-1 min-[600px]:grid-cols-2 min-[1120px]:grid-cols-4 py-7 px-3 gap-x-3 gap-y-4">
+            class="details-widgets grid grid-cols-1 min-[600px]:grid-cols-2 min-[1120px]:grid-cols-5 py-7 px-3 gap-x-3 gap-y-4">
             <div
                 class="relative widget h-[100px] bg-gradient-to-br flex flex-row gap-x-5 items-center from-[#342EAD] to-[#1e1b4d] shadow-slate-400 shadow-lg px-2 py-1 rounded-sm">
 
@@ -20,13 +20,29 @@
                 <div class="widget-content">
                     <p class="text-white text-xl">{{ $totalDeposits }}</p>
 
-                    <p class="text-white">Total Deposits</p>
+                    <p class="text-white text-[11px]">Total Deposits</p>
                 </div>
 
                 <a href=""
                     class="absolute top-1/2 right-px translate-y-[-50%] bg-white bg-opacity-5 text-white px-2 py-px text-[10px] hover:bg-opacity-30">
                     View all
                 </a>
+
+            </div>
+
+            <div
+                class="relative widget h-[100px] bg-gradient-to-br flex flex-row gap-x-5 items-center from-[#ad4c2e] to-[#402418] shadow-slate-400 shadow-lg px-2 py-1 rounded-sm">
+
+                <div
+                    class="icon w-16 h-4/5 bg-white bg-opacity-10 flex flex-row justify-center items-center rounded-md">
+                    <i class="fa-solid fa-hand-holding-dollar text-2xl text-white"></i>
+                </div>
+
+                <div class="widget-content">
+                    <p class="text-white text-xl amount-usd">{{ $user->profit->amount ?? 0 }}</p>
+
+                    <p class="text-white text-[11px]">Total Profit</p>
+                </div>
 
             </div>
 
@@ -41,7 +57,7 @@
                 <div class="widget-content">
                     <p class="text-white text-xl">{{ $totalInvestments }}</p>
 
-                    <p class="text-white">Total Investments</p>
+                    <p class="text-white text-[11px]">Total Investments</p>
                 </div>
 
                 <a href=""
@@ -62,7 +78,7 @@
                 <div class="widget-content">
                     <p class="text-white text-xl">{{ $totalWithdraws }}</p>
 
-                    <p class="text-white">Total Withdrawals</p>
+                    <p class="text-white text-[11px]">Total Withdrawals</p>
                 </div>
 
                 <a href=""
@@ -83,7 +99,7 @@
                 <div class="widget-content">
                     <p class="text-white text-xl">{{ $totalTransactions }}</p>
 
-                    <p class="text-white">Total Transactions</p>
+                    <p class="text-white text-[11px]">Total Transactions</p>
                 </div>
 
                 <a href=""
@@ -175,6 +191,40 @@
         </div>
 
 
+        <div class="profit-form px-3 py-7">
+            <h4 class="text-teal-800 mb-2 text-lg">Change Profit Amount</h4>
+            <hr class="border border-gray-200 w-full mx-auto mb-3" />
+            <form action="{{ route('admin.users.updateProfit') }}" method="POST">
+                @csrf
+
+                <input type="hidden" name="user_id" value="{{ $user->id }}">
+
+                <div class="max-w-[300px]">
+                    <label for="amount">Amount *</label>
+                    <input type="number" name="amount" id="amount" class="w-full text-black"
+                        value="{{ $user->profit->amount ?? 0 }}">
+                </div>
+
+                <button class="mt-6 py-[12px] bg-cyan-600 px-[14px] text-white text-[14px]"
+                    type="submit">UPDATE</button>
+            </form>
+        </div>
+
     </div>
+
+    @push('scripts')
+        <script type="text/javascript">
+            const amountUSDFields = document.querySelectorAll(".amount-usd");
+
+            amountUSDFields.forEach(field => {
+                let amount = parseFloat(field.textContent.replace(/[^\d\.]/g, ''));
+                amount = amount.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD"
+                });
+                field.textContent = amount;
+            });
+        </script>
+    @endpush
 
 </x-admin-layout>

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Transaction;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use App\Models\ActiveInvestment;
+use App\Models\Profit;
 use App\Models\Deposit;
 use App\Models\Withdraw;
+use App\Models\Transaction;
+use Illuminate\Http\Request;
+use App\Models\ActiveInvestment;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -48,7 +49,7 @@ class ManageUsersController extends Controller
 
     public function details(int $id)
     {
-        $user = User::where('id', $id)->first();
+        $user = User::where('id', $id)->with('profit')->first();
 
         $data = [
             'title' => 'User Details',
@@ -108,6 +109,41 @@ class ManageUsersController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->with(['success' => $e->getMessage()]);
+        }
+    }
+
+    public function updateProfit(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'user_id' => ['required', 'numeric'],
+            'amount' => ['required', 'numeric']
+        ]);
+
+        if ($validator->fails()) {
+            return back()->with(['error' => $validator->errors()->first()]);
+        }
+
+        try {
+            DB::beginTransaction();
+            if (Profit::where('user_id', $request->user_id)->exists()) {
+                $profit = Profit::where('user_id', $request->user_id)->first();
+                $profit->amount = $request->amount;
+
+                $message = "Profit updated successfully";
+            } else {
+                $profit = new Profit();
+                $profit->user_id = $request->user_id;
+                $profit->amount = $request->amount;
+
+                $message = "Profit created successfully";
+            }
+
+            $profit->save();
+            DB::commit();
+            return back()->with(['success' => $message]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with(['error' => $e->getMessage()]);
         }
     }
 
