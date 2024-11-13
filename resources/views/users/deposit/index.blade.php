@@ -27,11 +27,12 @@
                     @unless ($wallets->isEmpty())
                         @foreach ($wallets as $wallet)
                             <tr class="bg-white border-b  hover:bg-gray-50 ">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap uppercase">
+                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap uppercase">
 
-                                    <img src="/storage/{{ $wallet->logo }}" class="w-10 h-10 object-fill rounded-full"
+                                    <img src="/storage/{{ $wallet->logo }}"
+                                        class="min-w-[40px] max-w-[40px] h-10 object-auto block rounded-full"
                                         alt="">
-                                </th>
+                                </td>
                                 <td class="px-6 py-4 amount-usd">
                                     {{ $wallet->network }}
                                 </td>
