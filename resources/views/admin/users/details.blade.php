@@ -200,10 +200,11 @@
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
 
                 <div class="max-w-[300px]">
-                    <label for="amount">Amount *</label>
-                    <input type="number" name="amount" id="amount" class="w-full text-black"
-                        value="{{ $user->profit->amount ?? 0 }}">
-                </div>
+    <label for="amount">Amount *</label>
+    <input type="number" name="amount" id="amount" class="w-full text-black"
+        value="{{ $user->profit->amount ?? 0 }}" step="any" min="0">
+</div>
+
 
                 <button class="mt-6 py-[12px] bg-cyan-600 px-[14px] text-white text-[14px]"
                     type="submit">UPDATE</button>

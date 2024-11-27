@@ -29,7 +29,7 @@
                     class="font-semibold">Amount</span><span class="text-red-600">*</span></label>
             <input type="number" name="amount" id="amount"
                 class="w-full outline-none focus:outline-none border border-gray-600 rounded-sm px-3 py-2 text-gray-600 mt-2"
-                placeholder="amount" autocomplete="amout" required>
+                placeholder="amount" autocomplete="amount" step="any" min="0" required>
         </div>
 
 
