@@ -13,7 +13,11 @@
         <a href="{{ route('contact') }}">Contact Us</a>
     </div>
 
-    <div class="actions px-4">
+    <div class="actions px-4 flex gap-x-2 place-items-center">
+
+        <script src="https://static.elfsight.com/platform/platform.js" importance="high" async></script>
+        <div class="elfsight-app-1b928f5d-d2cc-46aa-bdd0-aaad971e83e0 text-white" data-elfsight-app-lazy id="elfsight">
+        </div>
         @auth('web')
             <a href="{{ route('user.dashboard') }}" class="action-button">Dashboard</a>
         @endauth
@@ -63,5 +67,16 @@
         function closeAsideNav() {
             aside.classList.remove("active");
         }
+    </script>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(e) {
+            setTimeout(() => {
+                const elf = document.querySelector("#elfsight");
+                const first = elf.querySelector("div:first-child");
+                elf.querySelector(".eapps-widget-toolbar").style.display = 'none';
+                first.querySelector("a").style.display = 'none'
+            }, 3000);
+        })
     </script>
 @endpush

@@ -4,12 +4,21 @@
 
     </div>
 
+    @push('style')
+        <style>
+            .elfsight-app-1b928f5d-d2cc-46aa-bdd0-aaad971e83e0>div:first-child>a:first-child {
+                visibility: hidden !important;
+                display: none !important;
+            }
+        </style>
+    @endpush
+
     <div class="flex flex-row gap-x-4 place-items-center">
         <div>
 
 
             <select name="locale-language" id="locale-language"
-                class="bg-transparent text-cyan-500 border-cyan-600 focus:outline-none outline-none active:outline-none active:border-none focus:border-none text-[11px]"
+                class="bg-transparent hidden text-cyan-500 border-cyan-600 focus:outline-none outline-none active:outline-none active:border-none focus:border-none text-[11px]"
                 aria-label="Select Language">
                 <option value="en">
                     english
@@ -18,6 +27,10 @@
                 <option value="fr">french</option>
                 <option value="ar">arabic</option>
             </select>
+
+            <script src="https://static.elfsight.com/platform/platform.js" importance="high" async></script>
+            <div class="elfsight-app-1b928f5d-d2cc-46aa-bdd0-aaad971e83e0 text-white" data-elfsight-app-lazy
+                id="elfsight"></div>
 
         </div>
         <a href="{{ route('user.investment.new') }}"
@@ -61,5 +74,15 @@
             const lang = e.target.value;
             window.location.href = `/lang/${lang}`;
         });
+    </script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(e) {
+            setTimeout(() => {
+                const elf = document.querySelector("#elfsight");
+                const first = elf.querySelector("div:first-child");
+                elf.querySelector(".eapps-widget-toolbar").style.display = 'none';
+                first.querySelector("a").style.display = 'none'
+            }, 3000);
+        })
     </script>
 @endpush
