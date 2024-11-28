@@ -80,4 +80,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profit::class, 'user_id');
     }
+
+    public function referrer(): HasOne
+    {
+        return $this->hasOne(Referral::class, 'user_id');
+    }
+
+    public function referrals(): HasMany
+    {
+        return $this->hasMany(Referral::class, 'referrer');
+    }
 }
