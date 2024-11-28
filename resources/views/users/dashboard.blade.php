@@ -96,6 +96,17 @@
 
     </div>
 
+    <div class="ref pb-10 px-4">
+        <h4 class="text-stone-700 text-[13px]">
+            Referral Link
+        </h4>
+        <div
+            class="my-[6px] w-fit px-3 py-[6px] rounded-sm border border-blue-600 text-stone-600 flex flex-row gap-x-3 place-items-center">
+            <span id="ref-link"> {{ route('user.register', ['ref' => $user->username]) }}</span>
+            <button class="px-[12px] py-[4px] bg-primary-600 text-white"onclick="copyRefLink(this)">copy</button>
+        </div>
+    </div>
+
     <div
         class="trading-widgets w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-2 gap-y-4 justify-center pb-10 px-4">
 
@@ -434,6 +445,15 @@
                 });
                 field.textContent = amount;
             });
+
+            function copyRefLink(e) {
+                const refLink = document.querySelector("#ref-link");
+                navigator.clipboard.writeText(refLink.textContent);
+                e.textContent = "copied";
+                setTimeout(() => {
+                    e.textContent = "copy";
+                }, 1000);
+            }
         </script>
     @endpush
 
