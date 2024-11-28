@@ -175,23 +175,23 @@
 
             <div class="px-3 flex flex-row gap-x-3 py-3">
                 <span class="text-gray-800 font-semibold">Username:</span>
-                <span class="text-gray-500 ">{{ $user->username }}</dd>
+                <span class="text-gray-500 ">{{ $user->username }}</span>
             </div>
 
             <div class="px-3 flex flex-row gap-x-3 py-3">
                 <span class="text-gray-800 font-semibold">Email:</span>
-                <span class="text-gray-500 ">{{ $user->email }}</dd>
+                <span class="text-gray-500 ">{{ $user->email }}</span>
             </div>
 
             <div class="px-3 flex flex-row gap-x-3 py-3">
                 <span class="text-gray-800 font-semibold">Referred By:</span>
-                <span class="text-gray-500 ">{{ $user->referrer->username ?? 'No referral' }}</dd>
+                <span class="text-gray-500 ">{{ $user?->referrer?->username ?? 'No referral' }}</span>
             </div>
 
             <div class="px-3 flex flex-row gap-x-3 py-5 place-items-center">
                 <span class="text-gray-800 font-semibold">Joined at:</span>
                 <span class="text-primary-600 text-[11px]">{{ showDateTime($user->created_at) }},
-                    {{ diffForHumans($user->created_at) }}</dd>
+                    {{ diffForHumans($user->created_at) }}</span>
             </div>
         </div>
 

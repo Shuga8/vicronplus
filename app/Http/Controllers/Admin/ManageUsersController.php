@@ -50,7 +50,13 @@ class ManageUsersController extends Controller
     public function details(int $id)
     {
         $user = User::where('id', $id)->with(['profit', 'referrer'])->first();
-        $user->referrer = User::where('id', $user->referrer->referrer)->first();
+
+        if ($user && $user->referrer) {
+            $user->referrer = User::where('id', $user->referrer->referrer)->first() ?? null;
+        } else {
+            $user->referrer = null;
+        }
+
 
         $data = [
             'title' => 'User Details',
