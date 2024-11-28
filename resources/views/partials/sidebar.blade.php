@@ -62,6 +62,12 @@
             <span>{{ __('sidebar.transaction_history') }}</span>
         </a>
 
+        <a href="{{ route('user.referrals') }}"
+            class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor place-items-center text-[14px]">
+            <i class="fa-solid fa-cannabis"></i>
+            <span>Referrals</span>
+        </a>
+
         <a href="{{ route('user.settings') }}"
             class="py-3 px-3 w-full rounded-md flex flex-row gap-x-2 hover:bg-white hover:bg-opacity-10 sidebar-anchor place-items-center text-[14px]">
             <i class="fa-solid fa-user-gear"></i>

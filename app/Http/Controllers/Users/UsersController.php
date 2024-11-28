@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\ActiveInvestment;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Referral;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -51,6 +52,16 @@ class UsersController extends Controller
         ];
 
         return view('users.settings')->with($data);
+    }
+
+    public function referrals()
+    {
+        $data = [
+            'title' => 'Referrals',
+            'referrals' => Referral::where('referrer', auth()->user()->id)->with(['user'])->paginate(getPagination())
+        ];
+
+        return view('users.referrals')->with($data);
     }
 
     public function changePassword(Request $request)

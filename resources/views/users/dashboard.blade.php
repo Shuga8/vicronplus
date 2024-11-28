@@ -102,7 +102,7 @@
         </h4>
         <div
             class="my-[6px] w-fit px-3 py-[6px] rounded-sm border border-blue-600 text-stone-600 flex flex-row gap-x-3 place-items-center">
-            <span id="ref-link"> {{ route('user.register', ['ref' => $user->username]) }}</span>
+            <span id="ref-link" class="text-[13px]"> {{ route('user.register', ['ref' => $user->username]) }}</span>
             <button class="px-[12px] py-[4px] bg-primary-600 text-white"onclick="copyRefLink(this)">copy</button>
         </div>
     </div>

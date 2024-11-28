@@ -15,6 +15,7 @@ Route::middleware('auth')->group(function () {
         Route::get('dashboard', 'index')->name('dashboard');
         Route::get('transactions', 'transactions')->name('transactions');
         Route::get('settings', 'settings')->name('settings');
+        Route::get('/referrals', 'referrals')->name('referrals');
         Route::post('change-password', 'changePassword')->name('changePassword');
     });
 

@@ -85,7 +85,7 @@
 
         <div>
             <label for="amount" class="text-gray-700 text-sm font-semibold">Amount</label>
-            <input type="number" name="amount" id="amount"
+            <input type="number" name="amount" id="amount" step="any" min="0"
                 class="w-full mt-1 border-[1px] py-[6px] px-2 border-blue-600 outline-none focus:outline-none text-gray-700 "
                 placeholder="usd" required>
         </div>
