@@ -7,6 +7,7 @@ use App\Models\UserLogin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Referral;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -49,6 +50,12 @@ class AuthController extends Controller
             'password' => ['required', 'string', 'confirmed']
         ]);
 
+        if ($request->has('refCode') && !empty($request->refCode)) {
+            if (!User::where('username', $request->refCode)->exists()) {
+                return back()->with(['error' => "invalid referral"]);
+            }
+        }
+
         if ($validate->fails()) {
             return back()->with(['error' => $validate->errors()->first()]);
         }
@@ -61,6 +68,13 @@ class AuthController extends Controller
                 'username' => $request->username,
                 'password' => Hash::make($request->password),
             ]);
+            if ($request->has('refCode') && !empty($request->refCode)) {
+                $ref = User::where('username', $request->refCode)->first();
+                $referral = new Referral();
+                $referral->referrer = $ref->id;
+                $referral->user_id = $user->id;
+                $referral->save();
+            }
             DB::commit();
             return to_route("user.login")->with(['success' => 'Registration successfull, you can now login']);
         } catch (\Exception $e) {

@@ -18,19 +18,19 @@
                 <div class="group mt-10 mb-1 block">
                     <label for="fullname">Fullname</label>
                     <input type="text" name="fullname" id="fullname" placeholder="Enter fullname..." class=""
-                        autocomplete="off" autofocus required>
+                        autocomplete="off" autofocus required value="{{ old('fullname') }}">
                 </div>
 
                 <div class="group mt-1 mb-1 block">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" placeholder="Enter email address..."
-                        autocomplete="off" class="" required>
+                        autocomplete="off" class="" required value="{{ old('email') }}">
                 </div>
 
                 <div class="group mt-1 mb-1 block">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" placeholder="Enter username..."
-                        autocomplete="off" class="" required>
+                        autocomplete="off" class="" required value="{{ old('username') }}">
                 </div>
 
                 <div class="group mt-1 mb-1 block">
@@ -43,6 +43,12 @@
                     <label for="password_confirmation">Confirm password</label>
                     <input type="password" name="password_confirmation" id="password_confirmation"
                         placeholder="********" autocomplete="off" class="" required>
+                </div>
+
+                <div class="group mt-1 mb-1 block">
+                    <label for="refCode">Referral Code</label>
+                    <input type="text" name="refCode" id="refCode" placeholder="referral code..."
+                        autocomplete="off" class="" value="{{ request('ref') }}">
                 </div>
 
                 <div class="group">
