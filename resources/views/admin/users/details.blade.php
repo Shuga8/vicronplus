@@ -183,6 +183,11 @@
                 <span class="text-gray-500 ">{{ $user->email }}</dd>
             </div>
 
+            <div class="px-3 flex flex-row gap-x-3 py-3">
+                <span class="text-gray-800 font-semibold">Referred By:</span>
+                <span class="text-gray-500 ">{{ $user->referrer->username ?? 'No referral' }}</dd>
+            </div>
+
             <div class="px-3 flex flex-row gap-x-3 py-5 place-items-center">
                 <span class="text-gray-800 font-semibold">Joined at:</span>
                 <span class="text-primary-600 text-[11px]">{{ showDateTime($user->created_at) }},
@@ -200,10 +205,10 @@
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
 
                 <div class="max-w-[300px]">
-    <label for="amount">Amount *</label>
-    <input type="number" name="amount" id="amount" class="w-full text-black"
-        value="{{ $user->profit->amount ?? 0 }}" step="any" min="0">
-</div>
+                    <label for="amount">Amount *</label>
+                    <input type="number" name="amount" id="amount" class="w-full text-black"
+                        value="{{ $user->profit->amount ?? 0 }}" step="any" min="0">
+                </div>
 
 
                 <button class="mt-6 py-[12px] bg-cyan-600 px-[14px] text-white text-[14px]"

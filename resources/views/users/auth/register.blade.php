@@ -54,7 +54,6 @@
                 <div class="group">
                     <p class="text-[12px] w-full text-right">Already have an account?<a class="text-primary-600"
                             href="{{ route('user.login') }}" class="login"> login Here</a></p>
-
                 </div>
 
                 <div class="group">

@@ -49,7 +49,8 @@ class ManageUsersController extends Controller
 
     public function details(int $id)
     {
-        $user = User::where('id', $id)->with('profit')->first();
+        $user = User::where('id', $id)->with(['profit', 'referrer'])->first();
+        $user->referrer = User::where('id', $user->referrer->referrer)->first();
 
         $data = [
             'title' => 'User Details',
