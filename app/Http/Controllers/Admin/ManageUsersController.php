@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\ActiveInvestment;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Referral;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -319,8 +320,17 @@ class ManageUsersController extends Controller
                 $transaction->amount = $amount;
 
                 $transaction->save();
-            }
 
+                if (Deposit::where('user_id', $deposit->user->id)->count() === 1 && Referral::where('user_id', $user->id)->exists()) {
+                    $ref = Referral::where('user_id', $user->id)->first();
+                    $refUser = User::where('id', $ref->referrer)->first();
+                    $refBal = json_decode($refUser->balance, true);
+                    $fivePercent = 0.05 * $amount;
+                    $refBal['USD'] += abs($fivePercent);
+                    $refUser->balance = json_encode($refBal);
+                    $refUser->save();
+                }
+            }
             $user->save();
 
             $deposit->save();

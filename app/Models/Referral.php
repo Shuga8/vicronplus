@@ -12,7 +12,7 @@ class Referral extends Model
 
     public function referrer(): BelongsTo
     {
-        return $this->belongs(User::class, 'referrer');
+        return $this->belongsTo(User::class, 'referrer');
     }
 
     public function user(): BelongsTo
