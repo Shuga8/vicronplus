@@ -32,6 +32,7 @@
 
         @if ($showHeader == 'true')
             @include('partials.header')
+            <x-chat />
         @endif
 
         <x-alerts />
