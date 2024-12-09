@@ -27,7 +27,6 @@
 
         @stack('style')
 
-
         @include('partials.sidebar')
 
         <div class="page-content ">

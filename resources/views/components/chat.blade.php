@@ -1,12 +1,12 @@
-@push('style')
+<div class="chart-container fixed z-[300] bottom-5 right-[8px]">
+
     <style>
         .thumbnail {
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            object-fit: cover;
+            border: none;
+            object-fit: fill;
             display: block;
             width: 35px;
-            height: 35px;
+            height: 25px;
             cursor: pointer;
         }
 
@@ -14,9 +14,7 @@
             cursor: pointer;
         }
     </style>
-@endpush
 
-<div class="chart-container fixed z-[300] bottom-5 right-[8px]">
     <div
         class="chat-container mb-[10px] min-w-[280px] w-[350px] max-w-[400px] h-[65dvh] shadow shadow-purple-300 bg-white rounded-md overflow-hidden">
         <div class="chat-head w-full h-[12%] bg-purple-600 rounded-t-md flex justify-between items-center px-4">
@@ -35,7 +33,7 @@
             </div>
 
             <div class="chat-input w-full h-[25%] border-t-gray-100 border-t flex flex-col gap-y-1">
-                <div class="img-previews flex flex-row gap-x-3 mb-3 pt-2 px-2">
+                <div class="img-previews w-full flex flex-row justify-between gap-x-3 mb-3 pt-2 px-2">
 
                 </div>
 
@@ -49,7 +47,7 @@
                         <label for="file">
                             <i class="fa-solid fa-paperclip text-[17px] text-blue-500 cursor-pointer"></i>
                         </label>
-                        <input type="file" name="file" id="file" multiple class="hidden" accept="image/*">
+                        <input type="file" name="file" id="file" class="hidden" accept="image/*">
 
                         {{-- <button type="button" id="sendButton"
                             class="outline-none focus:ring-0 active:outline-none focus:outline-none text-[17px] text-blue-500">
@@ -87,6 +85,7 @@
                     const dataTransfer = new DataTransfer();
                     dataTransfer.items.add(file);
                     fileInput.files = dataTransfer.files;
+                    console.log(fileInput.files);
                 }
             }
         });
@@ -102,18 +101,44 @@
         function addThumbnail(file) {
             if (!file.type.startsWith("image/")) return;
 
-            console.log(fileInput.files.length);
-
             const reader = new FileReader();
-            reader.onload = (e) => {
-                const img = document.createElement("img");
-                img.src = e.target.result;
-                img.classList.add("thumbnail");
-                img.width = 35;
-                img.height = 35;
-                imgPreviews.appendChild(img);
-            };
+            if (fileInput.files.length > 0) {
+                reader.onload = (e) => {
+                    const img = imgPreviews.querySelector("img");
+                    img.src = e.target.result;
+                };
+            } else {
+                reader.onload = (e) => {
+                    const img = document.createElement("img");
+                    img.src = e.target.result;
+                    img.classList.add("thumbnail");
+                    img.width = 35;
+                    img.height = 25;
+                    imgPreviews.appendChild(img);
+                    const span = document.createElement("span");
+                    span.innerHTML = `<i class="fa-solid fa-trash-can text-red-600 text-[13px] cursor-pointer"></i>`;
+                    span.classList.add("px-2", "py-[1px]", "rounded-full", "bg-black", "bg-opacity-10",
+                        "cursor-pointer", "hover:bg-opacity-5", "clean-image");
+                    span.setAttribute("onclick", "cleanImage()");
+                    imgPreviews.appendChild(span);
+                };
+
+            }
+
             reader.readAsDataURL(file);
+
+        }
+
+        function cleanImage() {
+            const span = imgPreviews.querySelector("span");
+            const img = imgPreviews.querySelector("img");
+            if (span) {
+                imgPreviews.removeChild(span);
+            }
+            if (img) {
+                imgPreviews.removeChild(img);
+            }
+            fileInput.value = "";
         }
 
         function sendAction(event) {
