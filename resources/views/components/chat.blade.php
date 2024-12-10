@@ -1,14 +1,14 @@
 @auth
     <div
-        class="chart-container fixed z-[300] bottom-[80px] right-[9px] w-[500px] max-w-[95%] h-[70dvh] rounded-md bg-transparent">
+        class="chart-container fixed z-[300] bottom-[80px] right-[9px] w-[500px] max-w-[95%] h-[80dvh] rounded-md bg-transparent">
 
         <style>
             .thumbnail {
                 border: none;
                 object-fit: fill;
                 display: block;
-                width: 35px;
-                height: 25px;
+                width: 55px;
+                height: 55px;
                 cursor: pointer;
             }
 
@@ -31,12 +31,13 @@
             }
         </style>
 
-        <div class="chat-container mb-[100px] w-full h-full bg-white rounded-md overflow-hidden">
-            <div class="chat-head w-full h-[12%] bg-purple-600 rounded-t-md flex justify-between items-center px-4">
-                <h1 class="text-white text-[14px] font-[550]">CHAT SUPPORT</h1>
+        <div
+            class="chat-container mb-[100px] w-full h-full bg-white rounded-md overflow-hidden block transition-all ease-in-out duration-300">
+            <div class="chat-head w-full h-[12%] bg-purple-700 rounded-t-md flex justify-between items-center px-4">
+                <h1 class="text-white text-[14px] font-[550]">CHAT</h1>
 
-                <div
-                    class="cancel-chat text-white bg-black bg-opacity-35 w-[25px] h-[25px] rounded-full flex justify-center items-center text-[13px] cursor-pointer hover:text-red-400 transition-all duration-300 ease-in-out">
+                <div class="cancel-chat text-white bg-black bg-opacity-35 w-[25px] h-[25px] rounded-full flex justify-center items-center text-[13px] cursor-pointer hover:text-red-400 transition-all duration-300 ease-in-out"
+                    onclick="closeChat()">
                     <i class="fa-solid fa-xmark"></i>
                 </div>
             </div>
@@ -44,7 +45,7 @@
             <div class="chat-card w-full h-[88%]">
 
                 <div
-                    class="chat-body w-full h-[75%] relative bg-[#ededed] pt-[12px] pb-[4px] px-3 flex flex-col gap-y-2 overflow-x-hidden overflow-y-scroll">
+                    class="chat-body w-full h-[75%] relative bg-[#ededed] pt-[12px] pb-[4px] px-3 flex flex-col gap-y-3 overflow-x-hidden overflow-y-scroll">
 
                     <div
                         class="chat-error hidden absolute w-[80%] h-fit text-center text-[10px] top-[10px] left-[50%] -translate-x-1/2 bg-red-800 bg-opacity-80 border border-red-600 p-1 text-white rounded-md transition-all duration-300 ease-in-out z-[1]">
@@ -55,13 +56,9 @@
                         class="chat-success hidden absolute w-[80%] h-fit text-center text-[10px] top-[10px] left-[50%] -translate-x-1/2 bg-green-800 bg-opacity-80 border border-green-600 p-1 text-white rounded-md transition-all duration-300 ease-in-out z-[1]">
 
                     </div>
-
-                    {{-- <div
-                        class="incoming self-start tracking-widest max-w-[80%] px-[12px] py-[9px] rounded-[7px_7px_7px_0px] bg-white text-primary-600 text-[11px] h-fit text-wrap">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, quasi?
-                    </div>
+                    {{-- 
                     <div
-                        class="outgoing self-end tracking-widest max-w-[80%] px-[12px] py-[9px] rounded-[7px_7px_0px_7px] bg-primary-700 text-white text-[11px] h-fit text-wrap">
+                        class="incoming self-start tracking-widest max-w-[80%] px-[12px] py-[9px] rounded-[7px_7px_7px_0px] bg-white text-primary-700 font-[500] text-[11px] h-fit text-wrap">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, quasi?
                     </div>
                     <div
@@ -69,6 +66,17 @@
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, quasi?
                     </div>
 
+
+                    <div
+                        class="incoming file caption self-start tracking-widest max-w-[80%] px-[0px] pt-[0px] pb-[0px] bg-white text-primary-700 font-[500] text-[11px] rounded-[0px_0px_7px_0px] h-fit text-wrap">
+                        <a href="">
+                            <img src="https://ocr.space/Content/Images/receipt-ocr-scanning-result.webp" alt=""
+                                class="w-[100%] max-h-[150px] object-cover block mx-auto">
+                        </a>
+                        <div class="text px-[8px] py-[12px]">
+                            Lorem, ipsum.
+                        </div>
+                    </div>
 
                     <div
                         class="outgoing file caption self-end tracking-widest max-w-[80%] px-[0px] pt-[0px] pb-[0px] bg-primary-700 text-white text-[11px] rounded-[0px_0px_0px_7px] h-fit text-wrap">
@@ -81,7 +89,7 @@
                         </div>
                     </div> --}}
 
-                    <div class="messages w-full">
+                    <div class="messages w-full flex flex-col gap-y-3">
 
                     </div>
 
@@ -90,13 +98,14 @@
                 </div>
 
                 <div class="chat-input w-full h-[25%] border-t-gray-100 border-t flex flex-col gap-y-1">
-                    <div class="img-previews w-full flex flex-row justify-between gap-x-3 mb-3 pt-2 px-2">
+                    <div
+                        class="img-previews w-full flex flex-row justify-between gap-x-3 mb-3 pt-2 px-2 place-items-center">
 
                     </div>
 
                     <div class="input-field w-full mt-auto relative">
                         <textarea placeholder="Type and press [Enter], max (100)" id="textInput"
-                            class="w-full border-none focus:outline-none focus:ring-0 active:outline-none text-[14px] pl-4 pr-[70px] resize-none placeholder:text-[10px]"
+                            class="w-full border-none focus:outline-none focus:ring-0 active:outline-none text-[14px] pl-4 pr-[70px] resize-none placeholder:text-[10px] md:placeholder:text-[14px]"
                             rows="1" wrap="hard" maxlength="100" autofocus></textarea>
 
                         <div
@@ -114,7 +123,6 @@
                     </div>
                 </div>
 
-
             </div>
         </div>
         <div
@@ -131,6 +139,20 @@
             const imgPreviews = document.querySelector(".img-previews");
             const error = document.querySelector(".chat-error");
             const success = document.querySelector(".chat-success");
+            const chatContainer = document.querySelector(".chat-container ");
+            const chatToggle = document.querySelector(".chat-toggle");
+
+            chatToggle.addEventListener("click", closeChat)
+
+            function closeChat() {
+                if (chatContainer.classList.contains("hidden")) {
+                    chatContainer.classList.replace("hidden", "block");
+                    chatToggle.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+                } else {
+                    chatContainer.classList.replace("block", "hidden");
+                    chatToggle.innerHTML = `<i class="fa-solid fa-headset"></i>`;
+                }
+            }
 
             textInput.addEventListener("keydown", sendAction);
 
@@ -166,8 +188,8 @@
                     if (!img) {
                         img = document.createElement("img");
                         img.classList.add("thumbnail");
-                        img.width = 35;
-                        img.height = 25;
+                        img.width = 55;
+                        img.height = 55;
                         imgPreviews.appendChild(img);
                         const span = document.createElement("span");
                         span.innerHTML = `<i class="fa-solid fa-trash-can text-red-600 text-[13px] cursor-pointer"></i>`;
@@ -257,6 +279,77 @@
                 }
                 fileInput.value = "";
             }
+        </script>
+        <script>
+            async function fetchChats() {
+
+                const messages = chatContainer.querySelector(".messages");
+                messages.innerHTML = "";
+
+                const myHeaders = new Headers();
+                myHeaders.append("X-CSRF-TOKEN", "{{ csrf_token() }}");
+
+                let url = "{{ route('user.chat.all', ':id') }}";
+                url = url.replace(":id", "{{ auth()->user()->id }}");
+
+                const request = await fetch(url, {
+                    method: "GET",
+                    headers: myHeaders,
+                });
+
+                const response = await request.json();
+
+                for (let chat of response) {
+                    if (chat.from !== null) {
+
+                        if (chat.file == null) {
+                            messages.innerHTML += `
+                            <div
+                                class="outgoing self-end tracking-widest max-w-[80%] px-[12px] py-[9px] rounded-[7px_7px_0px_7px] bg-primary-700 text-white text-[11px] h-fit text-wrap">
+                                ${chat.message ?? ''}
+                            </div>
+                        `;
+                        } else {
+                            messages.innerHTML += `
+                            <div
+                                class="outgoing file caption self-end tracking-widest max-w-[80%] px-[0px] pt-[0px] pb-[0px] bg-primary-700 text-white text-[11px] rounded-[0px_0px_0px_7px] h-fit text-wrap">
+                                <a href="">
+                                    <img src="{{ config('app.url') }}/storage/${chat.file}" alt=""
+                                        class="w-[100%] max-h-[150px] object-cover block mx-auto">
+                                </a>
+                                <div class="text px-[8px] py-[12px]">
+                                    ${chat.message ?? ''}
+                                </div>
+                            </div> 
+                            `;
+                        }
+                    } else if (chat.to !== null) {
+                        if (chat.file == null) {
+                            messages.innerHTML += `
+                            <div
+                                class="incoming self-start tracking-widest max-w-[80%] px-[12px] py-[9px] rounded-[7px_7px_7px_0px] bg-white text-primary-700 font-[500] text-[11px] h-fit text-wrap">
+                                ${chat.message ?? ''}
+                            </div>
+                        `;
+                        } else {
+                            messages.innerHTML += `
+                            <div
+                                class="incoming file caption self-start tracking-widest max-w-[80%] px-[0px] pt-[0px] pb-[0px] bg-white text-primary-700 font-[500] text-[11px] rounded-[0px_0px_7px_0px] h-fit text-wrap">
+                                <a href="">
+                                    <img src="{{ config('app.url') }}/storage/${chat.file}" alt=""
+                                        class="w-[100%] max-h-[150px] object-cover block mx-auto">
+                                </a>
+                                <div class="text px-[8px] py-[12px]">
+                                    ${chat.message ?? ''}
+                                </div>
+                            </div> 
+                            `;
+                        }
+                    }
+                }
+            }
+
+            fetchChats();
         </script>
     @endpush
 @endauth

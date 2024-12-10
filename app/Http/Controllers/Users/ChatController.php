@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Storage;
 class ChatController extends Controller
 {
 
+    public function index(Request $request, int $id)
+    {
+        if (auth()->user()->id !== $id) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        return response()->json(Chat::where('from', $id)->orWhere('to', $id)->get());
+    }
+
     public function store(Request $request)
     {
         if (empty(trim($request->message)) && !$request->hasFile('file')) {
