@@ -32,7 +32,13 @@
                 <div class="chat-body w-full h-[75%] relative">
 
                     <div
-                        class="chat-error hidden absolute w-[80%] h-fit text-center text-[10px] top-[10px] left-[50%] -translate-x-1/2 bg-red-800 p-1 text-white rounded-md transition-all duration-300 ease-in-out">
+                        class="chat-error hidden absolute w-[80%] h-fit text-center text-[10px] top-[10px] left-[50%] -translate-x-1/2 bg-red-800 bg-opacity-20 border border-red-600 p-1 text-red-800 rounded-md transition-all duration-300 ease-in-out z-[1]">
+
+                    </div>
+
+                    <div
+                        class="chat-success hidden absolute w-[80%] h-fit text-center text-[10px] top-[10px] left-[50%] -translate-x-1/2 bg-green-800 bg-opacity-20 border border-green-600 p-1 text-green-800 rounded-md transition-all duration-300 ease-in-out z-[1]">
+
                     </div>
 
                 </div>
@@ -43,9 +49,9 @@
                     </div>
 
                     <div class="input-field w-full mt-auto relative">
-                        <textarea placeholder="Type and press [Enter]" id="textInput"
-                            class="w-full border-none focus:outline-none focus:ring-0 active:outline-none text-[14px] pl-4 pr-[70px] resize-none"
-                            rows="1" wrap="hard"></textarea>
+                        <textarea placeholder="Type and press [Enter], max (100)" id="textInput"
+                            class="w-full border-none focus:outline-none focus:ring-0 active:outline-none text-[14px] pl-4 pr-[70px] resize-none placeholder:text-[10px]"
+                            rows="1" wrap="hard" maxlength="100" autofocus></textarea>
 
                         <div
                             class="actions absolute flex flex-row gap-x-3 place-items-center w-fit px-1 py-1 right-4 top-1/2 -translate-y-1/2">
@@ -78,6 +84,7 @@
             const fileInput = document.getElementById("file");
             const imgPreviews = document.querySelector(".img-previews");
             const error = document.querySelector(".chat-error");
+            const success = document.querySelector(".chat-success");
 
             textInput.addEventListener("keydown", sendAction);
 
@@ -98,9 +105,9 @@
 
 
             fileInput.addEventListener("change", (event) => {
-                Array.from(event.target.files).forEach((file) => {
-                    addThumbnail(file);
-                });
+
+                addThumbnail(event.target.files[0]);
+
             });
 
 
@@ -108,39 +115,41 @@
                 if (!file.type.startsWith("image/")) return;
 
                 const reader = new FileReader();
-                if (fileInput.files.length > 0) {
-                    reader.onload = (e) => {
-                        const img = imgPreviews.querySelector("img");
-                        img.src = e.target.result;
-                    };
-                } else {
-                    reader.onload = (e) => {
-                        const img = document.createElement("img");
-                        img.src = e.target.result;
+                reader.onload = (e) => {
+                    let img = imgPreviews.querySelector("img");
+
+                    if (!img) {
+                        // If no <img> exists, create a new one
+                        img = document.createElement("img");
                         img.classList.add("thumbnail");
                         img.width = 35;
                         img.height = 25;
                         imgPreviews.appendChild(img);
+
+                        // Create the delete button
                         const span = document.createElement("span");
-                        span.innerHTML =
-                            `<i class="fa-solid fa-trash-can text-red-600 text-[13px] cursor-pointer"></i>`;
+                        span.innerHTML = `<i class="fa-solid fa-trash-can text-red-600 text-[13px] cursor-pointer"></i>`;
                         span.classList.add("px-2", "py-[1px]", "rounded-full", "bg-black", "bg-opacity-10",
                             "cursor-pointer", "hover:bg-opacity-5", "clean-image");
-                        span.setAttribute("onclick", "cleanImage()");
+                        span.addEventListener("click", () => cleanImage());
                         imgPreviews.appendChild(span);
-                    };
+                    }
 
-                }
+                    // Set the image source
+                    img.src = e.target.result;
+                };
 
                 reader.readAsDataURL(file);
-
             }
+
 
 
             async function sendAction(event) {
 
                 if ((event.key === "Enter" && !event.shiftKey)) {
                     event.preventDefault();
+                    clearError();
+                    clearSuccess();
 
                     const myHeaders = new Headers();
                     myHeaders.append("X-CSRF-TOKEN", "{{ csrf_token() }}");
@@ -160,12 +169,13 @@
                     const result = await response.json();
 
                     if (result.error) {
-                        console.log(result.error);
                         flashError(result.error);
+                    } else if (result.success) {
+                        flashSuccess(result.success);
                     }
-                    // textInput.value = "";
-                    // imgPreviews.innerHTML = "";
-                    // fileInput.value = "";
+                    textInput.value = "";
+                    imgPreviews.innerHTML = "";
+                    fileInput.value = "";
                 }
             }
 
@@ -173,12 +183,28 @@
                 error.textContent = msg.toLowerCase();
                 error.classList.replace("hidden", 'block');
 
+                await clearError();
+            }
+
+            async function flashSuccess(msg) {
+                success.textContent = msg.toLowerCase();
+                success.classList.replace("hidden", 'block');
+                await clearSuccess();
+            }
+
+            async function clearSuccess() {
+                setTimeout(() => {
+                    success.classList.replace("block", "hidden");
+                    success.textContent = "";
+                }, 1400);
+            }
+
+            async function clearError() {
                 setTimeout(() => {
                     error.classList.replace("block", "hidden");
                     error.textContent = "";
                 }, 1400);
             }
-
 
             function cleanImage() {
                 const span = imgPreviews.querySelector("span");
