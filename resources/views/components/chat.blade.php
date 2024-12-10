@@ -1,5 +1,6 @@
 @auth
-    <div class="chart-container fixed z-[300] bottom-5 right-[8px]">
+    <div
+        class="chart-container fixed z-[300] bottom-[80px] right-[9px] w-[500px] max-w-[95%] h-[70dvh] rounded-md bg-transparent">
 
         <style>
             .thumbnail {
@@ -14,12 +15,25 @@
             .thumbnail:hover {
                 cursor: pointer;
             }
+
+            .chat-body {
+                scroll-behavior: smooth;
+            }
+
+            .chat-body::-webkit-scrollbar {
+                width: 2px;
+                height: 0px;
+                margin-right: 10px;
+            }
+
+            .chat-body::-webkit-scrollbar-thumb {
+                background: #7e3af2;
+            }
         </style>
 
-        <div
-            class="chat-container mb-[10px] min-w-[280px] w-[350px] max-w-[400px] h-[65dvh] shadow shadow-purple-300 bg-white rounded-md overflow-hidden">
+        <div class="chat-container mb-[100px] w-full h-full bg-white rounded-md overflow-hidden">
             <div class="chat-head w-full h-[12%] bg-purple-600 rounded-t-md flex justify-between items-center px-4">
-                <h1 class="text-white text-[14px] font-[550]">CHAT</h1>
+                <h1 class="text-white text-[14px] font-[550]">CHAT SUPPORT</h1>
 
                 <div
                     class="cancel-chat text-white bg-black bg-opacity-35 w-[25px] h-[25px] rounded-full flex justify-center items-center text-[13px] cursor-pointer hover:text-red-400 transition-all duration-300 ease-in-out">
@@ -29,17 +43,49 @@
 
             <div class="chat-card w-full h-[88%]">
 
-                <div class="chat-body w-full h-[75%] relative">
+                <div
+                    class="chat-body w-full h-[75%] relative bg-[#ededed] pt-[12px] pb-[4px] px-3 flex flex-col gap-y-2 overflow-x-hidden overflow-y-scroll">
 
                     <div
-                        class="chat-error hidden absolute w-[80%] h-fit text-center text-[10px] top-[10px] left-[50%] -translate-x-1/2 bg-red-800 bg-opacity-20 border border-red-600 p-1 text-red-800 rounded-md transition-all duration-300 ease-in-out z-[1]">
+                        class="chat-error hidden absolute w-[80%] h-fit text-center text-[10px] top-[10px] left-[50%] -translate-x-1/2 bg-red-800 bg-opacity-80 border border-red-600 p-1 text-white rounded-md transition-all duration-300 ease-in-out z-[1]">
 
                     </div>
 
                     <div
-                        class="chat-success hidden absolute w-[80%] h-fit text-center text-[10px] top-[10px] left-[50%] -translate-x-1/2 bg-green-800 bg-opacity-20 border border-green-600 p-1 text-green-800 rounded-md transition-all duration-300 ease-in-out z-[1]">
+                        class="chat-success hidden absolute w-[80%] h-fit text-center text-[10px] top-[10px] left-[50%] -translate-x-1/2 bg-green-800 bg-opacity-80 border border-green-600 p-1 text-white rounded-md transition-all duration-300 ease-in-out z-[1]">
 
                     </div>
+
+                    {{-- <div
+                        class="incoming self-start tracking-widest max-w-[80%] px-[12px] py-[9px] rounded-[7px_7px_7px_0px] bg-white text-primary-600 text-[11px] h-fit text-wrap">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, quasi?
+                    </div>
+                    <div
+                        class="outgoing self-end tracking-widest max-w-[80%] px-[12px] py-[9px] rounded-[7px_7px_0px_7px] bg-primary-700 text-white text-[11px] h-fit text-wrap">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, quasi?
+                    </div>
+                    <div
+                        class="outgoing self-end tracking-widest max-w-[80%] px-[12px] py-[9px] rounded-[7px_7px_0px_7px] bg-primary-700 text-white text-[11px] h-fit text-wrap">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, quasi?
+                    </div>
+
+
+                    <div
+                        class="outgoing file caption self-end tracking-widest max-w-[80%] px-[0px] pt-[0px] pb-[0px] bg-primary-700 text-white text-[11px] rounded-[0px_0px_0px_7px] h-fit text-wrap">
+                        <a href="">
+                            <img src="https://ocr.space/Content/Images/receipt-ocr-scanning-result.webp" alt=""
+                                class="w-[100%] max-h-[150px] object-cover block mx-auto">
+                        </a>
+                        <div class="text px-[8px] py-[12px]">
+                            Lorem, ipsum.
+                        </div>
+                    </div> --}}
+
+                    <div class="messages w-full">
+
+                    </div>
+
+
 
                 </div>
 
@@ -72,7 +118,7 @@
             </div>
         </div>
         <div
-            class="chat-toggle float-right w-[60px] h-[60px] bg-purple-600 hover:bg-purple-500 cursor-pointer rounded-full flex justify-center items-center p-2 text-white text-[24px]">
+            class="chat-toggle w-[60px] h-[60px] bg-purple-600 hover:bg-purple-500 cursor-pointer rounded-full flex justify-center items-center p-2 text-white text-[24px] absolute bottom-[-65px] right-2">
             <i class="fa-solid fa-headset"></i>
         </div>
 
@@ -117,16 +163,12 @@
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     let img = imgPreviews.querySelector("img");
-
                     if (!img) {
-                        // If no <img> exists, create a new one
                         img = document.createElement("img");
                         img.classList.add("thumbnail");
                         img.width = 35;
                         img.height = 25;
                         imgPreviews.appendChild(img);
-
-                        // Create the delete button
                         const span = document.createElement("span");
                         span.innerHTML = `<i class="fa-solid fa-trash-can text-red-600 text-[13px] cursor-pointer"></i>`;
                         span.classList.add("px-2", "py-[1px]", "rounded-full", "bg-black", "bg-opacity-10",
@@ -134,8 +176,6 @@
                         span.addEventListener("click", () => cleanImage());
                         imgPreviews.appendChild(span);
                     }
-
-                    // Set the image source
                     img.src = e.target.result;
                 };
 
