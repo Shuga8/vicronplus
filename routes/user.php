@@ -36,4 +36,8 @@ Route::middleware('auth')->group(function () {
         Route::get('log', 'log')->name('log');
         Route::post('store', 'store')->name('store');
     });
+
+    Route::prefix('chat')->name('chat.')->controller('ChatController')->group(function () {
+        Route::post("send", 'store')->name('send');
+    });
 });
