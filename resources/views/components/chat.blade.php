@@ -32,7 +32,7 @@
         </style>
 
         <div
-            class="chat-container mb-[100px] w-full h-full bg-white rounded-md overflow-hidden block transition-all ease-in-out duration-300">
+            class="chat-container mb-[100px] w-full h-full bg-white rounded-md overflow-hidden hidden transition-all ease-in-out duration-300">
             <div class="chat-head w-full h-[12%] bg-purple-700 rounded-t-md flex justify-between items-center px-4">
                 <h1 class="text-white text-[14px] font-[550]">CHAT</h1>
 
@@ -282,10 +282,7 @@
         </script>
         <script>
             async function fetchChats() {
-
                 const messages = chatContainer.querySelector(".messages");
-                messages.innerHTML = "";
-
                 const myHeaders = new Headers();
                 myHeaders.append("X-CSRF-TOKEN", "{{ csrf_token() }}");
 
@@ -299,6 +296,7 @@
 
                 const response = await request.json();
 
+                messages.innerHTML = "";
                 for (let chat of response) {
                     if (chat.from !== null) {
 
@@ -347,6 +345,8 @@
                         }
                     }
                 }
+
+                await fetchChats();
             }
 
             fetchChats();
