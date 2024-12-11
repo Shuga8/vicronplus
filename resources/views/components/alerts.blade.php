@@ -23,6 +23,9 @@
             </svg>
         </button>
     </div>
+    @php
+        session()->forget('success');
+    @endphp
 @endif
 
 @if (session('error'))
@@ -50,6 +53,6 @@
         </button>
     </div>
     @php
-        session()->forget('success');
+        session()->forget('error');
     @endphp
 @endif

@@ -1,6 +1,6 @@
 @auth
     <div
-        class="chart-container fixed z-[300] bottom-[80px] right-[9px] w-[500px] max-w-[95%] h-[80dvh] rounded-md bg-transparent">
+        class="chart-wrapper fixed z-[0] bottom-[80px] right-[9px] w-[500px] max-w-[95%] h-[80dvh] rounded-md bg-transparent">
 
         <style>
             .thumbnail {
@@ -111,14 +111,14 @@
                         <div
                             class="actions absolute flex flex-row gap-x-3 place-items-center w-fit px-1 py-1 right-4 top-1/2 -translate-y-1/2">
                             <label for="file">
-                                <i class="fa-solid fa-paperclip text-[17px] text-blue-500 cursor-pointer"></i>
+                                <i class="fa-solid fa-paperclip text-[20px] text-blue-500 cursor-pointer"></i>
                             </label>
                             <input type="file" name="file" id="file" class="hidden" accept="image/*">
 
-                            {{-- <button type="button" id="sendButton"
-                            class="outline-none focus:ring-0 active:outline-none focus:outline-none text-[17px] text-blue-500">
-                            <i class="fa-solid fa-paper-plane"></i>
-                        </button> --}}
+                            <button type="button" id="sendButton"
+                                class="outline-none focus:ring-0 active:outline-none focus:outline-none text-[20px] text-blue-500">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
             </div>
         </div>
         <div
-            class="chat-toggle w-[60px] h-[60px] bg-purple-600 hover:bg-purple-500 cursor-pointer rounded-full flex justify-center items-center p-2 text-white text-[24px] absolute bottom-[-65px] right-2">
+            class="chat-toggle w-[60px] h-[60px] bg-purple-600 hover:bg-purple-500 cursor-pointer rounded-full flex justify-center items-center p-2 text-white text-[24px] absolute bottom-[-65px] right-2 z-[301]">
             <i class="fa-solid fa-headset"></i>
         </div>
 
@@ -140,21 +140,27 @@
             const error = document.querySelector(".chat-error");
             const success = document.querySelector(".chat-success");
             const chatContainer = document.querySelector(".chat-container ");
+            const chatWrapper = document.querySelector(".chart-wrapper ");
             const chatToggle = document.querySelector(".chat-toggle");
+            const sendBtn = document.querySelector("#sendButton");
+
 
             chatToggle.addEventListener("click", closeChat)
 
             function closeChat() {
                 if (chatContainer.classList.contains("hidden")) {
                     chatContainer.classList.replace("hidden", "block");
+                    chatWrapper.classList.replace("z-[0]", "z-[300]")
                     chatToggle.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
                 } else {
                     chatContainer.classList.replace("block", "hidden");
                     chatToggle.innerHTML = `<i class="fa-solid fa-headset"></i>`;
+                    chatWrapper.classList.replace("z-[300]", "z-[0]")
                 }
             }
 
             textInput.addEventListener("keydown", sendAction);
+            sendBtn.addEventListener("click", sendAction);
 
 
             textInput.addEventListener("paste", (event) => {
@@ -208,7 +214,7 @@
 
             async function sendAction(event) {
 
-                if ((event.key === "Enter" && !event.shiftKey)) {
+                if ((event.key === "Enter" && !event.shiftKey) || event.currentTarget == sendBtn) {
                     event.preventDefault();
                     clearError();
                     clearSuccess();
