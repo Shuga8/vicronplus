@@ -49,7 +49,7 @@ class ChatController extends Controller
             $chat->save();
             DB::commit();
 
-            Notification::route('mail', 'lotocharles8@gmail.com')->notify(new NewMessage(User::where('id', auth()->user()->id)->first()));
+            Notification::route('mail', 'vicronplus@gmail.com')->notify(new NewMessage(User::where('id', auth()->user()->id)->first()));
 
             return response()->json(['success' => 'message sent']);
         } catch (\Exception $e) {
