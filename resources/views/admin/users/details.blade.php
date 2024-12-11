@@ -165,6 +165,11 @@
                     <span>Ban</span>
                 </a>
             @endif
+            <a href="{{ route('admin.chat.all', $user->id) }}" referrerpolicy="no-referrer"
+                class="bg-teal-600 hover:bg-teal-500 text-white flex flex-row gap-x-1 justify-center place-items-center px-5 py-[4px] rounded-md grow shrink text-[13px]">
+                <i class="fa-brands fa-rocketchat"></i>
+                <span>Chat</span>
+            </a>
 
 
         </div>

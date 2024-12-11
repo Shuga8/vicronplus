@@ -15,9 +15,9 @@
 
     <div class="actions px-4 flex gap-x-2 place-items-center">
 
-        <script src="https://static.elfsight.com/platform/platform.js" importance="high" async></script>
+        {{-- <script src="https://static.elfsight.com/platform/platform.js" importance="high" async></script>
         <div class="elfsight-app-1b928f5d-d2cc-46aa-bdd0-aaad971e83e0 text-white" data-elfsight-app-lazy id="elfsight">
-        </div>
+        </div> --}}
         @auth('web')
             <a href="{{ route('user.dashboard') }}" class="action-button">Dashboard</a>
         @endauth
@@ -69,7 +69,7 @@
         }
     </script>
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function(e) {
             setTimeout(() => {
                 const elf = document.querySelector("#elfsight");
@@ -78,5 +78,5 @@
                 first.querySelector("a").style.display = 'none'
             }, 3000);
         })
-    </script>
+    </script> --}}
 @endpush

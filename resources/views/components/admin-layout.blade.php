@@ -32,6 +32,8 @@
 
         @include('partials._admin-sidebar')
 
+        @stack('style')
+
         <div class="page-content pb-1">
             @include('partials._admin-header')
 

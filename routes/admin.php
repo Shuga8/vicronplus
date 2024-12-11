@@ -56,4 +56,9 @@ Route::middleware('admin')->group(function () {
         Route::post("/store/{id}", 'store')->name("store");
         Route::get("/delete/{id}", 'delete')->name("delete");
     });
+
+    Route::prefix('chat')->name('chat.')->controller('ChatController')->group(function () {
+        Route::get('all/{id}', 'index')->name('all');
+        Route::post("send", 'store')->name('send');
+    });
 });
