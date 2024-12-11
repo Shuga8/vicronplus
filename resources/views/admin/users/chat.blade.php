@@ -248,6 +248,16 @@
                 }
                 fileInput.value = "";
             }
+
+            function scrollToBottom() {
+                const chatBody = document.querySelector(".chat-container");
+                if (chatBody) {
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }
+            }
+
+            // Example: Call this function after adding new messages
+            scrollToBottom();
         </script>
     @endpush
 

@@ -281,6 +281,7 @@
             }
         </script>
         <script>
+            let count = 0;
             async function fetchChats() {
                 const messages = chatContainer.querySelector(".messages");
                 const myHeaders = new Headers();
@@ -345,8 +346,18 @@
                         }
                     }
                 }
-
+                if (count < 2) {
+                    scrollToBottom();
+                }
+                count += 1;
                 await fetchChats();
+            }
+
+            function scrollToBottom() {
+                const chatBody = document.querySelector(".chat-body");
+                if (chatBody) {
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }
             }
 
             fetchChats();
