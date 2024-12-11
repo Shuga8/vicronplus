@@ -27,6 +27,18 @@
                 <option value="fr">french</option>
                 <option value="ar">arabic</option>
             </select>
+
+            <div class="gtranslate_wrapper"></div>
+            <script>
+                window.gtranslateSettings = {
+                    "default_language": "en",
+                    "languages": ["en", "fr", "fa", "ru", "ar", "de", "nl", "la", "sw"],
+                    "wrapper_selector": ".gtranslate_wrapper",
+                    "float_switcher_open_direction": "bottom",
+                    "flag_style": "3d"
+                }
+            </script>
+            <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
             {{-- 
             <script src="https://static.elfsight.com/platform/platform.js" importance="high" async></script>
             <div class="elfsight-app-1b928f5d-d2cc-46aa-bdd0-aaad971e83e0 text-white" data-elfsight-app-lazy
