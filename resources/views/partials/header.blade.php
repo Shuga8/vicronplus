@@ -56,7 +56,7 @@
     </nav>
 </aside>
 
-@push('script')
+@push('scripts')
     <script>
         const aside = document.querySelector(".aside");
 

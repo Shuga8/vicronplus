@@ -85,7 +85,7 @@
         </form>
 
     </div>
-    @push('script')
+    @push('scripts')
         <script src="{{ asset('assets/js/particles.js') }}"></script>
         <script>
             particlesJS("particles-js", {

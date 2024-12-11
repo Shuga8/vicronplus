@@ -132,7 +132,7 @@
 
     </div>
 
-    @push('script')
+    @push('scripts')
         <script>
             const textInput = document.getElementById("textInput");
             const fileInput = document.getElementById("file");

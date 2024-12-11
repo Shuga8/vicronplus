@@ -29,6 +29,8 @@
 
         @include('partials.sidebar')
 
+        <x-chat />
+
         <div class="page-content ">
 
             @include('partials._topbar')
