@@ -2,6 +2,19 @@
 
     @push('style')
         <style type="text/css">
+            .thumbnail {
+                border: none;
+                object-fit: fill;
+                display: block;
+                width: 55px;
+                height: 55px;
+                cursor: pointer;
+            }
+
+            .thumbnail:hover {
+                cursor: pointer;
+            }
+
             .chat-container {
                 scroll-behavior: smooth
             }
@@ -85,8 +98,108 @@
 
 
 
+
+
+        </div>
+
+        <div class="chat-input w-full border-t-gray-100 border-t flex flex-col gap-y-1">
+            <div class="img-previews w-full flex flex-row justify-between gap-x-3 mb-3 pt-2 px-2 place-items-center">
+
+            </div>
+
+            <div class="input-field w-full mt-auto relative">
+                <form action="{{ route('admin.chat.send') }}" enctype="multipart/form-data" method="POST">
+                    @csrf
+
+                    <input type="hidden" name="user_id" id="user_id" value="{{ $user->id }}">
+                    <textarea placeholder="Type and press [Send], max (100)" id="textInput"
+                        class="w-full border-none focus:outline-none focus:ring-0 active:outline-none text-[14px] pl-4 pr-[70px] resize-none placeholder:text-[10px] md:placeholder:text-[14px] text-slate-600"
+                        rows="1" wrap="hard" maxlength="100" autofocus name="message"></textarea>
+
+                    <div
+                        class="actions absolute flex flex-row gap-x-4 place-items-center w-fit px-1 py-1 right-4 top-1/2 -translate-y-1/2">
+                        <label for="file">
+                            <i class="fa-solid fa-paperclip text-[20px] text-blue-500 cursor-pointer"></i>
+                        </label>
+                        <input type="file" name="file" id="file" class="hidden" accept="image/*">
+
+                        <button type="submit" id="sendButton"
+                            class="outline-none focus:ring-0 active:outline-none focus:outline-none text-[20px] text-blue-500">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
 
     </div>
+
+    @push('scripts')
+        <script type="text/javascript">
+            const textInput = document.getElementById("textInput");
+            const fileInput = document.getElementById("file");
+            const imgPreviews = document.querySelector(".img-previews");
+
+
+            textInput.addEventListener("paste", (event) => {
+                const items = (event.clipboardData || event.originalEvent.clipboardData).items;
+                for (const item of items) {
+                    if (item.kind === "file") {
+                        const file = item.getAsFile();
+                        addThumbnail(file);
+                        const dataTransfer = new DataTransfer();
+                        dataTransfer.items.add(file);
+                        fileInput.files = dataTransfer.files;
+                        console.log(fileInput.files);
+                    }
+                }
+            });
+
+
+            fileInput.addEventListener("change", (event) => {
+
+                addThumbnail(event.target.files[0]);
+
+            });
+
+            function addThumbnail(file) {
+                if (!file.type.startsWith("image/")) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    let img = imgPreviews.querySelector("img");
+                    if (!img) {
+                        img = document.createElement("img");
+                        img.classList.add("thumbnail");
+                        img.width = 55;
+                        img.height = 55;
+                        imgPreviews.appendChild(img);
+                        const span = document.createElement("span");
+                        span.innerHTML = `<i class="fa-solid fa-trash-can text-red-600 text-[13px] cursor-pointer"></i>`;
+                        span.classList.add("px-2", "py-[1px]", "rounded-full", "bg-black", "bg-opacity-10",
+                            "cursor-pointer", "hover:bg-opacity-5", "clean-image");
+                        span.addEventListener("click", () => cleanImage());
+                        imgPreviews.appendChild(span);
+                    }
+                    img.src = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
+
+            function cleanImage() {
+                const span = imgPreviews.querySelector("span");
+                const img = imgPreviews.querySelector("img");
+                if (span) {
+                    imgPreviews.removeChild(span);
+                }
+                if (img) {
+                    imgPreviews.removeChild(img);
+                }
+                fileInput.value = "";
+            }
+        </script>
+    @endpush
+
 
 </x-admin-layout>
