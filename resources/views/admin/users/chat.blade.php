@@ -39,8 +39,8 @@
         <div
             class="chat-container w-full shadow-[inset_2px_2px_5px_#eee,_inset_-2px_-2px_5px_#eee] px-10 py-8 mt-7 overflow-y-auto h-[60dvh] flex flex-col gap-y-4">
 
-            <div class="block">
-                <span class="mb-2 px-2 text-[10px] text-gray-600 uppercase font-bold">You</span>
+            {{-- <div class="block">
+                <span class="mb-3 px-2 text-[10px] text-primary-600 uppercase font-bold">You</span>
 
                 <div
                     class="you relative bg-primary-800 w-[fit-content] max-w-[80%] text-white px-8 py-4 text-[14px] tracking-widest rounded-[10px_10px_10px_0px]">
@@ -50,7 +50,7 @@
             </div>
 
             <div class="block">
-                <span class="mb-2 px-2 text-[10px] text-gray-600 uppercase font-bold">{{ $user->username }}</span>
+                <span class="mb-3 px-2 text-[10px] text-gray-600 uppercase font-bold">{{ $user->username }}</span>
 
                 <div
                     class="user relative bg-white w-[fit-content] max-w-[80%] text-primary-600 border border-gray-400 px-6 py-4 text-[14px] tracking-widest rounded-[10px_10px_10px_0px]">
@@ -58,51 +58,101 @@
                 </div>
             </div>
 
-            <div class="block">
-                <span class="mb-2 px-2 text-[10px] text-gray-600 uppercase font-bold">{{ $user->username }}</span>
-
+            <div class="block figure">
+                <span class="mb-3 px-2 text-[10px] text-primary-600 uppercase font-bold">You</span>
                 <div
-                    class="user relative bg-white w-[fit-content] max-w-[80%] text-primary-600 border border-gray-400 px-6 py-4 text-[14px] tracking-widest rounded-[10px_10px_10px_0px]">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, explicabo?
+                    class="you file caption self-start tracking-widest w-[300px] max-w-[80%] px-[0px] pt-[0px] pb-[0px] bg-blue-700 text-white font-[500] text-[11px] rounded-[0px_0px_7px_0px] h-fit text-wrap">
+                    <a href="https://ocr.space/Content/Images/receipt-ocr-scanning-result.webp" target="_blank">
+                        <img src="https://ocr.space/Content/Images/receipt-ocr-scanning-result.webp" alt=""
+                            class="w-[100%] max-h-[150px] object-cover block mx-auto">
+                    </a>
+                    <div class="text px-[8px] py-[12px]">
+                        Lorem, ipsum.
+                    </div>
                 </div>
             </div>
 
-            <div class="block">
-                <span class="mb-2 px-2 text-[10px] text-gray-600 uppercase font-bold">{{ $user->username }}</span>
-
+            <div class="block figure">
+                <span class="mb-3 px-2 text-[10px] text-gray-600 uppercase font-bold">{{ $user->username }}</span>
                 <div
-                    class="user relative bg-white w-[fit-content] max-w-[80%] text-primary-600 border border-gray-400 px-6 py-4 text-[14px] tracking-widest rounded-[10px_10px_10px_0px]">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, explicabo?
+                    class="you file caption self-start tracking-widest w-[300px] max-w-[80%] px-[0px] pt-[0px] pb-[0px] bg-gray-100 text-primary-700 font-[500] text-[11px] rounded-[0px_0px_7px_0px] h-fit text-wrap">
+                    <a href="https://ocr.space/Content/Images/receipt-ocr-scanning-result.webp" target="_blank">
+                        <img src="https://ocr.space/Content/Images/receipt-ocr-scanning-result.webp" alt=""
+                            class="w-[100%] max-h-[150px] object-cover block mx-auto">
+                    </a>
+                    <div class="text px-[8px] py-[12px]">
+                        Lorem, ipsum.
+                    </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="block">
-                <span class="mb-2 px-2 text-[10px] text-gray-600 uppercase font-bold">You</span>
+            @unless ($chats->count() == 0)
+                @foreach ($chats as $chat)
+                    @if ($chat->from !== null)
+                        @if ($chat->file == null)
+                            <div class="block">
+                                <span
+                                    class="mb-3 px-2 text-[10px] text-gray-600 uppercase font-bold">{{ $user->username }}</span>
+                                <div
+                                    class="user relative bg-white w-[fit-content] max-w-[80%] text-primary-600 border border-gray-400 px-6 py-4 text-[14px] tracking-widest rounded-[10px_10px_10px_0px]">
+                                    {!! $chat->message ?? '' !!}
+                                </div>
+                            </div>
+                        @else
+                            <div class="block figure">
+                                <span
+                                    class="mb-3 px-2 text-[10px] text-gray-600 uppercase font-bold">{{ $user->username }}</span>
+                                <div
+                                    class="you file caption self-start tracking-widest w-[300px] max-w-[80%] px-[0px] pt-[0px] pb-[0px] bg-gray-100 text-primary-700 font-[500] text-[11px] rounded-[0px_0px_7px_0px] h-fit text-wrap">
+                                    <a href="{{ config('app.url') }}/storage/{{ $chat->file }}" target="_blank">
+                                        <img src="{{ config('app.url') }}/storage/{{ $chat->file }}" alt=""
+                                            class="w-[100%] max-h-[150px] object-cover object-center block mx-auto">
+                                    </a>
+                                    <div class="text px-[8px] py-[12px]">
+                                        {!! $chat->message ?? '' !!}
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
 
-                <div
-                    class="you relative bg-primary-800 w-[fit-content] max-w-[80%] text-white px-8 py-4 text-[14px] tracking-widest rounded-[10px_10px_10px_0px]">
+                    @if ($chat->to !== null)
+                        @if ($chat->file == null)
+                            <div class="block">
+                                <span class="mb-3 px-2 text-[10px] text-primary-600 uppercase font-bold">You</span>
 
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, explicabo?
-                </div>
-            </div>
+                                <div
+                                    class="you relative bg-primary-800 w-[fit-content] max-w-[80%] text-white px-8 py-4 text-[14px] tracking-widest rounded-[10px_10px_10px_0px]">
 
-            <div class="block">
-                <span class="mb-2 px-2 text-[10px] text-gray-600 uppercase font-bold">You</span>
-
-                <div
-                    class="you relative bg-primary-800 w-[fit-content] max-w-[80%] text-white px-8 py-4 text-[14px] tracking-widest rounded-[10px_10px_10px_0px]">
-
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, explicabo?
-                </div>
-            </div>
-
+                                    {!! $chat->message ?? '' !!}
+                                </div>
+                            </div>
+                        @else
+                            <div class="block figure">
+                                <span class="mb-3 px-2 text-[10px] text-primary-600 uppercase font-bold">You</span>
+                                <div
+                                    class="you file caption self-start tracking-widest w-[300px] max-w-[80%] px-[0px] pt-[0px] pb-[0px] bg-blue-700 text-white font-[500] text-[11px] rounded-[0px_0px_7px_0px] h-fit text-wrap">
+                                    <a href="{{ config('app.url') }}/storage/{{ $chat->file }}" target="_blank">
+                                        <img src="{{ config('app.url') }}/storage/{{ $chat->file }}" alt=""
+                                            class="w-[100%] max-h-[150px] object-cover object-center  block mx-auto">
+                                    </a>
+                                    <div class="text px-[8px] py-[12px]">
+                                        {!! $chat->message ?? '' !!}
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
+                @endforeach
+            @else
+            @endunless
 
 
 
 
         </div>
 
-        <div class="chat-input w-full border-t-gray-100 border-t flex flex-col gap-y-1">
+        <div class="chat-input w-full border-t-gray-200 border-t flex flex-col gap-y-1 mt-2">
             <div class="img-previews w-full flex flex-row justify-between gap-x-3 mb-3 pt-2 px-2 place-items-center">
 
             </div>

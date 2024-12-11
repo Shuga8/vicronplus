@@ -311,7 +311,7 @@
                             messages.innerHTML += `
                             <div
                                 class="outgoing file caption self-end tracking-widest max-w-[80%] px-[0px] pt-[0px] pb-[0px] bg-primary-700 text-white text-[11px] rounded-[0px_0px_0px_7px] h-fit text-wrap">
-                                <a href="">
+                                <a href="{{ config('app.url') }}/storage/${chat.file}" target="_blank">
                                     <img src="{{ config('app.url') }}/storage/${chat.file}" alt=""
                                         class="w-[100%] max-h-[150px] object-cover block mx-auto">
                                 </a>
@@ -333,7 +333,7 @@
                             messages.innerHTML += `
                             <div
                                 class="incoming file caption self-start tracking-widest max-w-[80%] px-[0px] pt-[0px] pb-[0px] bg-white text-primary-700 font-[500] text-[11px] rounded-[0px_0px_7px_0px] h-fit text-wrap">
-                                <a href="">
+                                <a href="{{ config('app.url') }}/storage/${chat.file}" target="_blank">
                                     <img src="{{ config('app.url') }}/storage/${chat.file}" alt=""
                                         class="w-[100%] max-h-[150px] object-cover block mx-auto">
                                 </a>
