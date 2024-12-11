@@ -105,7 +105,7 @@
 
                     <div class="input-field w-full mt-auto relative">
                         <textarea placeholder="Type and press [Enter], max (100)" id="textInput"
-                            class="w-full border-none focus:outline-none focus:ring-0 active:outline-none text-[14px] pl-4 pr-[70px] resize-none placeholder:text-[10px] md:placeholder:text-[14px]"
+                            class="w-full border-none focus:outline-none focus:ring-0 active:outline-none text-[14px] pl-4 pr-[70px] resize-none placeholder:text-[10px] md:placeholder:text-[14px] text-gray-800"
                             rows="1" wrap="hard" maxlength="100" autofocus></textarea>
 
                         <div

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Users;
 
 use App\Models\Chat;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Notifications\NewMessage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Notification;
 
 class ChatController extends Controller
 {
@@ -45,6 +48,8 @@ class ChatController extends Controller
             }
             $chat->save();
             DB::commit();
+
+            Notification::route('mail', 'lotocharles8@gmail.com')->notify(new NewMessage(User::where('id', auth()->user()->id)->first()));
 
             return response()->json(['success' => 'message sent']);
         } catch (\Exception $e) {
