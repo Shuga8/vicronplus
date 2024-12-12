@@ -1,6 +1,6 @@
 @auth
     <div
-        class="chart-wrapper fixed z-[0] bottom-[80px] right-[9px] w-[500px] max-w-[95%] h-[80dvh] rounded-md bg-transparent">
+        class="chart-wrapper fixed hidden z-[300] bottom-[80px] right-[9px] w-[500px] max-w-[95%] h-[80dvh] rounded-md bg-transparent">
 
         <style>
             .thumbnail {
@@ -32,7 +32,7 @@
         </style>
 
         <div
-            class="chat-container mb-[100px] w-full h-full bg-white rounded-md overflow-hidden hidden transition-all ease-in-out duration-300">
+            class="chat-container mb-[100px] w-full h-full bg-white rounded-md overflow-hidden transition-all ease-in-out duration-300">
             <div class="chat-head w-full h-[12%] bg-purple-700 rounded-t-md flex justify-between items-center px-4">
                 <h1 class="text-white text-[14px] font-[550]">CHAT</h1>
 
@@ -125,11 +125,13 @@
 
             </div>
         </div>
-        <div
-            class="chat-toggle w-[60px] h-[60px] bg-purple-600 hover:bg-purple-500 cursor-pointer rounded-full flex justify-center items-center p-2 text-white text-[24px] absolute bottom-[-65px] right-2 z-[301]">
-            <i class="fa-solid fa-headset"></i>
-        </div>
 
+
+    </div>
+
+    <div
+        class="chat-toggle w-[60px] h-[60px] bg-purple-600 hover:bg-purple-500 cursor-pointer rounded-full flex justify-center items-center p-2 text-white text-[24px] fixed right-2 z-[301] bottom-[10px]">
+        <i class="fa-solid fa-headset"></i>
     </div>
 
     @push('scripts')
@@ -148,14 +150,12 @@
             chatToggle.addEventListener("click", closeChat)
 
             function closeChat() {
-                if (chatContainer.classList.contains("hidden")) {
-                    chatContainer.classList.replace("hidden", "block");
-                    chatWrapper.classList.replace("z-[0]", "z-[300]")
+                if (chatWrapper.classList.contains("hidden")) {
+                    chatWrapper.classList.replace("hidden", "block")
                     chatToggle.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
                 } else {
-                    chatContainer.classList.replace("block", "hidden");
-                    chatToggle.innerHTML = `<i class="fa-solid fa-headset"></i>`;
-                    chatWrapper.classList.replace("z-[300]", "z-[0]")
+                    chatWrapper.classList.replace("block", "hidden");
+                    chatToggle.innerHTML = `<i class="fa-solid fa-headset"></i>`
                 }
             }
 
